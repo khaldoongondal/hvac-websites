@@ -27,48 +27,63 @@ function contrastText(hex) {
   return (r * 299 + g * 587 + b * 114) / 1000 > 128 ? '#111827' : '#ffffff'
 }
 
-// Generates !important overrides for every Tailwind colour class used in the template.
+// Generates CSS vars + !important overrides for every Tailwind class used in the template.
 // Injected in <Head> — beats whatever Tailwind CDN generates.
-function buildColorCSS(primary, secondary, accent) {
-  const p = primary   || '#c8a328'
-  const s = secondary || '#1b3022'
-  const a = accent    || '#0e1a12'
+function buildColorCSS(primary, secondary, accent, primaryLight, textOnPrimary, textOnAccent) {
+  const p  = primary      || '#1b3022'
+  const s  = secondary    || '#2d5a3d'
+  const a  = accent       || '#c8a328'
+  const pl = primaryLight || '#2d5a3d'
+  const tp = textOnPrimary || '#ffffff'   // text on primary-bg surfaces (hero, footer)
+  const ta = textOnAccent  || '#1a1a1a'  // text on accent-bg surfaces (buttons)
 
-  // Footer (bg-deep-green = accent) — switch to dark text when background is light
-  const footerText   = contrastText(a)
-  const footerMuted  = footerText === '#ffffff' ? 'rgba(255,255,255,0.6)' : 'rgba(17,24,39,0.55)'
-  const footerBorder = footerText === '#ffffff' ? 'rgba(255,255,255,0.1)' : 'rgba(17,24,39,0.15)'
-  // When footer is light, use secondary as icon/accent colour so icons stay visible
-  const footerAccent = footerText === '#ffffff' ? p : s
+  // Footer bg = primary. Use pre-computed tp for readability.
+  const footerMuted  = tp === '#ffffff' ? 'rgba(255,255,255,0.6)' : 'rgba(17,24,39,0.55)'
+  const footerBorder = tp === '#ffffff' ? 'rgba(255,255,255,0.1)' : 'rgba(17,24,39,0.15)'
 
-  // CTA banner (bg-forest-green = secondary) — same logic
+  // CTA banner (bg-forest-green = secondary)
   const ctaText  = contrastText(s)
   const ctaMuted = ctaText === '#ffffff' ? 'rgba(255,255,255,0.8)' : 'rgba(17,24,39,0.7)'
 
   return `
-    .text-primary                         { color: ${p} !important; }
-    .bg-primary                           { background-color: ${p} !important; }
-    .bg-primary\\/90,
-    .hover\\:bg-primary\\/90:hover         { background-color: ${rgba(p, 0.9)} !important; }
-    .bg-primary\\/10                       { background-color: ${rgba(p, 0.1)} !important; }
-    .bg-primary\\/20                       { background-color: ${rgba(p, 0.2)} !important; }
-    .border-primary                        { border-color: ${p} !important; }
-    .bg-forest-green                       { background-color: ${s} !important; }
-    .bg-deep-green                         { background-color: ${a} !important; }
+    :root {
+      --color-primary:         ${p};
+      --color-secondary:       ${s};
+      --color-accent:          ${a};
+      --color-primary-light:   ${pl};
+      --color-text-on-primary: ${tp};
+      --color-text-on-accent:  ${ta};
+    }
 
-    /* Footer contrast */
+    /* Accent = buttons, icons, highlights, borders */
+    .text-primary                         { color: ${a} !important; }
+    .bg-primary                           { background-color: ${a} !important; }
+    .bg-primary\\/90,
+    .hover\\:bg-primary\\/90:hover         { background-color: ${rgba(a, 0.9)} !important; }
+    .bg-primary\\/10                       { background-color: ${rgba(a, 0.1)} !important; }
+    .bg-primary\\/20                       { background-color: ${rgba(a, 0.2)} !important; }
+    .border-primary                        { border-color: ${a} !important; }
+
+    /* Section backgrounds */
+    .bg-forest-green                       { background-color: ${s} !important; }
+    .bg-deep-green                         { background-color: ${p} !important; }
+
+    /* Button text using derived contrast colour */
+    .btn-accent-text                       { color: ${ta} !important; }
+
+    /* Footer contrast (bg = primary) */
     footer.bg-deep-green,
-    footer.bg-deep-green .text-white       { color: ${footerText} !important; }
+    footer.bg-deep-green .text-white       { color: ${tp} !important; }
     footer.bg-deep-green .text-white\\/60,
     footer.bg-deep-green .text-white\\/40  { color: ${footerMuted} !important; }
     footer.bg-deep-green .border-white\\/10{ border-color: ${footerBorder} !important; }
-    footer.bg-deep-green .text-primary     { color: ${footerAccent} !important; }
-    footer.bg-deep-green .hover\\:text-primary:hover { color: ${footerAccent} !important; }
+    footer.bg-deep-green .text-primary     { color: ${a} !important; }
+    footer.bg-deep-green .hover\\:text-primary:hover { color: ${a} !important; }
 
-    /* CTA banner contrast */
+    /* CTA banner contrast (bg = secondary) */
     .bg-forest-green .text-white           { color: ${ctaText} !important; }
     .bg-forest-green .text-white\\/80      { color: ${ctaMuted} !important; }
-    .bg-forest-green .text-primary         { color: ${p} !important; }
+    .bg-forest-green .text-primary         { color: ${a} !important; }
   `.trim()
 }
 
@@ -79,20 +94,23 @@ export default function LeadPage({ lead, heroImage }) {
   const phone        = lead.phone         || ''
   const city         = cleanCity(lead.city) || 'Your City'
   const businessName = lead.business_name || 'Local HVAC'
-  const primary      = lead.color_primary   || '#c8a328'
-  const secondary    = lead.color_secondary || '#1b3022'
-  const accent       = lead.color_accent    || '#0e1a12'
-  const logoUrl      = lead.logo_url?.startsWith('http') ? lead.logo_url : null
+  const primary       = lead.color_primary          || '#1b3022'
+  const secondary     = lead.color_secondary         || '#2d5a3d'
+  const accent        = lead.color_accent            || '#c8a328'
+  const primaryLight  = lead.color_primary_light     || primary
+  const textOnPrimary = lead.color_text_on_primary   || '#ffffff'
+  const textOnAccent  = lead.color_text_on_accent    || '#1a1a1a'
+  const logoUrl       = lead.logo_url?.startsWith('http') ? lead.logo_url : null
 
-  // Inline gradient for hero — cannot be reliably overridden via class alone
-  const heroGradient = `linear-gradient(to right, ${rgba(secondary, 0.9)}, ${rgba(secondary, 0.4)})`
+  // Hero overlay uses primary (dark base) so text always reads against a dark tint
+  const heroGradient = `linear-gradient(to right, ${rgba(primary, 0.9)}, ${rgba(primary, 0.4)})`
 
   return (
     <>
       <Head>
         <title>{`${businessName} | ${city}'s Trusted HVAC Experts`}</title>
         <meta name="robots" content="noindex, nofollow" />
-        <style>{buildColorCSS(primary, secondary, accent)}</style>
+        <style>{buildColorCSS(primary, secondary, accent, primaryLight, textOnPrimary, textOnAccent)}</style>
       </Head>
 
       {/* ── Navigation ───────────────────────────────────────────────── */}
@@ -125,7 +143,7 @@ export default function LeadPage({ lead, heroImage }) {
               <a href={`tel:${phone}`} className="hidden lg:flex items-center gap-2 text-slate-700 font-bold">
                 <span className="material-symbols-outlined text-primary">call</span> {phone}
               </a>
-              <a href={`tel:${phone}`} className="bg-primary hover:bg-primary/90 text-background-dark px-6 py-2.5 rounded-lg font-bold text-sm transition-all flex items-center justify-center">
+              <a href={`tel:${phone}`} className="bg-primary hover:bg-primary/90 btn-accent-text px-6 py-2.5 rounded-lg font-bold text-sm transition-all flex items-center justify-center">
                 Get Your Free Quote
               </a>
               <button className="md:hidden text-slate-900">
@@ -150,15 +168,15 @@ export default function LeadPage({ lead, heroImage }) {
         </div>
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-2xl">
-            <h1 className="text-white text-5xl md:text-7xl font-black leading-tight tracking-tight mb-6">
+            <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tight mb-6" style={{ color: 'var(--color-text-on-primary)' }}>
               {city}&apos;s Trusted <br /><span className="text-primary">HVAC Experts</span>
             </h1>
-            <p className="text-white/90 text-lg md:text-xl mb-10 leading-relaxed">
+            <p className="text-lg md:text-xl mb-10 leading-relaxed" style={{ color: 'var(--color-text-on-primary)', opacity: 0.9 }}>
               Professional heating and cooling solutions for {city} and surrounding areas.
               Reliable, energy-efficient comfort for your home.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href={`tel:${phone}`} className="bg-primary hover:bg-primary/90 text-background-dark px-8 py-4 rounded-lg font-black text-lg transition-transform hover:scale-105 text-center">
+              <a href={`tel:${phone}`} className="bg-primary hover:bg-primary/90 btn-accent-text px-8 py-4 rounded-lg font-black text-lg transition-transform hover:scale-105 text-center">
                 Get Your Free Quote
               </a>
               <a href={`tel:${phone}`} className="bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm border border-white/30 px-8 py-4 rounded-lg font-black text-lg transition-all flex items-center justify-center gap-2">
@@ -277,7 +295,7 @@ export default function LeadPage({ lead, heroImage }) {
             <p className="text-slate-600 mb-8">
               Our HVAC experts in {city} are ready to help you find the best solution for your home.
             </p>
-            <a href={`tel:${phone}`} className="bg-primary hover:bg-primary/90 text-background-dark px-10 py-5 rounded-lg font-black text-2xl transition-transform hover:scale-105 inline-block">
+            <a href={`tel:${phone}`} className="bg-primary hover:bg-primary/90 btn-accent-text px-10 py-5 rounded-lg font-black text-2xl transition-transform hover:scale-105 inline-block">
               {phone}
             </a>
           </div>
@@ -319,7 +337,7 @@ export default function LeadPage({ lead, heroImage }) {
               <p className="text-xl mb-10 text-white/80 max-w-2xl mx-auto">
                 Get your free, no-obligation quote today. Our {city} HVAC experts are standing by.
               </p>
-              <a href={`tel:${phone}`} className="bg-primary hover:bg-primary/90 text-background-dark px-10 py-4 rounded-lg font-black text-xl transition-transform hover:scale-105 inline-block">
+              <a href={`tel:${phone}`} className="bg-primary hover:bg-primary/90 btn-accent-text px-10 py-4 rounded-lg font-black text-xl transition-transform hover:scale-105 inline-block">
                 Call {phone}
               </a>
             </div>
@@ -386,7 +404,7 @@ export default function LeadPage({ lead, heroImage }) {
         <a href={`tel:${phone}`} className="flex-1 bg-slate-100 text-slate-900 flex items-center justify-center gap-2 font-bold py-3 rounded-lg">
           <span className="material-symbols-outlined">call</span> Call
         </a>
-        <a href={`tel:${phone}`} className="flex-[2] bg-primary text-background-dark font-black py-3 rounded-lg text-center flex items-center justify-center">
+        <a href={`tel:${phone}`} className="flex-[2] bg-primary btn-accent-text font-black py-3 rounded-lg text-center flex items-center justify-center">
           Free Quote
         </a>
       </div>
