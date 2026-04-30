@@ -44,4 +44,4 @@ vercel
 - Colors from `color_primary/secondary/accent` are injected as CSS variables
 - Logo shown in nav if `logo_url` is present
 - All CTAs link to `tel:{phone}`
-- `noindex, nofollow` prevents Google indexing of preview pages
+- `noindex, nofollow` prevents Google indexing of preview pages.
