@@ -143,12 +143,6 @@ export default function LeadPage({ lead, heroImage }) {
                   businessName
                 )}
               </a>
-              <div className="hidden md:flex items-center gap-6">
-                <a href="#"             className="text-sm font-semibold hover:text-primary transition-colors">Home</a>
-                <a href="#"             className="text-sm font-semibold hover:text-primary transition-colors">Services</a>
-                <a href="#"             className="text-sm font-semibold hover:text-primary transition-colors">Service Areas</a>
-                <a href="#quote-section" className="text-sm font-semibold hover:text-primary transition-colors">Contact</a>
-              </div>
             </div>
 
             <div className="flex items-center gap-4">
