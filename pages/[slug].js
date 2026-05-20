@@ -487,9 +487,14 @@ export async function getStaticProps({ params }) {
     return json.results?.[0]?.urls?.regular || null
   }
 
-  let heroImage = FALLBACK_HERO
+  // Per-slug hero image overrides (pinned Unsplash photos)
+  const HERO_OVERRIDES = {
+    'grace-mechanical-services': 'https://images.unsplash.com/photo-1584385971010-71c147ba5dbd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080',
+  }
+
+  let heroImage = HERO_OVERRIDES[params.slug] || FALLBACK_HERO
   const unsplashKey = process.env.UNSPLASH_ACCESS_KEY
-  if (unsplashKey) {
+  if (!HERO_OVERRIDES[params.slug] && unsplashKey) {
     try {
       const city      = cleanCity(lead.city || '')
       const stateCode = (lead.city || '').match(/,\s*([A-Z]{2})$/)?.[1]
