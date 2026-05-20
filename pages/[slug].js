@@ -417,7 +417,7 @@ export default function LeadPage({ lead, heroImage }) {
             <button onClick={closeQuoteModal} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '28px', color: '#9ca3af', lineHeight: 1, padding: 0 }}>×</button>
           </div>
           <iframe
-            src="https://leadder.io/widget/local-growth-studio-demo-00wr48"
+            src="https://app.leadder.io/widget/local-growth-studio-demo-00wr48/iframe-preview"
             width="100%"
             height="700"
             frameBorder="0"
