@@ -101,7 +101,15 @@ export default function LeadPage({ lead, heroImage }) {
   const textOnPrimary = lead.color_text_on_primary   || '#ffffff'
   const textOnAccent  = lead.color_text_on_accent    || '#1a1a1a'
   const logoUrl       = lead.logo_url?.startsWith('http') ? lead.logo_url : null
-  const quoteUrl      = 'https://leadder.io/widget/local-growth-studio-demo-00wr48'
+
+  function openQuoteModal() {
+    const m = document.getElementById('quote-modal')
+    if (m) m.style.display = 'flex'
+  }
+  function closeQuoteModal() {
+    const m = document.getElementById('quote-modal')
+    if (m) m.style.display = 'none'
+  }
 
   // Hero overlay uses primary (dark base) so text always reads against a dark tint
   const heroGradient = `linear-gradient(to right, ${rgba(primary, 0.9)}, ${rgba(primary, 0.4)})`
@@ -147,9 +155,9 @@ export default function LeadPage({ lead, heroImage }) {
               <a href={`tel:${phone}`} className="hidden lg:flex items-center gap-2 text-slate-700 font-bold">
                 <span className="material-symbols-outlined text-primary">call</span> {phone}
               </a>
-              <a href={quoteUrl} target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-primary/90 btn-accent-text px-6 py-2.5 rounded-lg font-bold text-sm transition-all flex items-center justify-center">
+              <button onClick={openQuoteModal} className="bg-primary hover:bg-primary/90 btn-accent-text px-6 py-2.5 rounded-lg font-bold text-sm transition-all flex items-center justify-center">
                 Get Your Instant Quote →
-              </a>
+              </button>
               <button className="md:hidden text-slate-900">
                 <span className="material-symbols-outlined">menu</span>
               </button>
@@ -180,9 +188,9 @@ export default function LeadPage({ lead, heroImage }) {
               Reliable, energy-efficient comfort for your home.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href={quoteUrl} target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-primary/90 btn-accent-text px-8 py-4 rounded-lg font-black text-lg transition-transform hover:scale-105 text-center">
+              <button onClick={openQuoteModal} className="bg-primary hover:bg-primary/90 btn-accent-text px-8 py-4 rounded-lg font-black text-lg transition-transform hover:scale-105 text-center">
                 Get Your Instant Quote →
-              </a>
+              </button>
               <a href={`tel:${phone}`} className="bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm border border-white/30 px-8 py-4 rounded-lg font-black text-lg transition-all flex items-center justify-center gap-2">
                 <span className="material-symbols-outlined">call</span> Call {phone}
               </a>
@@ -341,9 +349,9 @@ export default function LeadPage({ lead, heroImage }) {
               <p className="text-xl mb-10 text-white/80 max-w-2xl mx-auto">
                 Get your free, no-obligation quote today. Our {city} HVAC experts are standing by.
               </p>
-              <a href={quoteUrl} target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-primary/90 btn-accent-text px-10 py-4 rounded-lg font-black text-xl transition-transform hover:scale-105 inline-block">
+              <button onClick={openQuoteModal} className="bg-primary hover:bg-primary/90 btn-accent-text px-10 py-4 rounded-lg font-black text-xl transition-transform hover:scale-105 inline-block">
                 Get Your Instant Quote →
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -392,9 +400,31 @@ export default function LeadPage({ lead, heroImage }) {
         <a href={`tel:${phone}`} className="flex-1 bg-slate-100 text-slate-900 flex items-center justify-center gap-2 font-bold py-3 rounded-lg">
           <span className="material-symbols-outlined">call</span> Call
         </a>
-        <a href={quoteUrl} target="_blank" rel="noopener noreferrer" className="flex-[2] bg-primary btn-accent-text font-black py-3 rounded-lg text-center flex items-center justify-center">
+        <button onClick={openQuoteModal} className="flex-[2] bg-primary btn-accent-text font-black py-3 rounded-lg text-center flex items-center justify-center">
           Free Quote →
-        </a>
+        </button>
+      </div>
+
+      {/* ── Quote Modal ───────────────────────────────────────────────── */}
+      <div
+        id="quote-modal"
+        onClick={(e) => { if (e.target.id === 'quote-modal') closeQuoteModal() }}
+        style={{ display: 'none', position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 999999, alignItems: 'center', justifyContent: 'center', padding: '16px' }}
+      >
+        <div style={{ background: '#fff', borderRadius: '16px', width: '100%', maxWidth: '720px', maxHeight: '92vh', overflow: 'hidden', boxShadow: '0 24px 64px rgba(0,0,0,0.35)', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 24px', borderBottom: '1px solid #e5e7eb', flexShrink: 0 }}>
+            <strong style={{ fontSize: '16px', color: '#111827' }}>Get Your Instant Quote</strong>
+            <button onClick={closeQuoteModal} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '28px', color: '#9ca3af', lineHeight: 1, padding: 0 }}>×</button>
+          </div>
+          <iframe
+            src="https://leadder.io/widget/local-growth-studio-demo-00wr48"
+            width="100%"
+            height="700"
+            frameBorder="0"
+            style={{ border: 'none', display: 'block', flex: 1 }}
+            loading="lazy"
+          />
+        </div>
       </div>
     </>
   )
