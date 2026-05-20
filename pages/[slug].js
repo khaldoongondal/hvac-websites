@@ -464,18 +464,42 @@ export async function getStaticProps({ params }) {
 
   console.log(`[${params.slug}] colors: primary=${lead.color_primary} secondary=${lead.color_secondary} accent=${lead.color_accent} logo=${lead.logo_url}`)
 
-  // Fetch city skyline from Unsplash; fall back to hardcoded Toronto image on any error
+  // Fetch city skyline from Unsplash; if city has no results, try the state name
+  const STATE_NAMES = {
+    AL:'Alabama',AK:'Alaska',AZ:'Arizona',AR:'Arkansas',CA:'California',
+    CO:'Colorado',CT:'Connecticut',DE:'Delaware',FL:'Florida',GA:'Georgia',
+    HI:'Hawaii',ID:'Idaho',IL:'Illinois',IN:'Indiana',IA:'Iowa',KS:'Kansas',
+    KY:'Kentucky',LA:'Louisiana',ME:'Maine',MD:'Maryland',MA:'Massachusetts',
+    MI:'Michigan',MN:'Minnesota',MS:'Mississippi',MO:'Missouri',MT:'Montana',
+    NE:'Nebraska',NV:'Nevada',NH:'New Hampshire',NJ:'New Jersey',NM:'New Mexico',
+    NY:'New York',NC:'North Carolina',ND:'North Dakota',OH:'Ohio',OK:'Oklahoma',
+    OR:'Oregon',PA:'Pennsylvania',RI:'Rhode Island',SC:'South Carolina',
+    SD:'South Dakota',TN:'Tennessee',TX:'Texas',UT:'Utah',VT:'Vermont',
+    VA:'Virginia',WA:'Washington',WV:'West Virginia',WI:'Wisconsin',WY:'Wyoming',
+  }
+
+  async function unsplashSearch(query, key) {
+    const res  = await fetch(
+      `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&per_page=1&orientation=landscape`,
+      { headers: { Authorization: `Client-ID ${key}` } }
+    )
+    const json = await res.json()
+    return json.results?.[0]?.urls?.regular || null
+  }
+
   let heroImage = FALLBACK_HERO
   const unsplashKey = process.env.UNSPLASH_ACCESS_KEY
   if (unsplashKey) {
     try {
-      const query = encodeURIComponent(`${cleanCity(lead.city || '')} skyline`)
-      const res   = await fetch(
-        `https://api.unsplash.com/search/photos?query=${query}&per_page=1&orientation=landscape`,
-        { headers: { Authorization: `Client-ID ${unsplashKey}` } }
-      )
-      const json = await res.json()
-      if (json.results?.[0]?.urls?.regular) heroImage = json.results[0].urls.regular
+      const city      = cleanCity(lead.city || '')
+      const stateCode = (lead.city || '').match(/,\s*([A-Z]{2})$/)?.[1]
+      const stateName = stateCode ? STATE_NAMES[stateCode] : null
+
+      heroImage =
+        (city      && await unsplashSearch(`${city} skyline`,     unsplashKey)) ||
+        (stateName && await unsplashSearch(`${stateName} skyline`, unsplashKey)) ||
+        (stateName && await unsplashSearch(stateName,              unsplashKey)) ||
+        FALLBACK_HERO
     } catch (_) {
       // heroImage stays as FALLBACK_HERO
     }
