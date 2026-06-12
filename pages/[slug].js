@@ -484,6 +484,7 @@ export async function getStaticProps({ params }) {
   // Per-slug hero image overrides (pinned Unsplash photos)
   const HERO_OVERRIDES = {
     'grace-mechanical-services': 'https://images.unsplash.com/photo-1584385971010-71c147ba5dbd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080',
+    'baker-home-energy':         'https://images.unsplash.com/photo-1514939775307-d44e7f10cabd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080',
   }
 
   let heroImage = HERO_OVERRIDES[params.slug] || FALLBACK_HERO
