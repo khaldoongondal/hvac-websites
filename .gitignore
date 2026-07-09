@@ -1,0 +1,13 @@
+venv/
+__pycache__/
+*.pyc
+.env
+oauth_client.json
+oauth_token.json
+*.log
+.DS_Store
+node_modules/
+.next/
+.env.local
+.env*.local
+npm-debug.log*

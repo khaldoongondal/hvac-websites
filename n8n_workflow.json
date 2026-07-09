@@ -1,0 +1,177 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "New HVAC Lead",
+        "formDescription": "Submit a business — we'll generate a branded preview page.",
+        "formFields": {
+          "values": [
+            { "fieldLabel": "Business Name", "requiredField": true },
+            { "fieldLabel": "Phone Number",  "requiredField": true },
+            { "fieldLabel": "Website Link",  "requiredField": true },
+            { "fieldLabel": "City" },
+            {
+              "fieldLabel":      "Logo",
+              "fieldType":       "file",
+              "multipleFiles":   false,
+              "acceptFileTypes": ".png,.jpg,.jpeg,.webp,.gif,.svg"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
+      "position": [96, 80],
+      "id": "c6720910-042a-47a2-810e-7eeffca8d419",
+      "name": "On form submission1",
+      "webhookId": "53c12929-facd-4b88-89d4-60024dd2f32f"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive":  true,
+            "leftValue":      "",
+            "typeValidation": "loose",
+            "version":        1
+          },
+          "conditions": [
+            {
+              "id":         "8c1f1a0e-7c0a-4e5e-8d2a-1a2b3c4d5e6f",
+              "leftValue":  "={{ $json.Logo }}",
+              "rightValue": "",
+              "operator":   { "type": "object", "operation": "notEmpty", "singleValue": true }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [384, 80],
+      "id": "31a547db-ab3d-447c-9c94-418fae23d701",
+      "name": "Logo uploaded?"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://172.105.24.188:8000/process-lead",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "X-API-Key", "value": "CqYNldvGfdSnDY6keek8CaPb9aPVeYsRum20K_BOr6k" }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            { "name": "business_name", "value": "={{ $json[\"Business Name\"] }}" },
+            { "name": "phone",         "value": "={{ $json[\"Phone Number\"] }}"  },
+            { "name": "website",       "value": "={{ $json[\"Website Link\"] }}"  },
+            { "name": "city",          "value": "={{ $json[\"City\"] || '' }}"    },
+            {
+              "parameterType":      "formBinaryData",
+              "name":               "logo",
+              "inputDataFieldName": "={{ Object.keys($binary)[0] }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": { "neverError": true, "responseFormat": "json" }
+          },
+          "timeout": 60000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [672, -32],
+      "id": "42ccf858-9859-40dd-a8b3-e45d8a98e941",
+      "name": "Process Lead (with logo)"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://172.105.24.188:8000/process-lead",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "X-API-Key", "value": "CqYNldvGfdSnDY6keek8CaPb9aPVeYsRum20K_BOr6k" }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            { "name": "business_name", "value": "={{ $json[\"Business Name\"] }}" },
+            { "name": "phone",         "value": "={{ $json[\"Phone Number\"] }}"  },
+            { "name": "website",       "value": "={{ $json[\"Website Link\"] }}"  },
+            { "name": "city",          "value": "={{ $json[\"City\"] || '' }}"    }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": { "neverError": true, "responseFormat": "json" }
+          },
+          "timeout": 60000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [672, 208],
+      "id": "41859654-5919-435f-b4c5-f378c2beab6a",
+      "name": "Process Lead (no logo)"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl":              true,
+          "value":             "C09185H5FEV",
+          "mode":              "list",
+          "cachedResultName":  "outreach"
+        },
+        "text": "=Website Generated: {{ $json.live_url }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [1024, 96],
+      "id": "29e60f90-935e-46d1-9301-b2da26251fdd",
+      "name": "Send a message",
+      "webhookId": "a39edfb6-fc6c-451d-9a60-8ac34bb00ec6",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id":   "7kJWobbR0uWkCTHL",
+          "name": "Gondal Tech Slack Connection"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "On form submission1": {
+      "main": [[{ "node": "Logo uploaded?", "type": "main", "index": 0 }]]
+    },
+    "Logo uploaded?": {
+      "main": [
+        [{ "node": "Process Lead (with logo)", "type": "main", "index": 0 }],
+        [{ "node": "Process Lead (no logo)",   "type": "main", "index": 0 }]
+      ]
+    },
+    "Process Lead (with logo)": {
+      "main": [[{ "node": "Send a message", "type": "main", "index": 0 }]]
+    },
+    "Process Lead (no logo)": {
+      "main": [[{ "node": "Send a message", "type": "main", "index": 0 }]]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId":                  "0c8adaa4fc88f8bfab72a1f259520b161db8394fcb7878892abbe8b506c4653a"
+  }
+}
