@@ -7,6 +7,7 @@ import QuoteForm from '../components/QuoteForm'
 import {
   TRUST_BADGES, SERVICES, PROCESS_STEPS, FAQS,
   GALLERY, HOURS, FALLBACK_HERO, REVIEW_BG,
+  ABOUT_ITEMS, ABOUT_IMG,
 } from '../lib/hvacContent'
 
 const STARS = [1, 2, 3, 4, 5]
@@ -41,6 +42,8 @@ export default function LeadPage({ lead, heroImage }) {
     `Greater ${city} Area`, `Downtown ${city}`, `North ${city}`,
     `South ${city}`, `${city} Suburbs`, 'Surrounding Communities',
   ]
+  const mapQuery = lead.address || lead.city || `${city} HVAC`
+  const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`
 
   function openQuoteModal() {
     const m = document.getElementById('quote-modal')
@@ -148,17 +151,49 @@ export default function LeadPage({ lead, heroImage }) {
         </div>
       </div>
 
-      {/* ── About ────────────────────────────────────────────────────── */}
+      {/* ── About (image + key items) ────────────────────────────────── */}
       <section className="py-24" style={{ backgroundColor: 'var(--color-secondary)' }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {logoUrl && <img src={logoUrl} alt={businessName} className="h-20 w-auto object-contain mx-auto mb-8" />}
-          <h2 className="text-3xl md:text-4xl font-black mb-6" style={{ color: textOnPrimary }}>About {businessName}</h2>
-          <div className="h-1.5 w-24 bg-primary mx-auto rounded-full mb-8" />
-          <p className="text-lg leading-relaxed" style={{ color: textOnPrimary, opacity: 0.9 }}>
-            {businessName} is a locally owned and operated HVAC company proudly serving {city} and the surrounding
-            communities. From emergency repairs to full system installations, our licensed technicians deliver honest
-            pricing, quality workmanship, and comfort you can count on — every season, every time.
-          </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="relative">
+              <div className="absolute -bottom-5 -right-5 w-32 h-32 bg-primary/25 rounded-2xl z-0" />
+              <img src={ABOUT_IMG} alt={`${businessName} HVAC technician`} width={900} height={675} loading="lazy"
+                className="relative z-10 rounded-2xl shadow-2xl w-full object-cover aspect-[4/3]" />
+              {logoUrl && (
+                <div className="absolute z-20 -top-5 -left-5 bg-white rounded-xl shadow-xl p-4 hidden sm:block">
+                  <img src={logoUrl} alt={businessName} className="h-14 w-auto object-contain" />
+                </div>
+              )}
+            </div>
+            <div>
+              <p className="text-sm font-black uppercase tracking-widest text-primary mb-3">About Us</p>
+              <h2 className="text-3xl md:text-4xl font-black mb-6" style={{ color: textOnPrimary }}>
+                Your Trusted HVAC Team in {city}
+              </h2>
+              <div className="space-y-4 mb-8 leading-relaxed" style={{ color: textOnPrimary, opacity: 0.9 }}>
+                <p>
+                  {businessName} is a locally owned and operated HVAC company proudly serving {city} and the
+                  surrounding communities. We built our reputation on honest pricing, quality workmanship, and
+                  treating every home like our own.
+                </p>
+                <p>
+                  From emergency repairs to full system installations, our licensed and insured technicians deliver
+                  reliable, energy-efficient comfort — every season, every time. No subcontractors, no surprises.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {ABOUT_ITEMS.map(({ icon, label }) => (
+                  <div key={label} className="flex items-center gap-3">
+                    <span className="material-symbols-outlined text-primary text-2xl shrink-0">{icon}</span>
+                    <span className="font-bold text-sm" style={{ color: textOnPrimary }}>{label}</span>
+                  </div>
+                ))}
+              </div>
+              <button onClick={openQuoteModal} className="bg-primary hover:bg-primary/90 btn-accent-text px-8 py-4 rounded-lg font-black text-lg transition-transform hover:scale-105">
+                Get a Free Quote →
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -256,44 +291,59 @@ export default function LeadPage({ lead, heroImage }) {
         </div>
       </section>
 
-      {/* ── FAQ + Service Areas ──────────────────────────────────────── */}
+      {/* ── FAQ ──────────────────────────────────────────────────────── */}
       <section id="faq" className="py-24 scroll-mt-20 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black mb-4">Frequently Asked Questions</h2>
+            <div className="h-1.5 w-24 bg-primary mx-auto rounded-full" />
+          </div>
+          <div className="space-y-4">
+            {FAQS.map(({ q, a }, i) => {
+              const isOpen = openFaq === i
+              return (
+                <div key={q} className="border border-slate-200 rounded-xl overflow-hidden">
+                  <button onClick={() => setOpenFaq(isOpen ? -1 : i)}
+                    className="w-full flex items-center justify-between gap-4 p-5 text-left font-bold">
+                    {q}
+                    <span className={`material-symbols-outlined text-primary transition-transform ${isOpen ? 'rotate-180' : ''}`}>expand_more</span>
+                  </button>
+                  {isOpen && <p className="px-5 pb-5 -mt-1 text-slate-600 leading-relaxed">{a}</p>}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Proudly Serving Areas + map ──────────────────────────────── */}
+      <section id="areas" className="py-24 scroll-mt-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-black mb-4">Frequently Asked Questions</h2>
-              <div className="h-1.5 w-24 bg-primary rounded-full mb-8" />
-              <div className="space-y-4">
-                {FAQS.map(({ q, a }, i) => {
-                  const isOpen = openFaq === i
-                  return (
-                    <div key={q} className="border border-slate-200 rounded-xl overflow-hidden">
-                      <button onClick={() => setOpenFaq(isOpen ? -1 : i)}
-                        className="w-full flex items-center justify-between gap-4 p-5 text-left font-bold">
-                        {q}
-                        <span className={`material-symbols-outlined text-primary transition-transform ${isOpen ? 'rotate-180' : ''}`}>expand_more</span>
-                      </button>
-                      {isOpen && <p className="px-5 pb-5 -mt-1 text-slate-600 leading-relaxed">{a}</p>}
-                    </div>
-                  )
-                })}
-              </div>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black mb-4">Proudly Serving {city}</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">
+              Serving <span className="font-black text-primary">{city}</span> and all surrounding communities.
+              Not sure if we cover your area? Give us a call.
+            </p>
+            <div className="h-1.5 w-24 bg-primary mx-auto mt-6 rounded-full" />
+          </div>
+          <div className="grid lg:grid-cols-2 gap-10 items-stretch">
+            <div className="grid grid-cols-2 gap-3 content-start">
+              {areas.map(area => (
+                <div key={area} className="flex items-center gap-2 bg-white border border-slate-200 rounded-lg px-4 py-3">
+                  <span className="material-symbols-outlined text-primary text-lg">location_on</span>
+                  <span className="text-sm font-semibold text-slate-700">{area}</span>
+                </div>
+              ))}
             </div>
-            <div id="areas" className="scroll-mt-20">
-              <h2 className="text-3xl md:text-4xl font-black mb-4">Proudly Serving</h2>
-              <div className="h-1.5 w-24 bg-primary rounded-full mb-8" />
-              <p className="text-slate-600 mb-8">
-                Serving <span className="font-black text-primary">{city}</span> and all surrounding communities.
-                Not sure if we cover your area? Give us a call.
-              </p>
-              <div className="grid grid-cols-2 gap-3">
-                {areas.map(area => (
-                  <div key={area} className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-4 py-3">
-                    <span className="material-symbols-outlined text-primary text-lg">location_on</span>
-                    <span className="text-sm font-semibold text-slate-700">{area}</span>
-                  </div>
-                ))}
-              </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 min-h-[340px]">
+              <iframe
+                title={`${businessName} service area map`}
+                src={mapSrc}
+                width="100%" height="100%" loading="lazy"
+                style={{ border: 0, display: 'block', width: '100%', height: '100%', minHeight: '340px' }}
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
         </div>
