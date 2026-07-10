@@ -42,8 +42,13 @@ export default function LeadPage({ lead, heroImage }) {
     `Greater ${city} Area`, `Downtown ${city}`, `North ${city}`,
     `South ${city}`, `${city} Suburbs`, 'Surrounding Communities',
   ]
-  const mapQuery = lead.address || lead.city || `${city} HVAC`
-  const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`
+  // Only embed a map when we actually have a location — otherwise a vague query
+  // makes Google drop a pin somewhere random (e.g. abroad). Bias to the US.
+  const rawLoc      = (lead.address || lead.city || '').trim()
+  const hasLocation = rawLoc.length > 0
+  const mapSrc      = hasLocation
+    ? `https://www.google.com/maps?q=${encodeURIComponent(`${rawLoc}, USA`)}&output=embed`
+    : ''
 
   function openQuoteModal() {
     const m = document.getElementById('quote-modal')
@@ -327,7 +332,7 @@ export default function LeadPage({ lead, heroImage }) {
             </p>
             <div className="h-1.5 w-24 bg-primary mx-auto mt-6 rounded-full" />
           </div>
-          <div className="grid lg:grid-cols-2 gap-10 items-stretch">
+          <div className={`grid gap-10 items-stretch ${hasLocation ? 'lg:grid-cols-2' : 'grid-cols-1'}`}>
             <div className="grid grid-cols-2 gap-3 content-start">
               {areas.map(area => (
                 <div key={area} className="flex items-center gap-2 bg-white border border-slate-200 rounded-lg px-4 py-3">
@@ -336,15 +341,17 @@ export default function LeadPage({ lead, heroImage }) {
                 </div>
               ))}
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 min-h-[340px]">
-              <iframe
-                title={`${businessName} service area map`}
-                src={mapSrc}
-                width="100%" height="100%" loading="lazy"
-                style={{ border: 0, display: 'block', width: '100%', height: '100%', minHeight: '340px' }}
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+            {hasLocation && (
+              <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 min-h-[340px]">
+                <iframe
+                  title={`${businessName} service area map`}
+                  src={mapSrc}
+                  width="100%" height="100%" loading="lazy"
+                  style={{ border: 0, display: 'block', width: '100%', height: '100%', minHeight: '340px' }}
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            )}
           </div>
         </div>
       </section>
