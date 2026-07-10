@@ -512,14 +512,16 @@ export async function getStaticProps({ params }) {
     .eq('slug', params.slug)
     .single()
 
+  // Return `revalidate` on notFound too, otherwise Next caches the 404
+  // indefinitely and a later un-expire / insert never brings the page back.
   if (error || !lead) {
     console.log(`[${params.slug}] not found:`, error?.message)
-    return { notFound: true }
+    return { notFound: true, revalidate: 300 }
   }
 
   if (lead.expires_at && new Date(lead.expires_at) < new Date()) {
     console.log(`[${params.slug}] expired`)
-    return { notFound: true }
+    return { notFound: true, revalidate: 300 }
   }
 
   // Hero: pinned override → city skyline → state fallback → generic HVAC image.
