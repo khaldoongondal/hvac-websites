@@ -184,12 +184,13 @@ a{color:inherit;}
 .sac-badge{width:70px;height:70px;border-radius:50%;background:var(--cream);border:2px solid var(--navy);display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
 .sac-badge svg{width:34px;height:34px;stroke:var(--navy);}
 .sac-prop-label{font-family:var(--hd);font-weight:700;color:var(--ink);font-size:16px;line-height:1.25;}
-.sac-fin{background:var(--cream);padding:clamp(40px,5vw,64px) 0;}
+.sac-fin{background:#78a7c9;padding:clamp(34px,4vw,44px) 0;}
 .sac-fin-row{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;}
-.sac-fin .sac-ph{width:120px;height:90px;flex:0 0 auto;background:var(--blue-lt);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--hd);font-weight:700;letter-spacing:1px;font-size:15px;}
-.sac-fin-text{flex:1 1 auto;min-width:240px;text-align:center;}
-.sac-fin-text .sac-sub{margin-bottom:6px;}
-.sac-fin-h3{font-family:var(--hd);font-weight:700;color:var(--navy);font-size:clamp(24px,3vw,34px);margin:0;line-height:1.1;}
+.sac-fin-icon{flex:0 0 auto;}
+.sac-fin-icon svg{display:block;width:150px;height:auto;}
+.sac-fin-text{flex:1 1 auto;min-width:240px;text-align:center;color:#000;}
+.sac-fin-text .sac-sub{color:#0e3263;margin-bottom:6px;}
+.sac-fin-h3{font-family:var(--hd);font-weight:700;color:#000;font-size:clamp(24px,3vw,34px);margin:0;line-height:1.1;}
 @media(max-width:640px){
   .sac-fin-row{flex-direction:column;text-align:center;}
   .sac-arrow--l{left:0;} .sac-arrow--r{right:0;}
@@ -210,18 +211,21 @@ a{color:inherit;}
 .sac-dot{width:12px;height:12px;border-radius:50%;border:none;background:var(--line);cursor:pointer;padding:0;transition:.2s;}
 .sac-dot.is-active{background:var(--red);transform:scale(1.15);}
 .sac-dot:hover{background:var(--blue);}
-.sac-form{background:var(--navy);color:#fff;padding:clamp(56px,7vw,96px) 0;}
+.sac-form{position:relative;background:linear-gradient(rgba(25,60,113,.93),rgba(25,60,113,.93)),url('images/truck.png');background-position:center;background-size:cover;background-repeat:no-repeat;color:#fff;padding:clamp(56px,7vw,90px) 0;}
 .sac-form__h2{color:#fff;text-align:center;margin-bottom:36px;}
-.sac-form__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.sac-field{display:flex;flex-direction:column;gap:6px;}
+.sac-form__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1000px;margin:0 auto;}
+.sac-field{display:flex;flex-direction:column;}
 .sac-field--full{grid-column:1/-1;}
-.sac-field label{font-family:var(--hd);font-weight:600;font-size:14px;letter-spacing:.3px;color:var(--cream);}
-.sac-field input,.sac-field select,.sac-field textarea{font-family:var(--bd);font-size:15px;padding:12px 14px;border:none;border-radius:6px;background:#fff;color:var(--ink);width:100%;box-sizing:border-box;}
+.sac-field label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+.sac-field input,.sac-field select,.sac-field textarea{font-family:var(--bd);font-size:14px;height:50px;padding:0 16px;border:none;border-radius:8px;background:#fff;color:var(--ink);width:100%;box-sizing:border-box;}
+.sac-field input::placeholder,.sac-field textarea::placeholder{color:#000;text-transform:uppercase;font-weight:600;opacity:1;}
+.sac-field select{text-transform:uppercase;font-weight:600;color:#000;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23353535' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center;}
 .sac-field input:focus,.sac-field select:focus,.sac-field textarea:focus{outline:3px solid var(--gold);outline-offset:1px;}
-.sac-field textarea{resize:vertical;min-height:110px;}
-.sac-consent{grid-column:1/-1;display:flex;gap:12px;align-items:flex-start;font-family:var(--bd);font-size:13px;line-height:1.5;color:var(--cream);}
-.sac-consent input{width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:var(--red);}
-.sac-form__submit{grid-column:1/-1;justify-self:start;}
+.sac-field textarea{resize:vertical;height:50px;min-height:50px;padding:14px 16px;}
+.sac-form-note{grid-column:1/-1;font-family:var(--bd);font-size:14px;line-height:1.4;color:#fff;margin:2px 0 -4px;}
+.sac-consent{grid-column:1/-1;display:flex;gap:12px;align-items:flex-start;font-family:var(--bd);font-size:13px;line-height:1.5;color:#fff;}
+.sac-consent input{width:16px;height:16px;flex-shrink:0;margin-top:3px;accent-color:var(--red);}
+.sac-form__submit{grid-column:1/-1;justify-self:center;margin-top:8px;}
 @media(max-width:860px){
   .sac-reviews__grid{grid-template-columns:1fr;}
   .sac-form__grid{grid-template-columns:1fr;}
@@ -641,7 +645,15 @@ a{color:inherit;}
 <!-- ===== FINANCING BAND ===== -->
 <section class="sac-fin" aria-labelledby="sac-fin-h">
   <div class="sac-container sac-fin-row">
-    <div class="sac-ph">FINANCE</div>
+    <div class="sac-fin-icon" aria-hidden="true">
+      <svg width="150" height="112" viewBox="0 0 150 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="34" y="18" width="100" height="66" rx="8" fill="#c9d9e8" stroke="#193c71" stroke-width="5"/>
+        <rect x="14" y="34" width="100" height="66" rx="8" fill="#fff" stroke="#0e3263" stroke-width="5"/>
+        <rect x="14" y="47" width="100" height="13" fill="#0e3263"/>
+        <rect x="26" y="76" width="34" height="7" rx="3.5" fill="#0e3263"/>
+        <circle cx="98" cy="80" r="7" fill="none" stroke="#193c71" stroke-width="3"/>
+      </svg>
+    </div>
     <div class="sac-fin-text">
       <p class="sac-sub">Don't Wait for the Service You Need</p>
       <h3 class="sac-fin-h3" id="sac-fin-h">We Offer Financing Options</h3>
@@ -700,24 +712,25 @@ a{color:inherit;}
   <div class="sac-container">
     <h2 class="sac-form__h2" id="sac-form-h2">Request Service</h2>
     <form class="sac-form__grid" onsubmit="return false">
-      <div class="sac-field"><label for="sac-fn">First Name*</label><input id="sac-fn" name="firstName" type="text" required></div>
-      <div class="sac-field"><label for="sac-ln">Last Name*</label><input id="sac-ln" name="lastName" type="text" required></div>
-      <div class="sac-field"><label for="sac-email">Email*</label><input id="sac-email" name="email" type="email" required></div>
-      <div class="sac-field"><label for="sac-phone">Phone Number*</label><input id="sac-phone" name="phone" type="tel" required></div>
-      <div class="sac-field"><label for="sac-addr1">Street Address 1*</label><input id="sac-addr1" name="address1" type="text" required></div>
-      <div class="sac-field"><label for="sac-addr2">Street Address 2</label><input id="sac-addr2" name="address2" type="text"></div>
-      <div class="sac-field"><label for="sac-city">City*</label><input id="sac-city" name="city" type="text" required></div>
-      <div class="sac-field"><label for="sac-state">State*</label><input id="sac-state" name="state" type="text" required></div>
-      <div class="sac-field"><label for="sac-zip">Zip Code*</label><input id="sac-zip" name="zip" type="text" required></div>
-      <div class="sac-field"><label for="sac-date">Preferred Appointment Date*</label><input id="sac-date" name="appointmentDate" type="date" required></div>
+      <div class="sac-field"><label for="sac-fn">First Name*</label><input id="sac-fn" name="firstName" type="text" placeholder="First Name*" required></div>
+      <div class="sac-field"><label for="sac-ln">Last Name*</label><input id="sac-ln" name="lastName" type="text" placeholder="Last Name*" required></div>
+      <div class="sac-field"><label for="sac-email">Email*</label><input id="sac-email" name="email" type="email" placeholder="Email*" required></div>
+      <div class="sac-field"><label for="sac-phone">Phone Number*</label><input id="sac-phone" name="phone" type="tel" placeholder="Phone Number*" required></div>
+      <div class="sac-field"><label for="sac-addr1">Street Address 1*</label><input id="sac-addr1" name="address1" type="text" placeholder="Street Address 1*" required></div>
+      <div class="sac-field"><label for="sac-addr2">Street Address 2</label><input id="sac-addr2" name="address2" type="text" placeholder="Street Address 2"></div>
+      <div class="sac-field"><label for="sac-city">City*</label><input id="sac-city" name="city" type="text" placeholder="City*" required></div>
+      <div class="sac-field"><label for="sac-state">State*</label><input id="sac-state" name="state" type="text" placeholder="State*" required></div>
+      <div class="sac-field"><label for="sac-zip">Zip Code*</label><input id="sac-zip" name="zip" type="text" placeholder="Zip Code*" required></div>
+      <div class="sac-field"><label for="sac-date">Preferred Appointment Date*</label><input id="sac-date" name="appointmentDate" type="text" placeholder="Preferred Appointment Date*" onfocus="this.type='date'" onblur="if(!this.value)this.type='text'" required></div>
       <div class="sac-field"><label for="sac-service">Service Needed*</label>
         <select id="sac-service" name="service" required>
-          <option value="" selected disabled>Select a service</option>
+          <option value="" selected disabled>Service Needed*</option>
           <option>HVAC Repair</option><option>HVAC Maintenance</option><option>HVAC Installation</option><option>Indoor Air Quality</option><option>Plumbing Service</option><option>Drains</option><option>Water Heaters</option><option>Electrical Service</option><option>Generators</option><option>EV Charging</option><option>Other</option>
         </select>
       </div>
-      <div class="sac-field sac-field--full"><label for="sac-help">How Can We Help?*</label><textarea id="sac-help" name="message" required></textarea></div>
-      <label class="sac-consent"><input type="checkbox" name="consent" required><span>By submitting, you agree to receive messages from Stan's at the number provided. Msg &amp; data rates may apply. Reply STOP to opt out.</span></label>
+      <div class="sac-field sac-field--full"><label for="sac-help">How Can We Help?*</label><textarea id="sac-help" name="message" placeholder="How Can We Help?*" required></textarea></div>
+      <p class="sac-form-note">Please note, ability to honor requested service date is subject to availability. A Stan's customer service team member will contact you to discuss availability.</p>
+      <label class="sac-consent"><input type="checkbox" name="consent" required><span>By submitting this form and signing up for texts, you agree to receive informational messages (appointment reminders, account notifications, etc.) from Stan's Heating, Air, Plumbing &amp; Electrical at the number provided. Msg &amp; data rates may apply. Msg frequency varies. Unsubscribe at any time by replying STOP. Reply HELP for help or view our <a href="#" style="color:#fff;font-weight:700;">Privacy Policy</a>.</span></label>
       <button class="sac-btn sac-form__submit" type="submit">Request Service</button>
     </form>
   </div>
