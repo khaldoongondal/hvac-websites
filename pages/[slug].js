@@ -6,6 +6,7 @@ import {
 } from '../lib/lead'
 import { getLeadProps } from '../lib/getLead'
 import { serviceMeta } from '../lib/serviceContent'
+import { categoriesWithServices } from '../lib/categories'
 import { SITE_ORIGIN, DEFAULT_HERO } from '../lib/site'
 import Layout from '../components/site/Layout'
 import QuoteForm from '../components/QuoteForm'
@@ -20,6 +21,7 @@ export default function LeadPage({ lead }) {
   const d = deriveLead(lead)
   const base = `/${d.slug}`
   const services = getServices(lead)
+  const cats = categoriesWithServices(lead)
   const locations = strongLocations(lead)
   const extra = extraAreas(lead)
   const { hasLocation, mapSrc } = mapFor(lead)
@@ -46,37 +48,50 @@ export default function LeadPage({ lead }) {
       canonical={`${SITE_ORIGIN}${base}`}
       head={<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />}>
 
-      {/* ── Hero + inline form ─────────────────────────────────────── */}
-      <section className="relative overflow-hidden">
+      {/* ── Hero (image + overlaid card + category quick-links) ────── */}
+      <section className="relative overflow-hidden min-h-[560px] flex items-end">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 z-10" style={{ backgroundImage: heroGradient }} aria-hidden="true" />
+          <div className="absolute inset-0 z-10" style={{ backgroundImage: `linear-gradient(to top, ${rgba(d.primary, 0.85)}, ${rgba(d.primary, 0.25)})` }} aria-hidden="true" />
           <img alt="" aria-hidden="true" className="w-full h-full object-cover" src={heroImg} width={1600} height={900} />
         </div>
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-sm font-black uppercase tracking-widest text-primary mb-3">{d.businessName}</p>
-              <h1 className="text-4xl md:text-6xl font-black leading-tight tracking-tight mb-6" style={{ color: d.textOnPrimary }}>
-                {d.city} HVAC Repair, Installation &amp; Maintenance
-              </h1>
-              <p className="text-lg md:text-xl mb-8 leading-relaxed" style={{ color: d.textOnPrimary, opacity: 0.9 }}>
-                {d.city}&apos;s trusted heating &amp; cooling experts — reliable, energy-efficient comfort for your
-                home, done right the first time.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button onClick={openQuoteModal} className="bg-primary hover:bg-primary/90 btn-accent-text px-8 py-4 rounded-lg font-black text-lg transition-transform hover:scale-105">
-                  Get a Free Quote →
-                </button>
-                <a href={d.tel} className="backdrop-blur-sm border px-8 py-4 rounded-lg font-black text-lg transition-all flex items-center justify-center gap-2"
-                  style={{ color: d.textOnPrimary, borderColor: rgba(d.textOnPrimary, 0.3), backgroundColor: rgba(d.textOnPrimary, 0.08) }}>
-                  <span className="material-symbols-outlined" aria-hidden="true">call</span> {d.phone}
-                </a>
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+          <div className="rounded-2xl p-8 lg:p-12 max-w-3xl" style={{ backgroundColor: rgba(d.primary, 0.92) }}>
+            <p className="text-sm font-black uppercase tracking-widest text-primary mb-3">{d.businessName}</p>
+            <h1 className="text-4xl md:text-6xl font-black leading-tight tracking-tight mb-5" style={{ color: d.textOnPrimary }}>
+              {d.city} HVAC Repair, Installation &amp; Maintenance
+            </h1>
+            <p className="text-lg mb-8 leading-relaxed" style={{ color: d.textOnPrimary, opacity: 0.9 }}>
+              {d.city}&apos;s trusted heating &amp; cooling experts — reliable, energy-efficient comfort, done right the first time.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <button onClick={openQuoteModal} className="bg-primary hover:bg-primary/90 btn-accent-text px-8 py-4 rounded-lg font-black text-lg transition-transform hover:scale-105">
+                Get a Free Quote →
+              </button>
+              <a href={d.tel} className="backdrop-blur-sm border px-8 py-4 rounded-lg font-black text-lg transition-all flex items-center justify-center gap-2"
+                style={{ color: d.textOnPrimary, borderColor: rgba(d.textOnPrimary, 0.3), backgroundColor: rgba(d.textOnPrimary, 0.08) }}>
+                <span className="material-symbols-outlined" aria-hidden="true">call</span> {d.phone}
+              </a>
+            </div>
+            {cats.length > 0 && (
+              <div className="grid sm:grid-cols-2 gap-3">
+                {cats.map(c => (
+                  <a key={c.key} href={`${base}/${c.slug}`}
+                    className="flex items-center justify-between gap-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-3 transition-colors"
+                    style={{ color: d.textOnPrimary }}>
+                    <span className="font-bold">{c.navLabel}</span>
+                    <span className="material-symbols-outlined text-primary" aria-hidden="true">arrow_forward</span>
+                  </a>
+                ))}
               </div>
-            </div>
-            <div id="quote" className="scroll-mt-24">
-              <QuoteForm leadSlug={d.slug} businessName={d.businessName} heading="Get a Free Quote" />
-            </div>
+            )}
           </div>
+        </div>
+      </section>
+
+      {/* ── Request service (lead form) ────────────────────────────── */}
+      <section id="quote" className="py-20 bg-slate-50 scroll-mt-24">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <QuoteForm leadSlug={d.slug} businessName={d.businessName} heading="Request Service" />
         </div>
       </section>
 
@@ -95,7 +110,7 @@ export default function LeadPage({ lead }) {
       </div>
 
       {/* ── About ──────────────────────────────────────────────────── */}
-      <section className="py-24" style={{ backgroundColor: 'var(--color-secondary)' }}>
+      <section id="about" className="py-24 scroll-mt-20" style={{ backgroundColor: 'var(--color-secondary)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
