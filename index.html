@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leadder | Heating, Air, Plumbing &amp; Electrical</title>
+<meta name="description" content="Professional HVAC, plumbing and electrical services. Fast, reliable, locally trusted.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Leadder — HVAC/Plumbing/Electrical GHL rebuild (Stan's clone).
+   Scoped entirely under .sac-page.
+   ============================================================ */
+.sac-page{
+  --sac-navy:#193c71;
+  --sac-navy-hover:#375d97;
+  --sac-red:#e02e2e;
+  --sac-red-dark:#a91d1d;
+  --sac-cream:#f8f2e7;
+  --sac-blue:#78a7c9;
+  --sac-sky:#95cdf6;
+  --sac-drop-hover:#cfebff;
+  --sac-stars:#f2ab27;
+  --sac-border:#d8d8d8;
+  --sac-accordion-border:#c4bbb6;
+  --sac-font-heading:'Roboto Condensed',Arial Narrow,Arial,sans-serif;
+  --sac-font-body:'Roboto',Arial,sans-serif;
+  background:#fff;color:#000;
+  font-family:var(--sac-font-body);font-size:16px;font-weight:400;line-height:1.6875;
+  -webkit-font-smoothing:antialiased;text-align:left;overflow-x:clip;
+}
+@media(min-width:992px){.sac-page{font-size:18px;line-height:1.6667}}
+.sac-page *,.sac-page *::before,.sac-page *::after{box-sizing:border-box}
+.sac-page img{max-width:100%;height:auto;border:0}
+.sac-page p{margin:0 0 20px}
+@media(min-width:992px){.sac-page p{margin-bottom:30px}}
+.sac-page ul,.sac-page ol{margin:0 0 30px;padding-left:1.5em}
+.sac-page a{color:var(--sac-navy);text-decoration:underline;transition:all .3s ease}
+@media(hover:hover){.sac-page a:hover{color:var(--sac-navy-hover);text-decoration:none}}
+body{margin:0}
+
+.sac-page h1,.sac-page h2,.sac-page h3,.sac-page h4,.sac-page h5,.sac-page h6{
+  font-family:var(--sac-font-heading);font-weight:700;color:#000;margin:0 0 30px;
+}
+.sac-page h1{font-size:32px;line-height:1.2;text-transform:capitalize}
+.sac-page h2{font-size:26px;line-height:1.3846;text-transform:capitalize}
+.sac-page h3{font-size:22px;line-height:1.2727;text-transform:capitalize}
+.sac-page h4{font-size:20px;line-height:1.5;color:var(--sac-navy)}
+@media(min-width:768px){.sac-page h1{font-size:42px}}
+@media(min-width:992px){
+  .sac-page h1{font-size:48px;line-height:1.0833}
+  .sac-page h2{font-size:42px;line-height:1.2381}
+  .sac-page h3{font-size:34px;line-height:1.2353}
+  .sac-page h4{font-size:30px;line-height:1.1667}
+}
+
+.sac-container{width:100%;margin:0 auto;padding:0 12px}
+@media(min-width:576px){.sac-container{max-width:540px}}
+@media(min-width:768px){.sac-container{max-width:720px}}
+@media(min-width:992px){.sac-container{max-width:960px}}
+@media(min-width:1200px){.sac-container{max-width:1140px}}
+
+.sac-page .sac-btn{
+  display:inline-block;position:relative;overflow:hidden;z-index:0;
+  border:0;border-radius:5px;cursor:pointer;
+  font-family:var(--sac-font-body);font-size:18px;font-weight:700;line-height:1.25;
+  min-width:220px;padding:13px 25px;text-align:center;text-decoration:none;
+  text-transform:uppercase;transition:all .3s ease;white-space:normal;vertical-align:middle;
+}
+.sac-page .sac-btn::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;transform:translateX(-100%);transition:.3s transform}
+.sac-page .sac-btn:hover::before,.sac-page .sac-btn:focus-visible::before{transform:translateX(0)}
+.sac-page .sac-btn:focus-visible{outline:2px solid var(--sac-navy);outline-offset:2px}
+.sac-page .sac-btn--primary{background:var(--sac-red);color:#fff}
+.sac-page .sac-btn--primary::before{background:var(--sac-navy)}
+.sac-page .sac-btn--secondary{background:var(--sac-navy);color:#fff}
+.sac-page .sac-btn--secondary::before{background:var(--sac-red)}
+.sac-page .sac-btn--tertiary{background:var(--sac-cream);color:#000}
+.sac-page .sac-btn--tertiary::before{background:var(--sac-blue)}
+.sac-page .sac-btn .sac-btn-arrow{margin-left:8px;position:relative;top:-2px}
+
+/* HEADER desktop */
+.sac-desktop-header{display:none}
+@media(min-width:992px){
+  .sac-desktop-header{display:block;position:sticky;top:0;z-index:50}
+  .sac-desktop-header.is-stuck{box-shadow:0 0 20px 0 rgba(0,0,0,.5)}
+}
+.sac-topbar{background:var(--sac-navy);color:#fff;font-size:16px;line-height:24px;padding:5px 0}
+.sac-topbar .sac-container{display:flex;align-items:center;justify-content:space-between}
+.sac-topbar a{color:#fff;text-decoration:none;margin-left:5px}
+.sac-topbar a:hover{color:#fff;text-decoration:underline}
+.sac-topbar .sac-stars-inline{color:var(--sac-stars);letter-spacing:2px;margin-right:2px}
+.sac-topbar .sac-top-item{display:flex;align-items:center;gap:6px}
+.sac-header-main{background:#fff;position:relative;z-index:2}
+.sac-header-main .sac-container{display:flex;align-items:center;justify-content:space-between;padding-top:15px;padding-bottom:15px}
+.sac-logo-svg{display:block;width:190px;height:auto}
+.sac-header-right{display:flex;align-items:center}
+.sac-header-phone{display:flex;align-items:center;gap:10px;margin-right:24px}
+.sac-header-phone a{color:#000;text-decoration:none;font-family:var(--sac-font-heading);font-size:24px;font-weight:700;line-height:29px}
+.sac-header-phone a:hover{color:var(--sac-navy)}
+
+.sac-navbar{display:none}
+@media(min-width:992px){
+  .sac-navbar{display:block;background:var(--sac-cream);position:relative;z-index:3}
+  .sac-nav-list{display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;margin:0;padding:0;width:100%}
+  .sac-nav-list>li{position:relative}
+  .sac-nav-list>li>a{display:inline-block;padding:9px 15px;color:#000;text-decoration:none;font-size:16px;font-weight:700;text-transform:uppercase;white-space:nowrap}
+  .sac-nav-list>li.sac-has-dropdown>a{padding-right:30px}
+  .sac-nav-list>li.sac-has-dropdown::after{
+    content:"";position:absolute;right:12px;top:50%;transform:translateY(-50%);width:11px;height:8px;pointer-events:none;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23000' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat center/contain;
+  }
+  .sac-nav-list>li:hover>a,.sac-nav-list>li>a:focus{color:var(--sac-navy)}
+  .sac-nav-list>li>ul{display:none;position:absolute;top:100%;left:0;margin:0;padding:0;list-style:none;background:var(--sac-navy);z-index:10;min-width:220px}
+  .sac-nav-list>li:last-child>ul{left:auto;right:0}
+  .sac-nav-list>li:hover>ul,.sac-nav-list>li:focus-within>ul{display:block}
+  .sac-nav-list>li>ul>li>a{display:block;padding:9px 15px;color:#fff;background:var(--sac-navy);text-decoration:none;font-size:16px;font-weight:500;text-transform:uppercase;white-space:nowrap}
+  .sac-nav-list>li>ul>li>a:hover,.sac-nav-list>li>ul>li>a:focus{background:var(--sac-drop-hover);color:#000}
+}
+
+/* HEADER mobile */
+.sac-mobile-header{position:sticky;top:0;z-index:50;box-shadow:0 0 20px 0 rgba(0,0,0,.4)}
+@media(min-width:992px){.sac-mobile-header{display:none}}
+.sac-mobile-bar{background:#fff;height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;position:relative;z-index:51}
+.sac-mobile-logo img{max-height:56px;width:auto;display:block}
+.sac-mobile-actions{display:flex;align-items:center;gap:18px}
+.sac-mobile-phone{color:var(--sac-navy);display:inline-flex}
+.sac-mobile-phone svg{width:34px;height:34px}
+.sac-hamburger{background:none;border:0;cursor:pointer;padding:0;display:inline-block}
+.sac-hamburger-box{display:inline-block;position:relative;width:36px;height:28px;top:3px}
+.sac-hamburger-inner{display:block;top:50%;margin-top:-2px}
+.sac-hamburger-inner,.sac-hamburger-inner::before,.sac-hamburger-inner::after{
+  position:absolute;width:100%;max-width:34px;height:4px;border-radius:10px;background:var(--sac-navy);
+  transition-duration:.15s;transition-property:transform;transition-timing-function:ease;
+}
+.sac-hamburger-inner::before,.sac-hamburger-inner::after{content:"";display:block}
+.sac-hamburger-inner::before{top:-11px}
+.sac-hamburger-inner::after{bottom:-11px}
+.sac-hamburger.is-active .sac-hamburger-inner{transform:rotate(45deg)}
+.sac-hamburger.is-active .sac-hamburger-inner::before{top:0;opacity:0}
+.sac-hamburger.is-active .sac-hamburger-inner::after{bottom:0;transform:rotate(-90deg)}
+.sac-mobile-nav{position:absolute;top:80px;left:-115%;width:100%;height:85vh;overflow-y:auto;background:#fff;padding:0 0 10vh;transition:all .3s ease;z-index:50}
+.sac-mobile-nav.menu-active{left:0}
+.sac-mobile-nav ul{list-style:none;margin:0;padding:0}
+.sac-mobile-nav>ul>li{position:relative}
+.sac-mobile-nav a{display:block;padding:15px;color:#000;text-decoration:none;font-size:16px;font-weight:500;text-transform:uppercase;border-bottom:1px solid var(--sac-border)}
+.sac-mobile-nav li.sac-has-dropdown>a{padding-right:55px}
+.sac-mobile-nav .sac-submenu-toggle{
+  position:absolute;top:0;right:0;width:55px;height:53px;border:0;cursor:pointer;
+  background:var(--sac-border) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23000' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat center/14px 10px;
+  transition:transform .3s;
+}
+.sac-mobile-nav li.sac-open>.sac-submenu-toggle{transform:rotate(180deg)}
+.sac-mobile-nav li>ul{display:none}
+.sac-mobile-nav li.sac-open>ul{display:block}
+.sac-mobile-nav li>ul a{padding:10px 55px 10px 35px;text-transform:none;font-weight:400}
+
+/* HERO */
+.sac-hero{position:relative;background:no-repeat center center/cover;min-height:560px;display:flex;align-items:flex-end;overflow:hidden}
+.sac-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,60,113,0) 40%,rgba(25,60,113,.15) 100%);pointer-events:none}
+.sac-hero .sac-container{position:relative;z-index:2;width:100%;padding-top:40px;padding-bottom:40px}
+.sac-hero-card{background:var(--sac-navy);border-radius:20px;padding:32px 28px;color:#fff;max-width:900px}
+@media(min-width:992px){.sac-hero-card{padding:40px 44px;display:flex;align-items:center;gap:40px}}
+.sac-hero-titles{flex:1 1 auto}
+.sac-hero-eyebrow{font-size:16px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin:0 0 8px;color:#fff}
+.sac-hero-card h1{color:#fff;margin:0;text-transform:none;line-height:1.1}
+.sac-hero-ctas{display:grid;grid-template-columns:1fr;gap:12px;margin-top:24px;flex:0 0 auto;min-width:280px}
+@media(min-width:560px){.sac-hero-ctas{grid-template-columns:1fr 1fr}}
+@media(min-width:992px){.sac-hero-ctas{margin-top:0}}
+.sac-hero-cta{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--sac-cream);border-radius:200px;padding:12px 18px;text-decoration:none;color:#000;font-weight:700;position:relative;overflow:hidden}
+.sac-hero-cta::before{content:"";position:absolute;left:-100%;top:0;width:100%;height:100%;background:var(--sac-red);transition:left .3s;z-index:0}
+.sac-hero-cta:hover::before{left:0}
+.sac-hero-cta>*{position:relative;z-index:1}
+.sac-hero-cta:hover{color:#fff}
+.sac-hero-cta .sac-cta-ic{width:34px;height:34px;flex-shrink:0}
+.sac-hero-cta .sac-cta-arrow{width:24px;height:24px;flex-shrink:0}
+
+/* SECTIONS */
+.sac-section{padding:40px 0}
+@media(min-width:992px){.sac-section{padding:60px 0}}
+.sac-section--white{background:#fff}
+.sac-section--cream{background:var(--sac-cream)}
+.sac-section--navy{background:var(--sac-navy);color:#fff}
+.sac-section--blue{background:var(--sac-blue)}
+.sac-subheading{color:var(--sac-navy);font-size:16px;font-weight:600;line-height:1.2;margin:0 0 6px;text-transform:uppercase}
+@media(min-width:992px){.sac-subheading{font-size:22px;margin-bottom:10px}}
+
+.sac-intro-flex{display:flex;flex-direction:column;align-items:center;gap:40px}
+@media(min-width:992px){.sac-intro-flex{flex-direction:row-reverse;align-items:center;justify-content:space-between}}
+.sac-intro-content{flex:1 1 auto;min-width:0}
+.sac-intro-image{flex:0 0 auto;width:100%;max-width:460px}
+.sac-intro-image img{width:100%;border-radius:20px;display:block}
+
+/* Special offers */
+.sac-offers{text-align:center}
+.sac-offers-grid{display:grid;grid-template-columns:1fr;gap:24px;margin:30px 0 40px}
+@media(min-width:768px){.sac-offers-grid{grid-template-columns:repeat(3,1fr)}}
+.sac-offer{background:#193050;color:#fff;border-radius:10px;padding:15px}
+.sac-offer-inner{border:2px dashed var(--sac-blue);border-radius:6px;min-height:300px;height:100%;padding:28px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
+.sac-offer-heading{font-family:var(--sac-font-body);font-size:26px;font-weight:700;line-height:1.1;margin:0;color:#fff;text-transform:none}
+.sac-offer-details{font-size:18px;margin:0;text-transform:capitalize}
+.sac-offer-exp{font-size:14px;margin:0;color:#fff;opacity:.85}
+.sac-offer-disc{font-size:9px;text-transform:uppercase;color:#c6c6c6;margin:0}
+
+/* Value props */
+.sac-vp-grid{display:grid;grid-template-columns:1fr;gap:16px;margin:30px 0 40px}
+@media(min-width:768px){.sac-vp-grid{grid-template-columns:repeat(3,1fr)}}
+.sac-vp{background:#fff;border-radius:20px;padding:26px;display:flex;align-items:center;gap:18px;text-align:left;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.sac-vp .sac-vp-ic{width:70px;height:70px;flex-shrink:0}
+.sac-vp-text{color:var(--sac-navy);font-size:20px;font-weight:700;line-height:1.25}
+
+/* Financing band */
+.sac-band{background:var(--sac-blue)}
+.sac-band .sac-container{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
+@media(min-width:992px){.sac-band .sac-container{flex-direction:row;justify-content:space-between;text-align:left}}
+.sac-band h3{margin:0}
+.sac-band-icon{width:110px;flex-shrink:0}
+
+/* Testimonials */
+.sac-testi .sac-container{display:flex;flex-direction:column;gap:30px;align-items:center}
+@media(min-width:992px){.sac-testi .sac-container{flex-direction:row}}
+.sac-testi-img{flex:0 0 auto;width:100%;max-width:480px}
+.sac-testi-img img{width:100%;border-radius:20px;border:4px solid var(--sac-blue)}
+.sac-testi-body{flex:1 1 auto;min-width:0}
+.sac-quote-stars{color:var(--sac-stars);font-size:26px;letter-spacing:3px;margin:10px 0 20px}
+.sac-testi-slider{overflow:hidden}
+.sac-testi-track{display:flex;transition:transform .4s ease}
+.sac-testi-slide{flex:0 0 100%}
+.sac-quotee{font-weight:700;margin-top:16px}
+.sac-slider-dots{display:flex;gap:8px;list-style:none;margin:20px 0 0;padding:0}
+.sac-slider-dots button{width:10px;height:10px;border-radius:50%;border:0;padding:0;cursor:pointer;background:#c9c9c9;text-indent:-9999px;overflow:hidden}
+.sac-slider-dots .is-active button{background:var(--sac-navy)}
+
+/* Request form */
+.sac-form-wrap{background:var(--sac-navy);color:#fff;padding:40px 0}
+.sac-form-wrap h2{color:#fff;text-align:center}
+.sac-form{display:grid;grid-template-columns:1fr;gap:14px;max-width:900px;margin:0 auto}
+@media(min-width:768px){.sac-form{grid-template-columns:1fr 1fr 1fr}}
+.sac-form input,.sac-form select,.sac-form textarea{width:100%;border:0;border-radius:4px;padding:14px 16px;font-family:var(--sac-font-body);font-size:16px;color:#000}
+.sac-form .sac-col-full{grid-column:1/-1}
+.sac-form .sac-consent{grid-column:1/-1;font-size:12px;display:flex;gap:8px;align-items:flex-start}
+.sac-form .sac-submit-row{grid-column:1/-1;text-align:center;margin-top:6px}
+
+/* Proudly serving */
+.sac-serving .sac-serving-box{background:var(--sac-navy);color:#fff;border-radius:16px;padding:32px 28px;max-width:820px}
+.sac-serving-box h2{color:#fff}
+.sac-serving-cities{opacity:.9;margin-bottom:20px}
+.sac-serving-link{color:#fff;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+
+/* Associations */
+.sac-assoc{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:40px}
+.sac-assoc-badge{width:80px;height:80px;border-radius:50%;background:var(--sac-cream);display:flex;align-items:center;justify-content:center;font-family:var(--sac-font-heading);font-weight:700;color:var(--sac-navy);font-size:13px;text-align:center}
+
+/* FOOTER */
+.sac-footer{background:var(--sac-navy);border-top:15px solid var(--sac-red);color:#fff;padding:44px 0}
+.sac-footer a{color:#fff;text-decoration:none}
+.sac-footer a:hover{color:#fff;text-decoration:underline}
+.sac-footer-cols{display:flex;flex-direction:column;align-items:center;gap:28px}
+@media(min-width:992px){.sac-footer-cols{flex-direction:row;align-items:flex-start}.sac-footer-cols>div{flex:1}}
+.sac-footer-brand{text-align:center}
+@media(min-width:992px){.sac-footer-brand{text-align:left}}
+.sac-footer-logo{margin:0 auto 22px;max-width:210px;display:block;background:#fff;border-radius:8px;padding:8px}
+@media(min-width:992px){.sac-footer-logo{margin-left:0}}
+.sac-footer-phone{margin-bottom:22px}
+.sac-footer-phone .lbl{display:block;font-weight:600;font-size:16px;margin-bottom:6px}
+.sac-footer-phone a{font-size:24px;font-weight:600}
+.sac-footer h6{font-family:var(--sac-font-body);font-size:20px;font-weight:700;margin:0 0 18px;color:#fff;text-transform:none}
+.sac-footer-menu ul{list-style:none;margin:0;padding:0}
+.sac-footer-menu li{font-size:16px;line-height:30px}
+.sac-footer-office{font-size:16px;line-height:24px;margin-bottom:22px;text-align:center}
+@media(min-width:992px){.sac-footer-office{text-align:left}}
+.sac-footer-socials{display:flex;justify-content:center;gap:18px;margin-top:8px}
+@media(min-width:992px){.sac-footer-socials{justify-content:flex-start}}
+.sac-footer-socials a{color:var(--sac-sky);display:inline-flex}
+.sac-footer-socials a:hover{color:var(--sac-cream)}
+.sac-footer-socials svg{width:24px;height:24px;fill:currentColor}
+.sac-copyright{background:var(--sac-blue);color:#000;padding:18px 0}
+.sac-copyright p{font-size:14px;margin:0;text-align:center}
+.sac-copyright a{color:#000;font-weight:700}
+
+/* Fixed mobile buttons */
+.sac-fixed-buttons{position:sticky;bottom:0;z-index:60;display:flex}
+@media(min-width:992px){.sac-fixed-buttons{display:none}}
+.sac-fixed-buttons a{flex:1;height:62px;display:flex;align-items:center;justify-content:center;gap:8px;color:#fff;font-size:18px;font-weight:700;text-transform:uppercase;text-decoration:none}
+.sac-fixed-buttons .sac-fixed-schedule{background:var(--sac-navy)}
+.sac-fixed-buttons .sac-fixed-call{background:var(--sac-red)}
+.sac-fixed-buttons svg{width:20px;height:20px;fill:#fff}
+
+@media(prefers-reduced-motion:reduce){
+  .sac-page *,.sac-page *::before,.sac-page *::after{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<div class="sac-page">
+
+<!-- ===== MOBILE HEADER ===== -->
+<div class="sac-mobile-header">
+  <div class="sac-mobile-bar">
+    <a class="sac-mobile-logo" href="#" title="Leadder"><img src="/images/leadder-logo.png" alt="Leadder logo"></a>
+    <div class="sac-mobile-actions">
+      <a class="sac-mobile-phone" href="tel:14372382460" aria-label="Call us">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="2"/><path fill="currentColor" d="M16.7 14.5l-2-.9a.8.8 0 0 0-.9.2l-.9.9a8 8 0 0 1-3.6-3.6l.9-.9a.8.8 0 0 0 .2-.9l-.9-2A.8.8 0 0 0 8.6 7l-1.3.3c-.4.1-.6.4-.6.8A9.8 9.8 0 0 0 15.9 17.3c.4 0 .7-.2.8-.6l.3-1.3a.8.8 0 0 0-.3-.9z"/></svg>
+      </a>
+      <button class="sac-hamburger" type="button" aria-label="Open menu" aria-expanded="false"><span class="sac-hamburger-box"><span class="sac-hamburger-inner"></span></span></button>
+    </div>
+  </div>
+  <nav class="sac-mobile-nav" aria-label="Mobile navigation">
+    <ul>
+      <li class="sac-has-dropdown"><a href="#">Air Conditioning</a><button class="sac-submenu-toggle" type="button" aria-label="Toggle" aria-expanded="false"></button>
+        <ul><li><a href="#">AC Repair</a></li><li><a href="#">AC Installation</a></li><li><a href="#">AC Replacement</a></li><li><a href="#">AC Maintenance</a></li><li><a href="#">Mini Splits</a></li></ul></li>
+      <li class="sac-has-dropdown"><a href="#">Heating</a><button class="sac-submenu-toggle" type="button" aria-label="Toggle" aria-expanded="false"></button>
+        <ul><li><a href="#">Heating Repair</a></li><li><a href="#">Furnace Repair</a></li><li><a href="#">Furnace Installation</a></li><li><a href="#">Heat Pumps</a></li></ul></li>
+      <li class="sac-has-dropdown"><a href="#">HVAC</a><button class="sac-submenu-toggle" type="button" aria-label="Toggle" aria-expanded="false"></button>
+        <ul><li><a href="#">HVAC Repair</a></li><li><a href="#">HVAC Installation</a></li><li><a href="#">HVAC Maintenance</a></li><li><a href="#">Indoor Air Quality</a></li><li><a href="#">Thermostats</a></li></ul></li>
+      <li class="sac-has-dropdown"><a href="#">About Us</a><button class="sac-submenu-toggle" type="button" aria-label="Toggle" aria-expanded="false"></button>
+        <ul><li><a href="#">Our Staff</a></li><li><a href="#">Service Areas</a></li><li><a href="#">Financing</a></li><li><a href="#">Reviews</a></li></ul></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- ===== DESKTOP HEADER ===== -->
+<div class="sac-desktop-header">
+  <header class="sac-header" role="banner">
+    <div class="sac-topbar">
+      <div class="sac-container">
+        <div class="sac-top-item"><span class="sac-stars-inline" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><a href="#">Over 6K Reviews!</a></div>
+        <div class="sac-top-item"><a href="#">Save Today! View Coupons</a></div>
+        <div class="sac-top-item"><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="#fff" d="M8 0a8 8 0 1 0 8 8 8 8 0 0 0-8-8zm3.5 8.75H8A.75.75 0 0 1 7.25 8V3.5a.75.75 0 0 1 1.5 0v3.75h2.75a.75.75 0 0 1 0 1.5z"/></svg><span>24/7 Online Booking</span></div>
+      </div>
+    </div>
+    <div class="sac-header-main">
+      <div class="sac-container">
+        <a href="#" title="Leadder"><img class="sac-logo-svg" src="/images/leadder-logo.png" alt="Leadder logo"></a>
+        <div class="sac-header-right">
+          <span class="sac-header-phone">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="#e02e2e" d="M20.5 15.6l-4.4-1.9a1.2 1.2 0 0 0-1.4.3l-1.8 2.2a13.4 13.4 0 0 1-6.1-6.1l2.2-1.8c.4-.3.5-.9.3-1.4L7.4 2.5A1.2 1.2 0 0 0 6 1.8L2.9 2.6c-.5.1-.9.6-.9 1.1C2 13.7 10.3 22 20.3 22c.5 0 1-.4 1.1-.9l.8-3.1a1.2 1.2 0 0 0-.7-1.4z"/></svg>
+            <a href="tel:14372382460">(437) 238-2460</a>
+          </span>
+          <a class="sac-btn sac-btn--primary" href="#quote"><span>Schedule Online</span></a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="sac-navbar">
+    <div class="sac-container">
+      <nav aria-label="Main navigation">
+        <ul class="sac-nav-list">
+          <li class="sac-has-dropdown"><a href="#">Air Conditioning</a>
+            <ul><li><a href="#">AC Repair</a></li><li><a href="#">AC Installation</a></li><li><a href="#">AC Replacement</a></li><li><a href="#">AC Maintenance</a></li><li><a href="#">Mini Splits</a></li></ul></li>
+          <li class="sac-has-dropdown"><a href="#">Heating</a>
+            <ul><li><a href="#">Heating Repair</a></li><li><a href="#">Furnace Repair</a></li><li><a href="#">Furnace Installation</a></li><li><a href="#">Heat Pumps</a></li></ul></li>
+          <li class="sac-has-dropdown"><a href="#">HVAC</a>
+            <ul><li><a href="#">HVAC Repair</a></li><li><a href="#">HVAC Installation</a></li><li><a href="#">HVAC Maintenance</a></li><li><a href="#">Indoor Air Quality</a></li><li><a href="#">Thermostats</a></li></ul></li>
+          <li class="sac-has-dropdown"><a href="#">About Us</a>
+            <ul><li><a href="#">Our Staff</a></li><li><a href="#">Service Areas</a></li><li><a href="#">Financing</a></li><li><a href="#">Reviews</a></li></ul></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<main>
+<!-- ===== HERO ===== -->
+<section class="sac-hero" style="background-image:url('/images/truck.png')">
+  <div class="sac-container">
+    <div class="sac-hero-card">
+      <div class="sac-hero-titles">
+        <p class="sac-hero-eyebrow">Leadder Stands By You</p>
+        <h1>Serving Homeowners With Trusted Comfort</h1>
+      </div>
+      <div class="sac-hero-ctas">
+        <a class="sac-hero-cta" href="#"><span class="sac-cta-ic"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="5" fill="#193c71"/><path d="M6 9h12M6 12h12M6 15h8" stroke="#fff" stroke-width="1.6"/></svg></span><span>HVAC</span><span class="sac-cta-arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" stroke="#193c71" stroke-width="2"/><path d="M10 8l4 4-4 4" stroke="#193c71" stroke-width="2" fill="none"/></svg></span></a>
+        <a class="sac-hero-cta" href="#"><span class="sac-cta-ic"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="5" fill="#193c71"/><path d="M12 5c-3 4-5 6-5 9a5 5 0 0010 0c0-3-2-5-5-9z" fill="#fff"/></svg></span><span>Plumbing</span><span class="sac-cta-arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" stroke="#193c71" stroke-width="2"/><path d="M10 8l4 4-4 4" stroke="#193c71" stroke-width="2" fill="none"/></svg></span></a>
+        <a class="sac-hero-cta" href="#"><span class="sac-cta-ic"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="5" fill="#193c71"/><path d="M7 8h10v3a5 5 0 01-10 0V8z" fill="#fff"/><path d="M12 16v3" stroke="#fff" stroke-width="1.6"/></svg></span><span>Drains</span><span class="sac-cta-arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" stroke="#193c71" stroke-width="2"/><path d="M10 8l4 4-4 4" stroke="#193c71" stroke-width="2" fill="none"/></svg></span></a>
+        <a class="sac-hero-cta" href="#"><span class="sac-cta-ic"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="5" fill="#193c71"/><path d="M13 4l-6 8h4l-1 8 6-9h-4l1-7z" fill="#fff"/></svg></span><span>Electrical</span><span class="sac-cta-arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" stroke="#193c71" stroke-width="2"/><path d="M10 8l4 4-4 4" stroke="#193c71" stroke-width="2" fill="none"/></svg></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INTRO ===== -->
+<section class="sac-section sac-section--white">
+  <div class="sac-container sac-intro-flex">
+    <div class="sac-intro-image"><img src="/images/truck.png" alt="Leadder service van"></div>
+    <div class="sac-intro-content">
+      <p class="sac-subheading">Local Home Services You Can Depend On</p>
+      <h2>Air Conditioning, Heating, Plumbing &amp; Electrical Services</h2>
+      <p>For more than 70 years, our team has been a premier home service company. Our comprehensive care ensures that your property&rsquo;s most critical systems always operate at peak performance. With licensed and insured experts and 24/7 online booking available, you&rsquo;ll receive award-winning service backed by a 100% satisfaction guarantee.</p>
+      <p><a class="sac-btn sac-btn--primary" href="tel:14372382460">Call (437) 238-2460</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SPECIAL OFFERS ===== -->
+<section class="sac-section sac-offers" style="background:#eef2f7">
+  <div class="sac-container">
+    <p class="sac-subheading" style="text-align:center">Save On Your Service Today</p>
+    <h2>Our Special Offers</h2>
+    <div class="sac-offers-grid">
+      <div class="sac-offer"><div class="sac-offer-inner"><p class="sac-offer-heading">Up To $2,000 Off</p><p class="sac-offer-details">A New HVAC System</p><a href="#" class="sac-btn sac-btn--tertiary">Redeem Offer<span class="sac-btn-arrow">&rarr;</span></a><p class="sac-offer-exp">Expires July 31, 2026</p><p class="sac-offer-disc">10% off up to $2,000 on a full HVAC system only. Restrictions apply.</p></div></div>
+      <div class="sac-offer"><div class="sac-offer-inner"><p class="sac-offer-heading">$100 Off</p><p class="sac-offer-details">HVAC Repair</p><a href="#" class="sac-btn sac-btn--tertiary">Redeem Offer<span class="sac-btn-arrow">&rarr;</span></a><p class="sac-offer-exp">Expires July 31, 2026</p><p class="sac-offer-disc">Restrictions apply. Cannot be combined with any other coupon or promotion.</p></div></div>
+      <div class="sac-offer"><div class="sac-offer-inner"><p class="sac-offer-heading">0% Interest &amp; No Payments for 12 Months</p><p class="sac-offer-details">On A New System</p><a href="#" class="sac-btn sac-btn--tertiary">Redeem Offer<span class="sac-btn-arrow">&rarr;</span></a><p class="sac-offer-exp">Expires July 31, 2026</p><p class="sac-offer-disc">On qualifying systems only. With approved financing. Restrictions apply.</p></div></div>
+    </div>
+    <a class="sac-btn sac-btn--secondary" href="#">See All Promotions</a>
+  </div>
+</section>
+
+<!-- ===== VALUE PROPS ===== -->
+<section class="sac-section sac-section--cream" style="text-align:center">
+  <div class="sac-container">
+    <p class="sac-subheading" style="text-align:center">How We Deliver The Best Service</p>
+    <h2>Why Choose Leadder?</h2>
+    <div class="sac-vp-grid">
+      <div class="sac-vp"><span class="sac-vp-ic"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="6" fill="#78a7c9"/><path d="M7 12l3 3 7-7" stroke="#193c71" stroke-width="2" fill="none"/></svg></span><span class="sac-vp-text">Over 70 Years of Experience</span></div>
+      <div class="sac-vp"><span class="sac-vp-ic"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="6" fill="#78a7c9"/><path d="M5 12l7-6 7 6v6H5z" stroke="#193c71" stroke-width="1.6" fill="none"/></svg></span><span class="sac-vp-text">Whole-House Approach</span></div>
+      <div class="sac-vp"><span class="sac-vp-ic"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="6" fill="#78a7c9"/><path d="M8 11v6M8 11l2-5 2 2v3h4a1 1 0 011 1l-1 5H8" stroke="#193c71" stroke-width="1.4" fill="none"/></svg></span><span class="sac-vp-text">100% Satisfaction Guaranteed</span></div>
+      <div class="sac-vp"><span class="sac-vp-ic"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="6" fill="#78a7c9"/><path d="M6 13l3 3 3-3M18 11l-3-3-3 3" stroke="#193c71" stroke-width="1.6" fill="none"/></svg></span><span class="sac-vp-text">Committed to Our Community</span></div>
+      <div class="sac-vp"><span class="sac-vp-ic"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="6" fill="#78a7c9"/><rect x="6" y="7" width="12" height="11" rx="1.5" stroke="#193c71" stroke-width="1.6" fill="none"/><path d="M6 10h12M9 5v3M15 5v3" stroke="#193c71" stroke-width="1.6"/></svg></span><span class="sac-vp-text">24/7 Online Booking</span></div>
+      <div class="sac-vp"><span class="sac-vp-ic"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="6" fill="#78a7c9"/><circle cx="12" cy="12" r="5" stroke="#193c71" stroke-width="1.6" fill="none"/><path d="M12 9v3l2 2" stroke="#193c71" stroke-width="1.6"/></svg></span><span class="sac-vp-text">Servicing All Major Brands</span></div>
+    </div>
+    <a class="sac-btn sac-btn--secondary" href="#">About Us</a>
+  </div>
+</section>
+
+<!-- ===== FINANCING BAND ===== -->
+<section class="sac-section sac-band">
+  <div class="sac-container">
+    <span class="sac-band-icon"><svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="14" width="96" height="60" rx="8" fill="#193c71"/><rect x="18" y="6" width="96" height="60" rx="8" fill="#fff" stroke="#193c71" stroke-width="3"/><rect x="18" y="18" width="96" height="10" fill="#193c71"/></svg></span>
+    <div style="text-align:center"><p class="sac-subheading" style="text-align:center">Don&rsquo;t Wait For The Service You Need</p><h3 style="margin:0">We Offer Financing Options</h3></div>
+    <a class="sac-btn sac-btn--secondary" href="#">Learn More</a>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="sac-section sac-section--white sac-testi">
+  <div class="sac-container">
+    <div class="sac-testi-img"><img src="/images/truck.png" alt="Happy customer"></div>
+    <div class="sac-testi-body">
+      <p class="sac-subheading">See What Your Neighbors Are Saying</p>
+      <h2>Our Reviews</h2>
+      <div class="sac-quote-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="sac-testi-slider">
+        <div class="sac-testi-track">
+          <div class="sac-testi-slide"><p>We switched from another plumbing and HVAC service and we couldn&rsquo;t be more happy. Their prices are way more affordable, their personnel are much more knowledgeable, and they can get to you very quick &mdash; especially important if your AC blows out in the middle of summer. Highly recommend!</p><p class="sac-quotee">&mdash; B. Parker</p></div>
+          <div class="sac-testi-slide"><p>Very knowledgeable technician. He helped me make the best decision and installed everything quickly. I was able to test it before he left. I definitely recommend him and the company. Thanks!</p><p class="sac-quotee">&mdash; Marva B.</p></div>
+          <div class="sac-testi-slide"><p>They did an amazing job replacing my evaporator coil. He took the time to explain every detail as I asked questions. Outstanding job &mdash; they even put plastic down to protect my wooden floors.</p><p class="sac-quotee">&mdash; Larry D.</p></div>
+        </div>
+      </div>
+      <div class="sac-btn-row" style="margin-top:24px"><a class="sac-btn sac-btn--secondary" href="#">Read Our Reviews</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REQUEST SERVICE FORM ===== -->
+<section id="quote" class="sac-form-wrap">
+  <div class="sac-container">
+    <h2>Request Service</h2>
+    <form class="sac-form" onsubmit="return false">
+      <input type="text" placeholder="First Name*" aria-label="First Name">
+      <input type="text" placeholder="Last Name*" aria-label="Last Name">
+      <input type="email" placeholder="Email*" aria-label="Email">
+      <input type="tel" placeholder="Phone Number*" aria-label="Phone">
+      <input type="text" placeholder="Street Address*" aria-label="Street Address">
+      <input type="text" placeholder="City*" aria-label="City">
+      <input type="text" placeholder="State*" aria-label="State">
+      <input type="text" placeholder="Zip Code*" aria-label="Zip">
+      <select aria-label="Service Needed"><option value="">Service Needed*</option><option>HVAC Repair</option><option>HVAC Installation</option><option>Plumbing</option><option>Drains</option><option>Electrical</option></select>
+      <input class="sac-col-full" type="text" placeholder="How Can We Help?*" aria-label="How can we help">
+      <label class="sac-consent"><input type="checkbox"> <span>By submitting this form and signing up for texts, you agree to receive informational messages. Msg &amp; data rates may apply. Reply STOP to unsubscribe.</span></label>
+      <div class="sac-submit-row"><button class="sac-btn sac-btn--primary" type="submit"><span>Request Service</span></button></div>
+    </form>
+  </div>
+</section>
+
+<!-- ===== GOLD SERVICE CLUB ===== -->
+<section class="sac-section sac-section--white">
+  <div class="sac-container sac-intro-flex">
+    <div class="sac-intro-image"><img src="/images/truck.png" alt="Maintenance program"></div>
+    <div class="sac-intro-content">
+      <p class="sac-subheading">Become a Member of Our Service Club</p>
+      <h2>HVAC &amp; Plumbing Maintenance Programs</h2>
+      <ul>
+        <li>Two precision HVAC tune-ups each year</li>
+        <li>Preventative plumbing inspection each year</li>
+        <li>Annual water heater flush</li>
+        <li>15% off repairs</li>
+        <li>Priority scheduling</li>
+        <li>And more</li>
+      </ul>
+      <a class="sac-btn sac-btn--secondary" href="#">Join The Club</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROUDLY SERVING ===== -->
+<section class="sac-section sac-serving" style="background:#eef2f7">
+  <div class="sac-container">
+    <div class="sac-serving-box">
+      <p class="sac-hero-eyebrow" style="color:#fff">Proudly Serving</p>
+      <h2>Your City &amp; Surrounding Areas</h2>
+      <div class="sac-serving-cities">Downtown | North Side | South Side | East End | West End | Suburbs | &amp; surrounding communities</div>
+      <a class="sac-serving-link" href="#">Learn More <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l6 7-6 7" stroke="#fff" stroke-width="2" fill="none"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ASSOCIATIONS ===== -->
+<section class="sac-section sac-section--white">
+  <div class="sac-container sac-assoc">
+    <div class="sac-assoc-badge">BBB A+</div>
+    <div class="sac-assoc-badge">Top Rated</div>
+    <div class="sac-assoc-badge">ACCA</div>
+    <div class="sac-assoc-badge">Carrier</div>
+    <div class="sac-assoc-badge">HBA</div>
+    <div class="sac-assoc-badge">NATE</div>
+  </div>
+</section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="sac-footer">
+  <div class="sac-container">
+    <div class="sac-footer-cols">
+      <div class="sac-footer-brand">
+        <a href="#" title="Leadder"><img class="sac-footer-logo" src="/images/leadder-logo.png" alt="Leadder logo"></a>
+        <div class="sac-footer-phone"><span class="lbl">Phone:</span><a href="tel:14372382460">(437) 238-2460</a></div>
+        <div><strong>Licenses</strong><br>Fully Licensed &amp; Insured</div>
+      </div>
+      <div class="sac-footer-menu"><h6>Services</h6><ul><li><a href="#">Air Conditioning</a></li><li><a href="#">Heating</a></li><li><a href="#">Plumbing</a></li><li><a href="#">Drains</a></li><li><a href="#">Electrical</a></li></ul></div>
+      <div class="sac-footer-menu"><h6>Our Company</h6><ul><li><a href="#">About Us</a></li><li><a href="#">Our Team</a></li><li><a href="#">Reviews</a></li><li><a href="#">Financing</a></li><li><a href="#">Service Club</a></li></ul></div>
+      <div>
+        <h6>Office Location</h6>
+        <div class="sac-footer-office">Toronto, ON, Canada</div>
+        <h6>Follow Us</h6>
+        <div class="sac-footer-socials">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46H15.2c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38c-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a6.13 6.13 0 0 0 3.51-3.51c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.15A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm7.85-10.4a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="sac-copyright"><div class="sac-container"><p>&copy;2026 Leadder | All Rights Reserved | <a href="#">Privacy Policy</a></p></div></div>
+
+<!-- ===== FIXED MOBILE BUTTONS ===== -->
+<div class="sac-fixed-buttons">
+  <a class="sac-fixed-schedule" href="#quote"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5z"/></svg>Schedule</a>
+  <a class="sac-fixed-call" href="tel:14372382460"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.5 15.6l-4.4-1.9a1.2 1.2 0 0 0-1.4.3l-1.8 2.2a13.4 13.4 0 0 1-6.1-6.1l2.2-1.8c.4-.3.5-.9.3-1.4L7.4 2.5A1.2 1.2 0 0 0 6 1.8L2.9 2.6c-.5.1-.9.6-.9 1.1C2 13.7 10.3 22 20.3 22c.5 0 1-.4 1.1-.9l.8-3.1a1.2 1.2 0 0 0-.7-1.4z"/></svg>Call Now</a>
+</div>
+
+</div><!-- /.sac-page -->
+
+<script>
+(function () {
+  'use strict';
+  var page = document.querySelector('.sac-page');
+  if (!page) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var dh = page.querySelector('.sac-desktop-header');
+  window.addEventListener('scroll', function () {
+    if (dh) dh.classList.toggle('is-stuck', window.pageYOffset >= 1);
+  }, { passive: true });
+
+  var burger = page.querySelector('.sac-hamburger');
+  var mnav = page.querySelector('.sac-mobile-nav');
+  if (burger && mnav) {
+    burger.addEventListener('click', function () {
+      var open = burger.classList.toggle('is-active');
+      mnav.classList.toggle('menu-active', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    mnav.querySelectorAll('.sac-submenu-toggle').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var li = b.parentElement;
+        var open = li.classList.toggle('sac-open');
+        b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+  }
+
+  var slider = page.querySelector('.sac-testi-slider');
+  if (slider) {
+    var track = slider.querySelector('.sac-testi-track');
+    var slides = track ? Array.prototype.slice.call(track.children) : [];
+    if (slides.length > 1) {
+      var i = 0, dots = document.createElement('ul');
+      dots.className = 'sac-slider-dots';
+      slides.forEach(function (_, n) {
+        var li = document.createElement('li'), btn = document.createElement('button');
+        btn.type = 'button'; btn.textContent = 'Slide ' + (n + 1);
+        btn.addEventListener('click', function () { go(n); play(); });
+        li.appendChild(btn); dots.appendChild(li);
+      });
+      slider.parentElement.insertBefore(dots, slider.nextSibling);
+      var timer = null;
+      function go(n) {
+        i = (n + slides.length) % slides.length;
+        track.style.transform = 'translateX(-' + (i * 100) + '%)';
+        Array.prototype.forEach.call(dots.children, function (li, k) { li.classList.toggle('is-active', k === i); });
+      }
+      function play() { if (reduce) return; stop(); timer = setInterval(function () { go(i + 1); }, 4000); }
+      function stop() { if (timer) { clearInterval(timer); timer = null; } }
+      slider.addEventListener('mouseenter', stop);
+      slider.addEventListener('mouseleave', play);
+      go(0); play();
+    }
+  }
+})();
+</script>
+</body>
+</html>
