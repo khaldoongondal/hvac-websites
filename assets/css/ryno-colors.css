@@ -1,0 +1,556 @@
+:root {
+    /* Typography Variables */
+    --font-heading: 'Roboto Condensed', sans-serif;
+    --font-body: 'Roboto', Arial, sans-serif;
+    --body-font-size-mobile: 16px;
+    --body-font-size-desktop: 18px;
+    --body-font-weight: 400;
+    --body-line-height-mobile: 1.6875;
+    --body-line-height-desktop: 1.66666666667;
+
+    /* Home Page Specific Typography Styles */
+    --home-h1-font-weight: 700;
+    --home-h1-text-transform: capitalize;
+    --home-h1-mobile-font-size: 30px;
+    --home-h1-mobile-line-height: 1.2;
+    --home-h1-mobile-margin-bottom: 30px;
+    --home-h1-desktop-font-size: 48px;
+    --home-h1-desktop-line-height: 1.1875;
+    --home-h1-desktop-margin-bottom: 30px;
+    --home-h2-font-weight: 700;
+    --home-h2-text-transform: capitalize;
+    --home-h2-mobile-font-size: 26px;
+    --home-h2-mobile-line-height: 1.19230769231;
+    --home-h2-mobile-margin-bottom: 30px;
+    --home-h2-desktop-font-size: 42px;
+    --home-h2-desktop-line-height: 1.19047619048;
+    --home-h2-desktop-margin-bottom: 30px;
+    --home-h3-font-weight: 700;
+    --home-h3-text-transform: capitalize;
+    --home-h3-mobile-font-size: 22px;
+    --home-h3-mobile-line-height: 1.18181818182;
+    --home-h3-mobile-margin-bottom: 30px;
+    --home-h3-desktop-font-size: 36px;
+    --home-h3-desktop-line-height: 1.19444444444;
+    --home-h3-desktop-margin-bottom: 30px;
+    --home-h4-font-weight: 700;
+    --home-h4-text-transform: none;
+    --home-h4-mobile-font-size: 28px;
+    --home-h4-mobile-line-height: 1.2;
+    --home-h4-mobile-margin-bottom: 15px;
+    --home-h4-desktop-font-size: 36px;
+    --home-h4-desktop-line-height: 1.2;
+    --home-h4-desktop-margin-bottom: 25px;
+    --home-h5-font-weight: 700;
+    --home-h5-text-transform: none;
+    --home-h5-mobile-font-size: 24px;
+    --home-h5-mobile-line-height: 1.2;
+    --home-h5-mobile-margin-bottom: 15px;
+    --home-h5-desktop-font-size: 32px;
+    --home-h5-desktop-line-height: 1.2;
+    --home-h5-desktop-margin-bottom: 25px;
+    --home-h6-font-weight: 700;
+    --home-h6-text-transform: none;
+    --home-h6-mobile-font-size: 20px;
+    --home-h6-mobile-line-height: 1.2;
+    --home-h6-mobile-margin-bottom: 15px;
+    --home-h6-desktop-font-size: 28px;
+    --home-h6-desktop-line-height: 1.2;
+    --home-h6-desktop-margin-bottom: 25px;
+    --home-page-text-font-weight: 400;
+    --home-page-text-text-transform: none;
+    --home-page-text-mobile-font-size: 16px;
+    --home-page-text-mobile-line-height: 1.5;
+    --home-page-text-mobile-margin-bottom: 20px;
+    --home-page-text-desktop-font-size: 18px;
+    --home-page-text-desktop-line-height: 1.5;
+    --home-page-text-desktop-margin-bottom: 20px;
+
+    /* Internal Page Typography Styles */
+    --heading-font-weight: 700;
+    --heading-text-transform: capitalize;
+    --h1-font-size-mobile-xs: 30px;
+    --h1-font-size-mobile-sm: 36px;
+    --h1-font-size-desktop: 48px;
+    --h1-line-height-mobile: 1.11111111111;
+    --h1-line-height-desktop: 1.08333333333;
+    --h2-font-size-mobile: 26px;
+    --h2-font-size-desktop: 42px;
+    --h2-line-height-mobile: 1.38461538462;
+    --h2-line-height-desktop: 1.2380952381;
+    --h3-font-size-mobile: 22px;
+    --h3-font-size-desktop: 34px;
+    --h3-line-height-mobile: 1.27272727273;
+    --h3-line-height-desktop: 1.23529411765;
+    --h4-font-size-mobile: 20px;
+    --h4-font-size-desktop: 30px;
+    --h4-line-height-mobile: 1.5;
+    --h4-line-height-desktop: 1.16666666667;
+    --h5-font-size-mobile: 18px;
+    --h5-font-size-desktop: 24px;
+    --h5-line-height-mobile: 1.61111111111;
+    --h5-line-height-desktop: 1.29166666667;
+    --h6-font-size-mobile: 16px;
+    --h6-font-size-desktop: 20px;
+    --h6-line-height-mobile: 1.75;
+    --h6-line-height-desktop: 1.4;
+    --coupon-heading-font-size-mobile: 24px;
+    --coupon-heading-font-size-desktop: 46px;
+
+    /* Mobile Header */
+    --mobile-header-height: 100px;
+    --mobile-header-logo-max-height: 70px;
+    --hamburger-color: #193c71;
+
+    /* Navbar */
+    --nav-link-font-size: 16px;
+    --nav-link-font-family: var(--font-body);
+    --nav-link-font-weight: 500;
+    --nav-link-text-transform: uppercase;
+    --nav-dropdown-icon-desktop: "\e918";
+    --nav-mobile-nav-link-border-color: #d8d8d8;
+    --mobile-nav-dropdown-icon-color: #000000;
+    --mobile-nav-dropdown-icon-background: #d8d8d8;
+    --nav-background: rgb(248,242,231);
+    --nav-background-mobile: #ffffff;
+    --nav-link-hover-text: rgb(25,60,113);
+    --mobile-nav-link-color: rgb(0,0,0);
+    --nav-dropdown-text: rgb(255,255,255);
+    --nav-dropdown-background: rgb(25,60,113);
+    --nav-dropdown-hover-text: rgb(0,0,0);
+    --nav-dropdown-hover-background: rgb(207,235,255);
+    --mobile-subnav-background: ;
+    --mobile-subnav-text: ;
+    --active-parent-background: ;
+    --active-parent-text: ;
+    --nav-link: rgb(0,0,0);
+
+    /* Footer Forms (postscript-contact) */
+    --footer-form-text-color: #353535;
+    --footer-form-background-color: #FFFFFF;
+    --footer-form-text-size-mobile: 14px;
+    --footer-form-text-size-desktop: 14px;
+    --footer-form-field-height: 50px;
+    --footer-form-message-field-height: 50px;
+    --footer-form-fields-border-radius: 8px;
+    --footer-form-field-margin: 16px;
+    --footer-form-button-margin: 40px;
+    --footer-form-arrow-color: #353535;
+    --footer-form-arrow-width: 12px;
+    --footer-form-arrow-height: 8px;
+    --footer-form-arrow-right-distance: 20px;
+    --footer-form-field-border: rgb(137,137,137) 1px solid;
+
+    /* Conversion Page Settings */
+    --charge-h1-font-size-mobile: 32px;
+    --charge-h1-font-size-tablet: 42px;
+    --charge-h1-font-size-desktop: 48px;
+    --sidebar-form-form-border-radius: 0px;
+    --sidebar-form-heading-font-size: 36px;
+    --sidebar-form-bottom-padding: 55px;
+    --sidebar-form-button-offset: -20px;
+    --conversion-header-h1-color: rgb(0,0,0);
+    --conversion-header-divider-background-color: rgba(255,255,255,0);
+    --conversion-coupon-background: #03c3e6;
+    --conversion-coupon-contents-color: #ffffff;
+    --conversion-contents-default-color: rgb(0,0,0);
+    --conversion-links-color: rgb(25,60,113);
+    --conversion-links-hover-color: rgb(55,93,151);
+    --conversion-content-one-padding-top-mobile: 30px;
+    --conversion-content-one-padding-bottom-mobile: 30px;
+    --conversion-content-one-padding-top-desktop: 60px;
+    --conversion-content-one-padding-bottom-desktop: 40px;
+    --conversion-content-one-heading-color: rgb(0,0,0);
+    --conversion-content-one-text-color: rgb(0,0,0);
+    --conversion-content-one-link-color: rgb(25,60,113);
+    --conversion-content-one-link-hover-color: rgb(55,93,151);
+    --conversion-content-two-padding-top-mobile: 30px;
+    --conversion-content-two-padding-bottom-mobile: 30px;
+    --conversion-content-two-padding-top-desktop: 40px;
+    --conversion-content-two-padding-bottom-desktop: 40px;
+    --conversion-content-two-heading-color: rgb(0,0,0);
+    --conversion-content-two-text-color: rgb(0,0,0);
+    --conversion-content-two-link-color: rgb(25,60,113);
+    --conversion-content-two-link-hover-color: rgb(55,93,151);
+    --conversion-content-three-padding-top-mobile: 30px;
+    --conversion-content-three-padding-bottom-mobile: 30px;
+    --conversion-content-three-padding-top-desktop: 60px;
+    --conversion-content-three-padding-bottom-desktop: 60px;
+    --conversion-content-three-heading-color: rgb(0,0,0);
+    --conversion-content-three-text-color: rgb(0,0,0);
+    --conversion-content-three-link-color: rgb(25,60,113);
+    --conversion-content-three-link-hover-color: rgb(55,93,151);
+    --conversion-content-four-padding-top-mobile: 30px;
+    --conversion-content-four-padding-bottom-mobile: 30px;
+    --conversion-content-four-padding-top-desktop: 60px;
+    --conversion-content-four-padding-bottom-desktop: 60px;
+    --conversion-content-four-heading-color: rgb(0,0,0);
+    --conversion-content-four-text-color: rgb(0,0,0);
+    --conversion-content-four-link-color: rgb(22,52,98);
+    --conversion-content-four-link-hover-color: rgb(0,0,0);
+    --conversion-content-five-padding-top-mobile: 30px;
+    --conversion-content-five-padding-bottom-mobile: 30px;
+    --conversion-content-five-padding-top-desktop: 60px;
+    --conversion-content-five-padding-bottom-desktop: 40px;
+    --conversion-content-five-heading-color: rgb(0,0,0);
+    --conversion-content-five-text-color: rgb(0,0,0);
+    --conversion-content-five-link-color: rgb(25,60,113);
+    --conversion-content-five-link-hover-color: rgb(55,93,151);
+    --other-services-box-1-background: rgb(25,60,113);
+    --other-services-box-1-color: rgb(255,255,255);
+    --other-services-box-2-background: rgb(120,167,201);
+    --other-services-box-2-color: rgb(0,0,0);
+    --other-services-box-3-background: rgb(248,242,231);
+    --other-services-box-3-color: rgb(0,0,0);
+
+    /* Page Element Options */
+    --panel-background: rgb(25,60,113);
+    --panel-border-color: rgb(120,167,201);
+    --panel-color: rgb(255,255,255);
+    --shadowbox-background: rgb(255,255,255);
+    --shadowbox-box-shadow: #c4c4c4;
+    --shadowbox-box-shadow-hover: rgb(25,60,113);
+    --shadowbox-color: rgb(0,0,0);
+    --text-shadowbox-background: rgb(25,60,113);
+    --text-shadowbox-box-shadow-color: rgb(0,0,0);
+    --text-shadowbox-text-color: rgb(255,255,255);
+    --text-shadowbox-heading-color: rgb(255,255,255);
+    --text-shadowbox-link-color: rgb(207,235,255);
+    --text-shadowbox-link-hover-background: rgb(207,235,255);
+    --text-shadowbox-link-hover-color: rgb(0,0,0);
+    --text-shadowbox-light-background-color: rgb(248,242,231);
+    --text-shadowbox-light-box-shadow-color: rgb(120,167,201);
+    --text-shadowbox-light-text-color: rgb(0,0,0);
+    --text-shadowbox-light-heading-color: rgb(0,0,0);
+    --text-shadowbox-light-link-color: rgb(25,60,113);
+    --text-shadowbox-light-link-background-color: rgb(25,60,113);
+    --text-shadowbox-light-link-hover-color: rgb(255,255,255);
+    --gradient-box-background: linear-gradient(to bottom, rgb(25,60,113), rgb(120,167,201));
+    --gradient-box-border-radius: 10px;
+    --gradient-box-text-color: rgb(255,255,255);
+    --gradient-box-heading-color: rgb(255,255,255);
+    --gradient-box-link-color: rgb(207,235,255);
+    --gradient-box-link-background-color: rgb(207,235,255);
+    --gradient-box-link-hover-color: rgb(0,0,0);
+    --gradient-box-light-background: linear-gradient(to bottom, rgb(248,242,231), rgb(207,235,255));
+    --gradient-box-light-border-radius: 10px;
+    --gradient-box-light-text-color: rgb(0,0,0);
+    --gradient-box-light-heading-color: rgb(0,0,0);
+    --gradient-box-light-link-color: rgb(25,60,113);
+    --gradient-box-light-link-background-color: rgb(25,60,113);
+    --gradient-box-light-link-hover-color: rgb(255,255,255);
+    --photo-box-background-image: url(images/truck.png);
+    --photo-box-background-position: center;
+    --photo-box-background-repeat: no-repeat;
+    --photo-box-background-size: cover;
+    --photo-box-border-radius: 10px;
+    --photo-box-text-color: rgb(255,255,255);
+    --photo-box-heading-color: rgb(255,255,255);
+    --photo-box-link-color: rgb(207,235,255);
+    --photo-box-link-background-color: rgb(207,235,255);
+    --photo-box-link-hover-color: rgb(0,0,0);
+    --color-strip-box-background-color: rgb(248,242,231);
+    --color-strip-box-border-radius: 0px;
+    --color-strip-box-border-top: #e02e2e;
+    --color-strip-box-text-color: rgb(0,0,0);
+    --color-strip-box-heading-color: rgb(0,0,0);
+    --color-strip-box-link-color: rgb(25,60,113);
+    --color-strip-box-link-background-color: rgb(25,60,113);
+    --color-strip-box-link-hover-color: rgb(255,255,255);
+    --border-box-background-color: rgb(248,242,231);
+    --border-box-border-radius: 0px;
+    --border-box-border: #193c71;
+    --border-box-text-color: rgb(0,0,0);
+    --border-box-heading-color: rgb(0,0,0);
+    --border-box-link-color: rgb(25,60,113);
+    --border-box-link-background-color: rgb(25,60,113);
+    --border-box-link-hover-color: rgb(255,255,255);
+    --text-highlight-border-bottom: 2px solid rgb(120,167,201);
+    --text-highlight-border-top: 2px solid rgb(120,167,201);
+    --text-highlight-color: rgb(25,60,113);
+    --blockquote-background: rgb(248,242,231);
+    --blockquote-border-color: rgb(224,46,46);
+    --blockquote-text-color: rgb(0,0,0);
+
+    /* Slick Carousel Option */
+    --slick-dot-color: rgb(137,137,137);
+    --slick-dot-color-active: rgb(0,0,0);
+    --slick-dot-border-color: rgb(0,0,0);
+    --slick-dot-size-desktop: 10px;
+    --slick-dot-size-mobile: 10px;
+    --slick-dot-border-size: 0px;
+    --slick-dot-horizontal-spacing-mobile: 10px;
+    --slick-dot-horizontal-spacing-desktop: 10px;
+    --slick-dot-vertical-spacing-mobile: 20px;
+    --slick-dot-vertical-spacing-desktop: 30px;
+
+    /* Footer Variables */
+    --footer-background: transparent;
+    --footer-heading: unset;
+    --footer-text: unset;
+    --footer-links: unset;
+    --footer-links-hover: unset;
+
+    /* Header and Other New Variables */
+    --header-background: rgb(255,255,255);
+    --mobile-header-background: rgb(255,255,255);
+    --mobile-header-drop-shadow-height: 20px;
+    --mobile-header-drop-shadow-color: rgba(0, 0, 0, 0.7);
+    --header-drop-shadow-height: 20px;
+    --header-drop-shadow-color: rgba(0, 0, 0, 0.7);
+
+    /* Coupon Variables */
+    --coupon-background-color: rgba(234, 234, 234, 1);
+    --coupon-background-image: none;
+    --coupon-background-position: center;
+    --coupon-background-repeat: no-repeat;
+    --coupon-background-size: cover;
+    --coupon-heading-color: rgb(255,255,255);
+    --coupon-text-color: rgb(255,255,255);
+    --coupon-disclaimer-color: rgb(255,255,255);
+    --coupon-layout-1-button-background-color: rgb(248,242,231);
+    --coupon-layout-1-button-text-color: rgb(0,0,0);
+    --coupon-layout-1-button-background-hover-color: rgb(120,167,201);
+    --coupon-layout-1-button-text-hover-color: rgb(0,0,0);
+    --coupon-layout-1-phone-color: rgb(149,205,246);
+    --coupon-layout-1-expiration-color: rgb(149,205,246);
+    --coupon-layout-2-button-icon-color: rgb(0,0,0);
+    --coupon-layout-2-button-background-color: rgb(248,242,231);
+    --coupon-layout-2-button-background-hover-color: ;
+    --coupon-layout-2-phone-color: rgb(149,205,246);
+    --coupon-layout-2-expiration-color: rgb(149,205,246);
+    --coupon-layout-3-button-background-color: rgb(248,242,231);
+    --coupon-layout-3-button-text-color: rgb(0,0,0);
+    --coupon-layout-3-button-background-hover-color: rgb(120,167,201);
+    --coupon-layout-3-button-text-hover-color: rgb(0,0,0);
+    --coupon-layout-3-phone-color: rgb(149,205,246);
+    --coupon-layout-3-expiration-color: rgb(149,205,246);
+
+    /* Accordion Variables */
+    --accordion-heading: rgb(0,0,0);
+    --accordion-heading-hover: rgb(25,60,113);
+    --accordion-icon-color: rgb(25,60,113);
+    --accordion-icon-color-hover: rgb(169,29,29);
+    --accordion-heading-background: rgb(248,242,231);
+    --accordion-heading-background-hover: rgb(221,221,221);
+    --accordion-border: rgb(196,187,182);
+    --accordion-body-background: rgb(255,255,255);
+    --accordion-body-text: rgb(0,0,0);
+    --accordion-link: rgb(25,60,113);
+    --accordion-link-hover: rgb(55,93,151);
+    --sidebar-form-background: rgb(25,60,113);
+    --sidebar-form-heading: rgb(255,255,255);
+
+    /* Blog & Pagination Variables */
+    --blog-theme-1-heading: rgb(0,0,0);
+    --blog-theme-1-date-box-background: rgb(25,60,113);
+    --blog-theme-1-date-box-text: rgb(255,255,255);
+    --blog-theme-2-heading: rgb(0,0,0);
+    --blog-theme-2-heading-hover: rgb(25,60,113);
+    --blog-theme-2-heading-divider-line: rgb(169,29,29);
+    --pagination-link-text-color: rgb(25,60,113);
+    --pagination-link-text-hover-color: rgb(55,93,151);
+    --pagination-active-link-background: ;
+    --pagination-active-link-text-color: rgb(169,29,29);
+    --single-blog-post-h1-font-size-mobile: 30px;
+    --single-blog-post-h1-font-size-desktop: 40px;
+    --bullets-font-awesome-icon: url('images/list-icon.svg');
+    --bullets-font-awesome-icon-width: 20px;
+    --bullets-font-awesome-icon-height: 20px;
+    --bullets-color: transparent;
+    --bullets-mask-mode: background;
+    --bullets-use-mask: false;
+    --bullets-background: url('images/list-icon.svg');
+    --bullet-positioning: 6px;
+    --primary-links: rgb(25,60,113);
+    --primary-links-hover: rgb(55,93,151);
+    --secondary-links: rgb(224,46,46);
+    --secondary-links-hover: rgb(169,29,29);
+
+    /* Selection and Mark Variables */
+    --selection-background: rgb(55,93,151);
+    --selection-color: rgb(255,255,255);
+    --mark-background: rgb(55,93,151);
+    --mark-color: rgb(255,255,255);
+
+    /* Body and Typography Variables */
+    --body-background: rgb(255,255,255);
+    --body-text: #000000;
+    --page-title-h1: rgb(255,255,255);
+
+    /* Content Area Heading Colors */
+    --internal-page-h2-color: rgb(0,0,0);
+    --internal-page-h3-color: rgb(0,0,0);
+    --internal-page-h4-color: rgb(25,60,113);
+    --internal-page-h5-color: rgb(0,0,0);
+    --internal-page-h6-color: rgb(0,0,0);
+
+    /* Form Variables */
+    --placeholder-text: rgb(0,0,0);
+
+    /* Contact Page Variables */
+    --contact-page-sidebar-heading-font-size: 32px;
+    --contact-page-sidebar-phone-color: rgb(207,235,255);
+    --contact-page-sidebar-phone-font-size: 24px;
+
+    /* Mobile Promo Banner Variables */
+    --mobile-promo-banner-background: rgb(25,60,113);
+    --mobile-promo-banner-text: rgb(255,255,255);
+    --mobile-promo-banner-heading-font-size: 14px;
+    --mobile-promo-banner-heading-font-weight: 700;
+    --mobile-promo-banner-description-font-size: 12px;
+    --mobile-promo-banner-description-font-weight: 400;
+    --mobile-promo-banner-button-background: rgb(224,46,46);
+    --mobile-promo-banner-button-text: rgb(255,255,255);
+    --mobile-promo-banner-button-font-size: 14px;
+    --mobile-promo-banner-button-font-weight: 700;
+    --mobile-promo-banner-button-text-transform: uppercase;
+
+    /* Mobile Header Variables */
+    --mobile-header-icon-font-size-small: 32px;
+    --mobile-header-icon-font-size-large: 50px;
+    --mobile-header-phone-icon-color: ;
+    --mobile-header-dollar-icon-color: ;
+    --mobile-nav-buttons-section-background: #ffffff;
+
+    /* Footer Form Variables */
+    --contact-form-section-background-color: ;
+    --footer-contact-form-text: #ffffff;
+    --footer-contact-form-heading: #ffffff;
+
+    /* Footer Variables */
+    --copyright-section-background: #ffffff;
+    --copyright-section-text: #000000;
+
+    /* Service Areas Variables */
+    --service-areas-icon-color: rgb(25,60,113);
+    --service-areas-heading-color: rgb(0,0,0);
+    --service-areas-text-color: rgb(0,0,0);
+    --service-areas-link-color: rgb(25,60,113);
+    --service-areas-link-hover-color: rgb(55,93,151);
+
+    /* Mobile Header Button Variables */
+    --mobile-header-button-font-family: var(--font-body);
+    --mobile-header-button-font-size: 14px;
+    --mobile-header-button-font-weight: 700;
+    --mobile-header-button-text-transform: uppercase;
+    --mobile-header-button-1-text-color: #ffffff;
+    --mobile-header-button-2-text-color: #ffffff;
+
+    /* Form Dropdown Variables */
+    --form-dropdown-container-background: rgb(255,255,255);
+    --form-dropdown-item-text: rgb(0,0,0);
+    --form-dropdown-item-font-size: 16px;
+    --form-dropdown-selected-item-background: rgb(207,235,255);
+    --form-dropdown-selected-item-text: rgb(0,0,0);
+    --form-dropdown-item-hover-background: rgb(25,60,113);
+    --form-dropdown-item-hover-text: rgb(255,255,255);
+
+    /* Contact Form Section Background Variables */
+    --contact-form-section-background-mobile: linear-gradient(rgba(25,60,113,.92),rgba(25,60,113,.92));
+    --contact-form-section-background-mobile-position: center;
+    --contact-form-section-background-mobile-repeat: no-repeat;
+    --contact-form-section-background-mobile-size: cover;
+    --contact-form-section-background-tablet: linear-gradient(rgba(25,60,113,.92),rgba(25,60,113,.92));
+    --contact-form-section-background-tablet-position: center;
+    --contact-form-section-background-tablet-repeat: no-repeat;
+    --contact-form-section-background-tablet-size: cover;
+    --contact-form-section-background-desktop: linear-gradient(rgba(25,60,113,.92),rgba(25,60,113,.92));
+    --contact-form-section-background-desktop-position: center;
+    --contact-form-section-background-desktop-repeat: no-repeat;
+    --contact-form-section-background-desktop-size: cover;
+
+    /* Meet the Team Variables */
+    --mtt-column-count: 3;
+    --mtt-shadowbox-box-shadow-color: rgba(0, 0, 0, 0.16);
+    --mtt-shadowbox-background: rgb(255,255,255);
+    --mtt-shadowbox-border-radius: 16;
+    --mtt-shadowbox-border-color: rgb(206,206,206);
+    --mtt-line-color: rgb(25,60,113);
+    --mtt-maximum-lines-of-text-when-collapsed: 5;
+    --mtt-arrow-color: rgb(169,29,29);
+    --mtt-arrow-text-collapsed: "SEE MORE";
+    --mtt-arrow-text-expanded: "SEE LESS";
+    --mtt-arrow-text-color: #4B4B4B;
+    --mtt-arrow-text-font-weight: 700;
+    --mtt-arrow-text-font-size: 14px;
+    --mtt-image-border-radius: ;
+    --mtt-placeholder-color: #000000;
+    --mtt-placeholder-background: #EBEBEB;
+    --mtt-name-color: rgb(0,0,0);
+    --mtt-name-font-weight: 700;
+    --mtt-name-font-size-0px-575px: 20px;
+    --mtt-name-font-size-576px: 24px;
+    --mtt-job-title-color: rgb(25,60,113);
+    --mtt-job-title-font-weight: 500;
+    --mtt-job-title-font-size-0px-575px: 14px;
+    --mtt-job-title-font-size-576px: 18px;
+    --mtt-bio-color: rgb(0,0,0);
+    --mtt-bio-font-weight: 400;
+    --mtt-bio-font-size-0px-575px: 14px;
+    --mtt-bio-font-size-576px: 16px;
+
+    /* Author Box Variables */
+    --meet-the-author-font-size: 22px;
+    --author-name-font-size: 20px;
+    --author-title-font-size: 18px;
+    --author-description-font-size: 16px;
+    --nav-tab-font-size: 16px;
+    --nav-tab-text-color: rgb(25,60,113);
+    --post-heading-font-size: 18px;
+    --post-excerpt-font-size: 16px;
+    --post-link-font-size: 16px;
+
+    /* Testimonial Variables */
+    --testimonial-stars-color: rgb(242,171,39);
+
+    /* Button Variables */
+    --button-font-family: var(--font-body);
+    --button-font-size: 18px;
+    --button-font-weight: 700;
+    --button-text-transform: uppercase;
+    --button-border-width: 0px;
+    --button-border-radius: 5px;
+    --button-transition-duration: 0.3s;
+    --button-padding: 13px 25px 13px 25px;
+    --btn-primary-button-background: rgb(224,46,46);
+    --btn-primary-text-color: rgb(255,255,255);
+    --btn-primary-before-background: rgb(25,60,113);
+    --btn-primary-show-before: block;
+    --btn-primary-show-after: none;
+    --btn-primary-hover-button-background: rgb(224,46,46);
+    --btn-primary-hover-text-color: rgb(255,255,255);
+    --btn-primary-hover-before-background: rgb(25,60,113);
+    --btn-primary-hover-show-before: block;
+    --btn-primary-hover-show-after: none;
+    --btn-secondary-button-background: rgb(25,60,113);
+    --btn-secondary-text-color: rgb(255,255,255);
+    --btn-secondary-before-background: rgb(224,46,46);
+    --btn-secondary-show-before: block;
+    --btn-secondary-show-after: none;
+    --btn-secondary-hover-button-background: rgb(25,60,113);
+    --btn-secondary-hover-text-color: rgb(255,255,255);
+    --btn-secondary-hover-before-background: rgb(224,46,46);
+    --btn-secondary-hover-show-before: block;
+    --btn-secondary-hover-show-after: none;
+    --btn-tertiary-button-background: rgb(248,242,231);
+    --btn-tertiary-text-color: rgb(0,0,0);
+    --btn-tertiary-before-background: rgb(120,167,201);
+    --btn-tertiary-show-before: block;
+    --btn-tertiary-show-after: none;
+    --btn-tertiary-hover-button-background: rgb(248,242,231);
+    --btn-tertiary-hover-text-color: rgb(0,0,0);
+    --btn-tertiary-hover-before-background: rgb(120,167,201);
+    --btn-tertiary-hover-show-before: block;
+    --btn-tertiary-hover-show-after: none;
+    --btn-quaternary-show-before: none;
+    --btn-quaternary-show-after: none;
+    --btn-quaternary-hover-show-before: none;
+    --btn-quaternary-hover-show-after: none;
+
+    /* Internal header */
+    --internal-header-background-color: rgb(255,255,255);
+    --internal-header-background-position: center;
+    --internal-header-background-repeat: no-repeat;
+    --internal-header-background-size: cover;
+}
