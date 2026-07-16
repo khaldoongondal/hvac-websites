@@ -7,11 +7,21 @@ export default function SiteFooter({ d, lead }) {
   const services = getServices(lead).slice(0, 8)
   const locations = strongLocations(lead)
   const extra = extraAreas(lead)
+  const companyLinks = [
+    { href: base,               label: 'Home'      },
+    { href: `${base}/about`,     label: 'About'     },
+    { href: `${base}/financing`, label: 'Financing' },
+    { href: `${base}/specials`,  label: 'Specials'  },
+    { href: `${base}/reviews`,   label: 'Reviews'   },
+    { href: `${base}/gallery`,   label: 'Gallery'   },
+    { href: `${base}/blog`,      label: 'Blog'      },
+    { href: `${base}/contact`,   label: 'Contact'   },
+  ]
 
   return (
     <footer className="bg-deep-green text-white py-20 pb-28 lg:pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10 mb-12">
           <div>
             <h3 className="text-2xl font-black tracking-tighter mb-6">{d.businessName}</h3>
             <p className="text-white/60 leading-relaxed">
@@ -33,6 +43,15 @@ export default function SiteFooter({ d, lead }) {
             <ul className="space-y-3 text-white/60">
               {locations.map(({ name, slug }) => (
                 <li key={slug}><a href={`${base}/areas/${slug}`} className="hover:text-primary transition-colors">{name}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-black text-lg mb-6">Company</h4>
+            <ul className="space-y-3 text-white/60">
+              {companyLinks.map(({ href, label }) => (
+                <li key={label}><a href={href} className="hover:text-primary transition-colors">{label}</a></li>
               ))}
             </ul>
           </div>

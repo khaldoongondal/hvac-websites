@@ -148,7 +148,8 @@ export default function SiteNav({ d, lead }) {
             {areaItems.length > 0 && (
               <NavDropdown label="Service Areas" items={areaItems} openKey="areas" openState={openDrop} setOpen={setOpenDrop} />
             )}
-            <a href={`${base}#about`} className="text-sm font-bold uppercase tracking-wide text-slate-700 hover:text-primary transition-colors">About</a>
+            <a href={`${base}/about`} className="text-sm font-bold uppercase tracking-wide text-slate-700 hover:text-primary transition-colors">About</a>
+            <a href={`${base}/specials`} className="text-sm font-bold uppercase tracking-wide text-slate-700 hover:text-primary transition-colors">Specials</a>
             <a href={`${base}/contact`} className="text-sm font-bold uppercase tracking-wide text-slate-700 hover:text-primary transition-colors">Contact</a>
           </div>
         </div>
@@ -174,7 +175,8 @@ export default function SiteNav({ d, lead }) {
               {areaItems.length > 0 && (
                 <MobileAccordion label="Service Areas" items={areaItems} open={acc === 'areas'} onToggle={() => setAcc(acc === 'areas' ? null : 'areas')} />
               )}
-              <a href={`${base}#about`} className="py-3 font-bold text-slate-800 border-b border-slate-100">About</a>
+              <a href={`${base}/about`} className="py-3 font-bold text-slate-800 border-b border-slate-100">About</a>
+              <a href={`${base}/specials`} className="py-3 font-bold text-slate-800 border-b border-slate-100">Specials</a>
               <a href={`${base}/contact`} className="py-3 font-bold text-slate-800 border-b border-slate-100">Contact</a>
             </nav>
             <div className="mt-6 space-y-3">

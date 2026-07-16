@@ -1,6 +1,7 @@
+import { useState } from 'react'
 import { deriveLead, findLocation, getServices, strongLocations } from '../../../lib/lead'
 import { getLeadProps } from '../../../lib/getLead'
-import { areaSections } from '../../../lib/pagesContent'
+import { areaSections, areaFaqs } from '../../../lib/pagesContent'
 import { FALLBACK_HERO } from '../../../lib/hvacContent'
 import { SITE_ORIGIN } from '../../../lib/site'
 import Layout from '../../../components/site/Layout'
@@ -8,14 +9,16 @@ import PageHero from '../../../components/site/PageHero'
 import PageBottom from '../../../components/site/PageBottom'
 
 export default function AreaPage({ lead, areaName }) {
+  const [openFaq, setOpenFaq] = useState(0)
   const d = deriveLead(lead)
   const base = `/${d.slug}`
   const sections = areaSections(areaName, d.businessName, d.city)
+  const faqs = areaFaqs(areaName, d.city)
   const services = getServices(lead)
   const others = strongLocations(lead).filter(l => l.name !== areaName)
   const canonical = `${SITE_ORIGIN}${base}/areas/${lead.areaSlug}`
 
-  const jsonLd = {
+  const serviceLd = {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: `HVAC Services in ${areaName}`,
@@ -23,13 +26,20 @@ export default function AreaPage({ lead, areaName }) {
     areaServed: areaName,
     url: canonical,
   }
+  const faqLd = {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  }
 
   return (
     <Layout lead={lead}
-      title={`HVAC Services in ${areaName}`}
+      title={`HVAC Services in ${areaName} | ${d.businessName}`}
       description={`${d.businessName} — trusted HVAC repair, installation & maintenance in ${areaName}. Licensed, insured, same-day service. Call ${d.phone}.`}
       canonical={canonical}
-      head={<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />}>
+      head={<>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      </>}>
 
       <PageHero d={d} title={`${areaName} HVAC Services`} subtitle={`Dependable heating & cooling for ${areaName} homeowners.`} image={FALLBACK_HERO} />
 
@@ -79,6 +89,28 @@ export default function AreaPage({ lead, areaName }) {
           </div>
         </section>
       )}
+
+      {/* Location FAQs (visible → schema valid) */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl md:text-3xl font-black mb-8 text-center">{areaName} HVAC FAQs</h2>
+          <div className="space-y-4">
+            {faqs.map((f, i) => {
+              const isOpen = openFaq === i
+              return (
+                <div key={f.q} className="border border-slate-200 rounded-xl overflow-hidden bg-white">
+                  <button onClick={() => setOpenFaq(isOpen ? -1 : i)} aria-expanded={isOpen}
+                    className="w-full flex items-center justify-between gap-4 p-5 text-left font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                    {f.q}
+                    <span className={`material-symbols-outlined text-primary transition-transform ${isOpen ? 'rotate-180' : ''}`} aria-hidden="true">expand_more</span>
+                  </button>
+                  {isOpen && <p className="px-5 pb-5 -mt-1 text-slate-600 leading-relaxed">{f.a}</p>}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
 
       <PageBottom d={d} lead={lead} />
     </Layout>
