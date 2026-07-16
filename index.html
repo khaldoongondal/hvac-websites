@@ -244,12 +244,13 @@ a{color:inherit;}
 .sac-serving{position:relative;background:#dfe9f2;overflow:hidden;padding:80px 0;}
 .sac-serving__map{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:0;pointer-events:none;}
 .sac-serving .sac-container{position:relative;z-index:1;width:100%;}
-.sac-serving__pin{position:absolute;left:50%;top:46%;transform:translate(-50%,-100%);z-index:2;pointer-events:none;display:flex;align-items:center;justify-content:center;}
+.sac-serving__pin{position:absolute;left:71%;top:54%;transform:translate(-50%,-100%);z-index:2;pointer-events:none;display:flex;align-items:center;justify-content:center;}
 .sac-serving__pin svg{position:relative;z-index:2;filter:drop-shadow(0 3px 6px rgba(0,0,0,.4));animation:sac-pin-bob 1.6s ease-in-out infinite;}
 .sac-serving__pin-pulse{position:absolute;left:50%;bottom:0;transform:translate(-50%,50%);width:26px;height:26px;border-radius:50%;background:rgba(224,46,46,.55);animation:sac-pin-pulse 1.8s ease-out infinite;}
 @keyframes sac-pin-pulse{0%{box-shadow:0 0 0 0 rgba(224,46,46,.55);}100%{box-shadow:0 0 0 26px rgba(224,46,46,0);}}
 @keyframes sac-pin-bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
-.sac-serving__box{background:var(--navy);border-radius:20px;color:#fff;max-width:560px;padding:40px;box-shadow:0 14px 40px rgba(0,0,0,.3);text-align:left;}
+.sac-serving__box{background:var(--navy);border-radius:20px;color:#fff;max-width:520px;padding:40px;margin-left:-24px;box-shadow:0 14px 40px rgba(0,0,0,.3);text-align:left;}
+@media(max-width:640px){.sac-serving__box{margin-left:0;}}
 @media(max-width:900px){.sac-serving__pin{display:none;}}
 .sac-serving__box .sac-sub{color:#a9c4dd;margin-bottom:8px;}
 .sac-serving__box .sac-h2{color:#fff;font-size:clamp(30px,4vw,44px);margin:0 0 16px;line-height:1.05;text-align:left;}
@@ -801,7 +802,7 @@ a{color:inherit;}
 
 <!-- ===== PROUDLY SERVING ===== -->
 <section class="sac-serving">
-  <iframe class="sac-serving__map" title="Service area map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Toronto,+Ontario,+Canada&z=10&t=m&output=embed"></iframe>
+  <iframe class="sac-serving__map" title="Service area map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Toronto,Ontario&ll=43.80,-79.62&z=10&output=embed"></iframe>
   <div class="sac-serving__pin" aria-hidden="true">
     <span class="sac-serving__pin-pulse"></span>
     <svg viewBox="0 0 24 32" width="34" height="46" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12c0 8.4 12 20 12 20s12-11.6 12-20C24 5.4 18.6 0 12 0z" fill="#e02e2e"/><circle cx="12" cy="12" r="5" fill="#fff"/></svg>
