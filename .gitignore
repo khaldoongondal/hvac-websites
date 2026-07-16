@@ -1,5 +1,13 @@
 node_modules/
 .next/
+.env
 .env.local
 .env*.local
 npm-debug.log*
+
+# Secrets / credentials — never commit
+oauth_client.json
+oauth_token.json
+
+# ECC harness (local tooling, not app code)
+.claude/
