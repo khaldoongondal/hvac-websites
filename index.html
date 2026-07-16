@@ -244,7 +244,13 @@ a{color:inherit;}
 .sac-serving{position:relative;background:#dfe9f2;overflow:hidden;padding:80px 0;}
 .sac-serving__map{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:0;pointer-events:none;}
 .sac-serving .sac-container{position:relative;z-index:1;width:100%;}
-.sac-serving__box{background:var(--navy);border-radius:20px;color:#fff;max-width:630px;padding:40px;box-shadow:0 14px 40px rgba(0,0,0,.3);text-align:left;}
+.sac-serving__pin{position:absolute;left:50%;top:46%;transform:translate(-50%,-100%);z-index:2;pointer-events:none;display:flex;align-items:center;justify-content:center;}
+.sac-serving__pin svg{position:relative;z-index:2;filter:drop-shadow(0 3px 6px rgba(0,0,0,.4));animation:sac-pin-bob 1.6s ease-in-out infinite;}
+.sac-serving__pin-pulse{position:absolute;left:50%;bottom:0;transform:translate(-50%,50%);width:26px;height:26px;border-radius:50%;background:rgba(224,46,46,.55);animation:sac-pin-pulse 1.8s ease-out infinite;}
+@keyframes sac-pin-pulse{0%{box-shadow:0 0 0 0 rgba(224,46,46,.55);}100%{box-shadow:0 0 0 26px rgba(224,46,46,0);}}
+@keyframes sac-pin-bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+.sac-serving__box{background:var(--navy);border-radius:20px;color:#fff;max-width:560px;padding:40px;box-shadow:0 14px 40px rgba(0,0,0,.3);text-align:left;}
+@media(max-width:900px){.sac-serving__pin{display:none;}}
 .sac-serving__box .sac-sub{color:#a9c4dd;margin-bottom:8px;}
 .sac-serving__box .sac-h2{color:#fff;font-size:clamp(30px,4vw,44px);margin:0 0 16px;line-height:1.05;text-align:left;}
 .sac-serving__cities{font-family:var(--bd);font-size:18px;line-height:1.9;color:#eef4fb;margin:0 0 20px;}
@@ -355,7 +361,7 @@ a{color:inherit;}
           <span class="sac-phone-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span>
           <span class="sac-phone-num">(437) 238-2460</span>
         </a>
-        <a class="sac-btn sac-btn-schedule" href="#"><svg width="15" height="17" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M14 2.25h-.667V.75c0-.414-.298-.75-.666-.75H12c-.368 0-.667.336-.667.75v1.5H4.667V.75C4.667.336 4.368 0 4 0h-.667c-.368 0-.666.336-.666.75v1.5H2c-1.103 0-2 1.01-2 2.25v11.25C0 16.99.897 18 2 18h12c1.103 0 2-1.01 2-2.25V4.5c0-1.24-.897-2.25-2-2.25m.667 13.5c0 .413-.3.75-.667.75H2c-.367 0-.667-.337-.667-.75V7.53h13.334z"/></svg>Instant Quote</a>
+        <a class="sac-btn sac-btn-schedule js-quote" href="#quote"><svg width="15" height="17" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M14 2.25h-.667V.75c0-.414-.298-.75-.666-.75H12c-.368 0-.667.336-.667.75v1.5H4.667V.75C4.667.336 4.368 0 4 0h-.667c-.368 0-.666.336-.666.75v1.5H2c-1.103 0-2 1.01-2 2.25v11.25C0 16.99.897 18 2 18h12c1.103 0 2-1.01 2-2.25V4.5c0-1.24-.897-2.25-2-2.25m.667 13.5c0 .413-.3.75-.667.75H2c-.367 0-.667-.337-.667-.75V7.53h13.334z"/></svg>Instant Quote</a>
       </div>
     </div>
   </div>
@@ -391,7 +397,7 @@ a{color:inherit;}
   <div class="sac-mobile-bar">
     <a class="sac-logo-img sac-logo-mini-img" href="#" aria-label="Leadder - Home"><img src="images/leadder-logo.png" alt="Leadder"></a>
     <div class="sac-mob-actions">
-      <a class="sac-btn sac-btn-sm" href="#">Get Quote</a>
+      <a class="sac-btn sac-btn-sm js-quote" href="#quote">Get Quote</a>
       <button class="sac-hamburger" id="sacHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="sacDrawer">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
       </button>
@@ -433,7 +439,7 @@ a{color:inherit;}
 
 <!-- ============ FIXED MOBILE BOTTOM BUTTONS ============ -->
 <div class="sac-fixed-bottom">
-  <a class="sac-fb-schedule" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>Instant Quote</a>
+  <a class="sac-fb-schedule js-quote" href="#quote"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>Instant Quote</a>
   <a class="sac-fb-call" href="tel:14372382460"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Call Now</a>
 </div>
 
@@ -509,7 +515,7 @@ a{color:inherit;}
     <div class="sac-intro__grid">
       <div class="sac-intro__text">
         <p class="sac-intro__sub">Local Home Services You Can Depend On</p>
-        <h2 class="sac-intro__title" id="sac-intro-title">Air Conditioning, Heating, Plumbing, Drains &amp; Electrical Services in Austin, TX</h2>
+        <h2 class="sac-intro__title" id="sac-intro-title">Air Conditioning, Heating, Plumbing, Drains &amp; Electrical Services in Toronto, ON</h2>
         <p class="sac-intro__lead">Leadder is your trusted home service company for Air Conditioning, Heating, Plumbing, Drains &amp; Electrical. Our comprehensive care ensures that your property's most critical systems always operate at peak performance. With licensed and insured experts and instant online quotes available, you'll receive award-winning service backed by a 100% satisfaction guarantee.</p>
         <button class="sac-readmore" type="button" data-readmore aria-expanded="false" aria-controls="sac-more">Read More +</button>
         <div class="sac-more" id="sac-more">
@@ -659,6 +665,33 @@ a{color:inherit;}
 })();
 </script>
 
+<!-- ===== GALLERY / RECENT WORK ===== -->
+<section class="sac-gallery" aria-labelledby="sac-gallery-h">
+  <div class="sac-container">
+    <p class="sac-sub">A Look At Our Craftsmanship</p>
+    <h2 class="sac-h2" id="sac-gallery-h">Our Recent Work</h2>
+    <div class="sac-gallery__grid">
+      <div class="sac-gallery__item"><div class="sac-ph sac-gallery__ph">Project Photo</div><span class="sac-gallery__cap">AC Installation</span></div>
+      <div class="sac-gallery__item"><div class="sac-ph sac-gallery__ph">Project Photo</div><span class="sac-gallery__cap">Furnace Replacement</span></div>
+      <div class="sac-gallery__item"><div class="sac-ph sac-gallery__ph">Project Photo</div><span class="sac-gallery__cap">Tankless Water Heater</span></div>
+      <div class="sac-gallery__item"><div class="sac-ph sac-gallery__ph">Project Photo</div><span class="sac-gallery__cap">Electrical Panel Upgrade</span></div>
+      <div class="sac-gallery__item"><div class="sac-ph sac-gallery__ph">Project Photo</div><span class="sac-gallery__cap">Ductless Mini-Split</span></div>
+      <div class="sac-gallery__item"><div class="sac-ph sac-gallery__ph">Project Photo</div><span class="sac-gallery__cap">Drain Cleaning</span></div>
+    </div>
+    <a class="sac-btn--nav" href="#">View Gallery</a>
+  </div>
+</section>
+<style>
+  .sac-gallery{background:#fff;padding:clamp(48px,6vw,80px) 0;text-align:center;}
+  .sac-gallery__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:34px 0 32px;}
+  .sac-gallery__item{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 10px 30px rgba(0,0,0,.1);}
+  .sac-gallery__ph{width:100%;height:100%;border-radius:0;font-size:13px;transition:transform .35s ease;}
+  .sac-gallery__item:hover .sac-gallery__ph{transform:scale(1.06);}
+  .sac-gallery__cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(14,50,99,.9));color:#fff;font-family:var(--hd);font-weight:700;font-size:17px;text-align:left;padding:26px 16px 12px;}
+  @media(max-width:768px){.sac-gallery__grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.sac-gallery__grid{grid-template-columns:1fr;}}
+</style>
+
 <!-- ===== REVIEWS ===== -->
 <section class="sac-reviews" aria-labelledby="sac-reviews-h2">
   <div class="sac-container">
@@ -768,12 +801,16 @@ a{color:inherit;}
 
 <!-- ===== PROUDLY SERVING ===== -->
 <section class="sac-serving">
-  <iframe class="sac-serving__map" title="Service area map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Austin,+TX&z=10&t=m&output=embed"></iframe>
+  <iframe class="sac-serving__map" title="Service area map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Toronto,+Ontario,+Canada&z=10&t=m&output=embed"></iframe>
+  <div class="sac-serving__pin" aria-hidden="true">
+    <span class="sac-serving__pin-pulse"></span>
+    <svg viewBox="0 0 24 32" width="34" height="46" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12c0 8.4 12 20 12 20s12-11.6 12-20C24 5.4 18.6 0 12 0z" fill="#e02e2e"/><circle cx="12" cy="12" r="5" fill="#fff"/></svg>
+  </div>
   <div class="sac-container">
     <div class="sac-serving__box">
       <p class="sac-sub">Proudly Serving</p>
-      <h2 class="sac-h2">Austin, TX &amp; Surrounding Areas</h2>
-      <p class="sac-serving__cities">Round Rock | Cedar Park | Pflugerville | Leander | Georgetown | Lakeway | Bee Cave | Manor | Buda | Kyle | Dripping Springs | Hutto | Liberty Hill | Elgin | West Lake Hills</p>
+      <h2 class="sac-h2">Toronto, ON &amp; Surrounding Areas</h2>
+      <p class="sac-serving__cities">Mississauga | Brampton | Vaughan | Markham | Scarborough | North York | Etobicoke | Richmond Hill | Oakville | Burlington | Pickering | Ajax | Whitby | Milton | Newmarket</p>
       <a href="#" class="sac-serving__link">Learn More <svg viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.694 7.25a1.06 1.06 0 0 1 0 1.5l-6.894 6.94a1.06 1.06 0 0 1-1.492-1.5l6.15-6.192L.31 1.807A1.06 1.06 0 0 1 1.8.31l6.894 6.94Z" fill="#fff"/></svg></a>
     </div>
   </div>
@@ -817,9 +854,9 @@ a{color:inherit;}
         </div>
         <div class="sac-foot-lic">
           <div class="sac-foot-lic-head"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM8 8a2 2 0 110 4 2 2 0 010-4zm4 9H4v-1c0-1.3 2.7-2 4-2s4 .7 4 2v1zm8-3h-6v-1.5h6V14zm0-3h-6V9.5h6V11z"/></svg><span>Licenses</span></div>
-          <p>TX Dept of Lic &amp; Reg #: TACLB38119E</p>
-          <p>Master Plumbing License #: M-38233</p>
-          <p>Electrical License #: 41374</p>
+          <p>TSSA Contractor #: LEA-000123</p>
+          <p>ECRA/ESA License #: 7012345</p>
+          <p>Master Plumber #: P-38233</p>
         </div>
       </div>
       <div class="sac-footer-col">
@@ -832,7 +869,7 @@ a{color:inherit;}
       </div>
       <div class="sac-footer-col">
         <h4>Office Location</h4>
-        <address class="sac-foot-addr">6016 Dillard Circle<br>Austin, TX 78752</address>
+        <address class="sac-foot-addr">120 Adelaide Street West<br>Toronto, ON M5H 1T1</address>
         <h4>Follow Us</h4>
         <div class="sac-foot-social">
           <a href="#" aria-label="Google"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 11v3.2h4.5c-.2 1.2-1.4 3.5-4.5 3.5-2.7 0-4.9-2.2-4.9-5s2.2-5 4.9-5c1.5 0 2.6.7 3.2 1.2l2.2-2.1C16.7 5.5 14.6 4.6 12 4.6 7.7 4.6 4.2 8.1 4.2 12.4S7.7 20.2 12 20.2c4.6 0 7.7-3.2 7.7-7.8 0-.5 0-.9-.1-1.4H12z"/></svg></a>
@@ -852,7 +889,7 @@ a{color:inherit;}
         <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>
       </button>
       <div class="sac-service-list" id="sacServiceList">
-        <a href="#">Austin</a><a href="#">Buda</a><a href="#">Cedar Park</a><a href="#">Dripping Springs</a><a href="#">Georgetown</a><a href="#">Hutto</a><a href="#">Kyle</a><a href="#">Lakeway</a><a href="#">Leander</a><a href="#">Pflugerville</a><a href="#">Round Rock</a><a href="#">Sun City</a>
+        <a href="#">Toronto</a><a href="#">Mississauga</a><a href="#">Brampton</a><a href="#">Vaughan</a><a href="#">Markham</a><a href="#">Scarborough</a><a href="#">North York</a><a href="#">Etobicoke</a><a href="#">Richmond Hill</a><a href="#">Oakville</a><a href="#">Pickering</a><a href="#">Ajax</a>
       </div>
     </div>
   </div>
@@ -870,6 +907,58 @@ a{color:inherit;}
       toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   }
+})();
+</script>
+
+<!-- ===== INSTANT QUOTE MODAL ===== -->
+<div class="sac-modal" id="sacQuoteModal" aria-hidden="true">
+  <div class="sac-modal__backdrop" data-quote-close></div>
+  <div class="sac-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="sacQuoteTitle">
+    <button class="sac-modal__close" type="button" data-quote-close aria-label="Close">&times;</button>
+    <div class="sac-modal__head">
+      <h3 id="sacQuoteTitle">Get Your Instant Quote</h3>
+      <p>Answer a few quick questions and we'll send your estimate.</p>
+    </div>
+    <form class="sac-modal__form" onsubmit="return false">
+      <input type="text" placeholder="First Name*" required>
+      <input type="text" placeholder="Last Name*" required>
+      <input type="tel" placeholder="Phone Number*" required>
+      <input type="email" placeholder="Email*" required>
+      <select required>
+        <option value="" selected disabled>Service Needed*</option>
+        <option>HVAC / Air Conditioning</option><option>Heating / Furnace</option><option>Plumbing</option><option>Drains</option><option>Water Heater</option><option>Electrical</option><option>Other</option>
+      </select>
+      <button class="sac-btn" type="submit">Get My Instant Quote</button>
+    </form>
+  </div>
+</div>
+<style>
+  .sac-modal{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;padding:20px;}
+  .sac-modal.is-open{display:flex;}
+  .sac-modal__backdrop{position:absolute;inset:0;background:rgba(8,19,37,.7);animation:sac-fade .2s ease;}
+  .sac-modal__dialog{position:relative;z-index:1;background:#fff;width:100%;max-width:480px;border-radius:14px;padding:34px 30px 30px;box-shadow:0 24px 60px rgba(0,0,0,.4);animation:sac-pop .22s cubic-bezier(.16,1,.3,1);max-height:92vh;overflow-y:auto;}
+  .sac-modal__close{position:absolute;top:12px;right:14px;width:38px;height:38px;border:none;background:none;font-size:30px;line-height:1;color:var(--navy);cursor:pointer;border-radius:8px;}
+  .sac-modal__close:hover{background:var(--cream);}
+  .sac-modal__head h3{font-family:var(--hd);font-weight:800;color:var(--navy);font-size:28px;margin:0 0 6px;}
+  .sac-modal__head p{font-family:var(--bd);color:var(--muted);font-size:15px;margin:0 0 20px;}
+  .sac-modal__form{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .sac-modal__form input,.sac-modal__form select{grid-column:auto;font-family:var(--bd);font-size:14px;height:46px;padding:0 14px;border:1px solid #c8d2e0;border-radius:8px;background:#fff;color:var(--ink);width:100%;box-sizing:border-box;}
+  .sac-modal__form select,.sac-modal__form .sac-btn{grid-column:1/-1;}
+  .sac-modal__form input:focus,.sac-modal__form select:focus{outline:2px solid var(--navy);border-color:var(--navy);}
+  .sac-modal__form .sac-btn{height:50px;margin-top:4px;}
+  @keyframes sac-fade{from{opacity:0;}to{opacity:1;}}
+  @keyframes sac-pop{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:480px){.sac-modal__form{grid-template-columns:1fr;}.sac-modal__head h3{font-size:24px;}}
+</style>
+<script>
+(function(){
+  var modal=document.getElementById('sacQuoteModal');
+  if(!modal)return;
+  function open(e){if(e)e.preventDefault();modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';var f=modal.querySelector('input');if(f)setTimeout(function(){f.focus();},60);}
+  function close(){modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+  document.querySelectorAll('.js-quote').forEach(function(b){b.addEventListener('click',open);});
+  modal.querySelectorAll('[data-quote-close]').forEach(function(b){b.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
 })();
 </script>
 
