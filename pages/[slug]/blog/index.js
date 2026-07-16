@@ -2,6 +2,7 @@ import { deriveLead } from '../../../lib/lead'
 import { getLeadProps } from '../../../lib/getLead'
 import { FALLBACK_HERO } from '../../../lib/hvacContent'
 import { BLOG_POSTS } from '../../../lib/pagesContent'
+import { SITE_ORIGIN } from '../../../lib/site'
 import Layout from '../../../components/site/Layout'
 import PageHero from '../../../components/site/PageHero'
 import PageBottom from '../../../components/site/PageBottom'
@@ -11,7 +12,9 @@ export default function BlogIndex({ lead }) {
   const base = `/${d.slug}`
 
   return (
-    <Layout lead={lead} title="Blog">
+    <Layout lead={lead} title="Blog"
+      description={`HVAC tips, guides, and news from ${d.businessName} in ${d.city}.`}
+      canonical={`${SITE_ORIGIN}${base}/blog`}>
       <PageHero d={d} title="Check Out Our Blog" subtitle="Tips, guides, and news to keep your home comfortable." image={FALLBACK_HERO} />
 
       <section className="py-24 bg-white">

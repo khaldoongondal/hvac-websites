@@ -1,6 +1,8 @@
 import { deriveLead, mapFor } from '../../lib/lead'
 import { getLeadProps } from '../../lib/getLead'
 import { FALLBACK_HERO, HOURS } from '../../lib/hvacContent'
+import { SITE_ORIGIN } from '../../lib/site'
+import { businessJsonLd } from '../../lib/schema'
 import Layout from '../../components/site/Layout'
 import PageHero from '../../components/site/PageHero'
 import PageBottom from '../../components/site/PageBottom'
@@ -9,9 +11,13 @@ import QuoteForm from '../../components/QuoteForm'
 export default function ContactPage({ lead }) {
   const d = deriveLead(lead)
   const { hasLocation, mapSrc } = mapFor(lead)
+  const canonical = `${SITE_ORIGIN}/${d.slug}/contact`
 
   return (
-    <Layout lead={lead} title="Contact Us">
+    <Layout lead={lead} title="Contact Us"
+      description={`Contact ${d.businessName} in ${d.city} for HVAC repair, installation & maintenance. Call ${d.phone} or request a free quote.`}
+      canonical={canonical}
+      head={<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd(d, lead)) }} />}>
       <PageHero d={d} title="Contact Us" subtitle={`Get in touch with ${d.businessName} for fast, friendly service.`} image={FALLBACK_HERO} />
 
       {/* Contact info + form */}

@@ -1,6 +1,7 @@
 import { deriveLead } from '../../lib/lead'
 import { getLeadProps } from '../../lib/getLead'
 import { termsContent } from '../../lib/pagesContent'
+import { SITE_ORIGIN } from '../../lib/site'
 import Layout from '../../components/site/Layout'
 import PageHero from '../../components/site/PageHero'
 
@@ -9,7 +10,9 @@ export default function TermsPage({ lead }) {
   const sections = termsContent(d.businessName)
 
   return (
-    <Layout lead={lead} title="Terms of Service">
+    <Layout lead={lead} title="Terms of Service"
+      description={`Terms of service for the ${d.businessName} website.`}
+      canonical={`${SITE_ORIGIN}/${d.slug}/terms`}>
       <PageHero d={d} title="Terms of Service" subtitle={`The terms that govern use of the ${d.businessName} website.`} />
       <section className="py-24 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">

@@ -1,6 +1,7 @@
 import { deriveLead } from '../../../lib/lead'
 import { getLeadProps } from '../../../lib/getLead'
 import { BLOG_POSTS } from '../../../lib/pagesContent'
+import { SITE_ORIGIN } from '../../../lib/site'
 import Layout from '../../../components/site/Layout'
 import PageHero from '../../../components/site/PageHero'
 import PageBottom from '../../../components/site/PageBottom'
@@ -11,7 +12,9 @@ export default function BlogPost({ lead, postSlug }) {
   const base = `/${d.slug}`
 
   return (
-    <Layout lead={lead} title={post.title}>
+    <Layout lead={lead} title={post.title}
+      description={post.excerpt}
+      canonical={`${SITE_ORIGIN}${base}/blog/${post.slug}`}>
       <PageHero d={d} title={post.title} subtitle={post.date} image={post.image} />
 
       <article className="py-24 bg-white">

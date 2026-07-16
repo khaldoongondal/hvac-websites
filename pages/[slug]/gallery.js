@@ -2,6 +2,7 @@ import { deriveLead } from '../../lib/lead'
 import { getLeadProps } from '../../lib/getLead'
 import { GALLERY, FALLBACK_HERO } from '../../lib/hvacContent'
 import { SERVICE_DETAILS, SERVICE_ORDER } from '../../lib/pagesContent'
+import { SITE_ORIGIN } from '../../lib/site'
 import Layout from '../../components/site/Layout'
 import PageHero from '../../components/site/PageHero'
 import PageBottom from '../../components/site/PageBottom'
@@ -18,7 +19,9 @@ const PHOTOS = [...new Set(ALL_PHOTOS)]
 export default function GalleryPage({ lead }) {
   const d = deriveLead(lead)
   return (
-    <Layout lead={lead} title="Gallery">
+    <Layout lead={lead} title="Gallery"
+      description={`Photo gallery of recent HVAC work by ${d.businessName} in ${d.city} and surrounding areas.`}
+      canonical={`${SITE_ORIGIN}/${d.slug}/gallery`}>
       <PageHero d={d} title="Our Work" subtitle="See for yourself why our customers love us." image={FALLBACK_HERO} />
 
       <section className="py-24 bg-white">
