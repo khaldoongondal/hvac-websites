@@ -1,5 +1,5 @@
 import { rgba } from '../../lib/colors'
-import { serviceAreas, mapFor, reviewUrl } from '../../lib/lead'
+import { strongLocations, extraAreas, mapFor, reviewUrl } from '../../lib/lead'
 import { PROCESS_STEPS, REVIEW_BG } from '../../lib/hvacContent'
 import { openQuoteModal } from './QuoteModal'
 
@@ -8,8 +8,10 @@ const STARS = [1, 2, 3, 4, 5]
 // The shared tail every non-home page ends with: Reviews band → Our Process →
 // Proudly Serving Areas → final CTA. Matches the reference sub-pages exactly.
 export default function PageBottom({ d, lead }) {
-  const areas = serviceAreas(d.city)
+  const locations = strongLocations(lead)
+  const extra = extraAreas(lead)
   const { hasLocation, mapSrc } = mapFor(lead)
+  const base = `/${d.slug}`
 
   return (
     <>
@@ -72,13 +74,19 @@ export default function PageBottom({ d, lead }) {
             <div className="h-1.5 w-24 bg-primary mx-auto mt-6 rounded-full" />
           </div>
           <div className={`grid gap-10 items-stretch ${hasLocation ? 'lg:grid-cols-2' : 'grid-cols-1'}`}>
-            <div className="grid grid-cols-2 gap-3 content-start">
-              {areas.map(area => (
-                <div key={area} className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-4 py-3">
-                  <span className="material-symbols-outlined text-primary text-lg">location_on</span>
-                  <span className="text-sm font-semibold text-slate-700">{area}</span>
-                </div>
-              ))}
+            <div>
+              <div className="grid grid-cols-2 gap-3 content-start">
+                {locations.map(({ name, slug }) => (
+                  <a key={slug} href={`${base}/areas/${slug}`}
+                    className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 hover:border-primary transition-colors">
+                    <span className="material-symbols-outlined text-primary text-lg" aria-hidden="true">location_on</span>
+                    <span className="text-sm font-semibold text-slate-700">{name}</span>
+                  </a>
+                ))}
+              </div>
+              {extra.length > 0 && (
+                <p className="text-slate-500 text-sm mt-4">Also serving {extra.join(', ')}.</p>
+              )}
             </div>
             {hasLocation && (
               <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 min-h-[340px]">
