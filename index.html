@@ -241,17 +241,9 @@ a{color:inherit;}
 .sac-club__list li::before{content:"";position:absolute;left:0;top:2px;width:20px;height:20px;border-radius:50%;background:var(--red);}
 .sac-club__list li::after{content:"\2713";position:absolute;left:5px;top:1px;color:#fff;font-size:12px;font-weight:700;}
 .sac-club__btns{display:flex;gap:16px;flex-wrap:wrap;}
-.sac-serving{position:relative;background:#dfe9f2;overflow:hidden;padding:80px 0;}
-.sac-serving__map{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:0;pointer-events:none;}
+.sac-serving{position:relative;background:url("images/toronto-service-map.jpg") no-repeat center/cover;overflow:hidden;padding:clamp(56px,8vw,110px) 0;min-height:540px;display:flex;align-items:center;}
 .sac-serving .sac-container{position:relative;z-index:1;width:100%;}
-.sac-serving__pin{position:absolute;left:71%;top:54%;transform:translate(-50%,-100%);z-index:2;pointer-events:none;display:flex;align-items:center;justify-content:center;}
-.sac-serving__pin svg{position:relative;z-index:2;filter:drop-shadow(0 3px 6px rgba(0,0,0,.4));animation:sac-pin-bob 1.6s ease-in-out infinite;}
-.sac-serving__pin-pulse{position:absolute;left:50%;bottom:0;transform:translate(-50%,50%);width:26px;height:26px;border-radius:50%;background:rgba(224,46,46,.55);animation:sac-pin-pulse 1.8s ease-out infinite;}
-@keyframes sac-pin-pulse{0%{box-shadow:0 0 0 0 rgba(224,46,46,.55);}100%{box-shadow:0 0 0 26px rgba(224,46,46,0);}}
-@keyframes sac-pin-bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
-.sac-serving__box{background:var(--navy);border-radius:20px;color:#fff;max-width:520px;padding:40px;margin-left:-24px;box-shadow:0 14px 40px rgba(0,0,0,.3);text-align:left;}
-@media(max-width:640px){.sac-serving__box{margin-left:0;}}
-@media(max-width:900px){.sac-serving__pin{display:none;}}
+.sac-serving__box{background:var(--navy);border-radius:20px;color:#fff;max-width:520px;padding:40px;box-shadow:0 14px 40px rgba(0,0,0,.3);text-align:left;}
 .sac-serving__box .sac-sub{color:#a9c4dd;margin-bottom:8px;}
 .sac-serving__box .sac-h2{color:#fff;font-size:clamp(30px,4vw,44px);margin:0 0 16px;line-height:1.05;text-align:left;}
 .sac-serving__cities{font-family:var(--bd);font-size:18px;line-height:1.9;color:#eef4fb;margin:0 0 20px;}
@@ -654,32 +646,7 @@ a{color:inherit;}
 })();
 </script>
 
-<!-- ===== GALLERY / RECENT WORK ===== -->
-<section class="sac-gallery" aria-labelledby="sac-gallery-h">
-  <div class="sac-container">
-    <p class="sac-sub">A Look At Our Craftsmanship</p>
-    <h2 class="sac-h2" id="sac-gallery-h">Our Recent Work</h2>
-    <div class="sac-gallery__grid">
-      <div class="sac-gallery__item"><div class="sac-ph sac-gallery__ph">Project Photo</div><span class="sac-gallery__cap">AC Installation</span></div>
-      <div class="sac-gallery__item"><div class="sac-ph sac-gallery__ph">Project Photo</div><span class="sac-gallery__cap">Furnace Replacement</span></div>
-      <div class="sac-gallery__item"><div class="sac-ph sac-gallery__ph">Project Photo</div><span class="sac-gallery__cap">Duct Cleaning</span></div>
-      <div class="sac-gallery__item"><div class="sac-ph sac-gallery__ph">Project Photo</div><span class="sac-gallery__cap">Thermostat Upgrade</span></div>
-      <div class="sac-gallery__item"><div class="sac-ph sac-gallery__ph">Project Photo</div><span class="sac-gallery__cap">Ductless Mini-Split</span></div>
-      <div class="sac-gallery__item"><div class="sac-ph sac-gallery__ph">Project Photo</div><span class="sac-gallery__cap">Heat Pump Install</span></div>
-    </div>
-    <a class="sac-btn--nav" href="#">View Gallery</a>
-  </div>
-</section>
-<style>
-  .sac-gallery{background:#fff;padding:clamp(48px,6vw,80px) 0;text-align:center;}
-  .sac-gallery__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:34px 0 32px;}
-  .sac-gallery__item{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 10px 30px rgba(0,0,0,.1);}
-  .sac-gallery__ph{width:100%;height:100%;border-radius:0;font-size:13px;transition:transform .35s ease;}
-  .sac-gallery__item:hover .sac-gallery__ph{transform:scale(1.06);}
-  .sac-gallery__cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(14,50,99,.9));color:#fff;font-family:var(--hd);font-weight:700;font-size:17px;text-align:left;padding:26px 16px 12px;}
-  @media(max-width:768px){.sac-gallery__grid{grid-template-columns:1fr 1fr;}}
-  @media(max-width:480px){.sac-gallery__grid{grid-template-columns:1fr;}}
-</style>
+<!-- Gallery removed: no real Leadder project photos yet (all Stan photo assets are brand-stamped). Re-add when photos exist. -->
 
 <!-- ===== REVIEWS ===== -->
 <section class="sac-reviews" aria-labelledby="sac-reviews-h2">
@@ -789,12 +756,7 @@ a{color:inherit;}
 </section>
 
 <!-- ===== PROUDLY SERVING ===== -->
-<section class="sac-serving">
-  <iframe class="sac-serving__map" title="Service area map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Toronto,Ontario&ll=43.80,-79.62&z=10&output=embed"></iframe>
-  <div class="sac-serving__pin" aria-hidden="true">
-    <span class="sac-serving__pin-pulse"></span>
-    <svg viewBox="0 0 24 32" width="34" height="46" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12c0 8.4 12 20 12 20s12-11.6 12-20C24 5.4 18.6 0 12 0z" fill="#e02e2e"/><circle cx="12" cy="12" r="5" fill="#fff"/></svg>
-  </div>
+<section class="sac-serving" role="img" aria-label="Map of the Greater Toronto Area service region">
   <div class="sac-container">
     <div class="sac-serving__box">
       <p class="sac-sub">Proudly Serving</p>
