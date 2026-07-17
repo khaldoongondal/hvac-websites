@@ -199,7 +199,7 @@ a{color:inherit;}
 /* ============ REVIEWS + REQUEST FORM ============ */
 .sac-reviews{background:#fff;padding:clamp(56px,7vw,96px) 0;}
 .sac-reviews__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center;}
-.sac-reviews__photo{min-height:300px;height:100%;font-size:14px;}
+.sac-reviews__photo{width:100%;min-height:300px;height:100%;max-height:420px;object-fit:contain;font-size:14px;}
 .sac-reviews__h2,.sac-form__h2{font-family:var(--hd);font-weight:700;color:var(--navy);font-size:clamp(30px,4vw,46px);margin:0 0 18px;line-height:1.1;}
 .sac-stars{display:flex;gap:4px;margin:0 0 22px;}
 .sac-slider{position:relative;min-height:200px;}
@@ -261,11 +261,12 @@ a{color:inherit;}
 @media(max-width:640px){.sac-serving{min-height:0;}.sac-serving__box{padding:30px 22px;}}
 .sac-hire{padding:clamp(40px,5vw,64px) 0;background:var(--cream);}
 .sac-hire__row{display:flex;align-items:center;justify-content:space-between;gap:32px;}
-.sac-hire__img{width:130px;height:100px;flex:0 0 auto;}
+.sac-hire__img{width:150px;height:auto;flex:0 0 auto;}
 .sac-h3{font-family:var(--hd);font-weight:700;color:var(--navy);font-size:clamp(24px,3vw,34px);line-height:1.1;margin:6px 0 0;}
 .sac-assoc{background:#fff;padding:clamp(40px,5vw,64px) 0;}
 .sac-assoc__row{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:center;}
-.sac-assoc__logo{width:130px;height:80px;filter:grayscale(1);opacity:.85;}
+.sac-assoc__logo{width:auto;max-width:150px;height:64px;object-fit:contain;opacity:.9;transition:opacity .2s ease;}
+.sac-assoc__logo:hover{opacity:1;}
 @media (max-width:820px){
   .sac-club__grid{grid-template-columns:1fr;}
   .sac-club__img{order:-1;}
@@ -274,7 +275,7 @@ a{color:inherit;}
 }
 
 /* ============ FOOTER ============ */
-.sac-footer{background-color:var(--navy);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cg fill='%23244575'%3E%3Cpath d='M75 20 L82 68 L130 75 L82 82 L75 130 L68 82 L20 75 L68 68 Z'/%3E%3Cpath d='M8 8 L11 20 L23 23 L11 26 L8 38 L5 26 L-7 23 L5 20 Z'/%3E%3Cpath d='M142 142 L145 154 L157 157 L145 160 L142 172 L139 160 L127 157 L139 154 Z'/%3E%3C/g%3E%3C/svg%3E");background-repeat:repeat;border-top:15px solid var(--red);color:#fff;padding:40px 0;font-family:var(--bd);font-size:16px;line-height:1.5;}
+.sac-footer{background-color:var(--navy);background-image:url("images/footer-bg-desktop.jpg");background-repeat:no-repeat;background-position:center;background-size:cover;border-top:15px solid var(--red);color:#fff;padding:40px 0;font-family:var(--bd);font-size:16px;line-height:1.5;}
 .sac-footer *{color:#fff;}
 .sac-footer-row{display:flex;flex-wrap:wrap;gap:24px;}
 .sac-footer-col{flex:1;min-width:170px;}
@@ -684,7 +685,7 @@ a{color:inherit;}
 <section class="sac-reviews" aria-labelledby="sac-reviews-h2">
   <div class="sac-container">
     <div class="sac-reviews__grid">
-      <div class="sac-ph sac-reviews__photo">HAPPY CUSTOMER PHOTO</div>
+      <img class="sac-reviews__photo" src="images/testimonial-section-image-desktop.png" alt="Happy Leadder customer with a service technician" loading="lazy">
       <div class="sac-reviews__content">
         <p class="sac-sub">See What Your Neighbors Are Saying</p>
         <h2 class="sac-reviews__h2" id="sac-reviews-h2">Our Reviews</h2>
@@ -808,7 +809,7 @@ a{color:inherit;}
 <section class="sac-hire">
   <div class="sac-container">
     <div class="sac-hire__row">
-      <div class="sac-ph sac-hire__img">HIRING</div>
+      <img class="sac-hire__img" src="images/join-our-team.svg" alt="Join our team" loading="lazy">
       <div class="sac-hire__text"><p class="sac-sub">We're Hiring</p><h3 class="sac-h3">Join our Growing Team</h3></div>
       <a href="#" class="sac-btn--nav">Apply Now</a>
     </div>
@@ -819,13 +820,12 @@ a{color:inherit;}
 <section class="sac-assoc">
   <div class="sac-container">
     <div class="sac-assoc__row">
-      <div class="sac-ph sac-assoc__logo">BBB</div>
-      <div class="sac-ph sac-assoc__logo">NEXTDOOR</div>
-      <div class="sac-ph sac-assoc__logo">HOMEADVISOR</div>
-      <div class="sac-ph sac-assoc__logo">ACCA</div>
-      <div class="sac-ph sac-assoc__logo">CARRIER</div>
-      <div class="sac-ph sac-assoc__logo">HBA</div>
-      <div class="sac-ph sac-assoc__logo">NATE</div>
+      <img class="sac-assoc__logo" src="images/bbb-assoc-logo.png" alt="BBB Accredited" loading="lazy">
+      <img class="sac-assoc__logo" src="images/nextdoor-assoc-logo.png" alt="Nextdoor Neighborhood Favorite" loading="lazy">
+      <img class="sac-assoc__logo" src="images/home-advisor-assoc-logo.png" alt="HomeAdvisor" loading="lazy">
+      <img class="sac-assoc__logo" src="images/acca-assoc-logo.png" alt="ACCA member" loading="lazy">
+      <img class="sac-assoc__logo" src="images/carrier-assoc-logo.png" alt="Carrier" loading="lazy">
+      <img class="sac-assoc__logo" src="images/nate-assoc-logo.png" alt="NATE certified" loading="lazy">
     </div>
   </div>
 </section>
@@ -843,8 +843,7 @@ a{color:inherit;}
         <div class="sac-foot-lic">
           <div class="sac-foot-lic-head"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM8 8a2 2 0 110 4 2 2 0 010-4zm4 9H4v-1c0-1.3 2.7-2 4-2s4 .7 4 2v1zm8-3h-6v-1.5h6V14zm0-3h-6V9.5h6V11z"/></svg><span>Licenses</span></div>
           <p>TSSA Contractor #: LEA-000123</p>
-          <p>ECRA/ESA License #: 7012345</p>
-          <p>Master Plumber #: P-38233</p>
+          <p>HRAI Member #: 7012345</p>
         </div>
       </div>
       <div class="sac-footer-col">
