@@ -446,10 +446,13 @@ a{color:inherit;}
 <!-- ===== HERO ===== -->
 <style>
 /* ===== Regal-structure homepage additions ===== */
-.sac-btn--xl{font-size:19px;padding:18px 40px;border-radius:6px;box-shadow:0 10px 28px rgba(224,46,46,.28);}
-.reg-hero__card{justify-content:center;text-align:left;}
-.reg-hero__card .sac-hero__title{margin-bottom:22px;}
-.reg-hero__card .sac-btn--xl{align-self:flex-start;}
+.sac-btn--xl{font-size:19px;padding:18px 44px;border-radius:8px;box-shadow:0 12px 30px rgba(224,46,46,.32);transition:transform .2s ease,box-shadow .2s ease;}
+.sac-btn--xl:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(224,46,46,.42);}
+.reg-hero__card{display:flex;flex-direction:column;align-items:center;text-align:center;grid-template-columns:none;max-width:860px;padding:56px 52px 60px;gap:0;}
+.reg-hero__card .sac-hero__copy{max-width:780px;}
+.reg-hero__card .sac-hero__sub{margin-bottom:14px;}
+.reg-hero__card .sac-hero__title{margin:0 0 30px;}
+.reg-hero__card .sac-btn--xl{align-self:center;}
 /* trust bar */
 .reg-trust{background:var(--cream);border-top:1px solid #ece1cd;border-bottom:1px solid #ece1cd;}
 .reg-trust__row{list-style:none;margin:0;padding:22px 0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:18px;}
@@ -480,6 +483,9 @@ a{color:inherit;}
 /* see our work */
 .reg-work__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px;}
 .reg-work__grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;display:block;}
+.reg-work__ph{aspect-ratio:4/3;border-radius:10px;background:var(--cream);border:1px dashed #d8c9ad;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#b09a72;}
+.reg-work__ph svg{width:34px;height:34px;}
+.reg-work__ph span{font-family:var(--hd);font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:12px;}
 .reg-work__cta{text-align:center;margin-top:30px;}
 @media(max-width:900px){.reg-about__grid{grid-template-columns:1fr;}.reg-serv__grid{grid-template-columns:1fr;}.reg-work__grid{grid-template-columns:repeat(2,1fr);}}
 /* faq */
@@ -502,6 +508,22 @@ a{color:inherit;}
 .reg-cta{background:var(--navy);color:#fff;text-align:center;padding:64px 0;}
 .reg-cta h2{font-family:var(--hd);font-weight:800;font-size:clamp(28px,3.6vw,44px);margin:0 0 8px;}
 .reg-cta p{margin:0 0 26px;font-size:18px;opacity:.9;}
+/* ===== transparent overlay nav (homepage), solid on scroll ===== */
+.sac-header{position:fixed;top:0;left:0;right:0;background:transparent;box-shadow:none;}
+.sac-main,.sac-nav{background:transparent;transition:background .25s ease;}
+.sac-header .sac-menu>li>a{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.45);}
+.sac-header .sac-menu>li>a:hover{color:var(--gold);}
+.sac-header .sac-phone-num{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.45);}
+.sac-header .sac-phone-ic{color:#fff;}
+.sac-header .sac-logo-img img{filter:drop-shadow(0 2px 8px rgba(0,0,0,.55));transition:filter .25s ease;}
+.sac-header.sac-scrolled{background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.12);}
+.sac-header.sac-scrolled .sac-main{background:#fff;}
+.sac-header.sac-scrolled .sac-nav{background:var(--cream);}
+.sac-header.sac-scrolled .sac-menu>li>a{color:var(--navy);text-shadow:none;}
+.sac-header.sac-scrolled .sac-menu>li>a:hover{color:var(--red);}
+.sac-header.sac-scrolled .sac-phone-num{color:#000;text-shadow:none;}
+.sac-header.sac-scrolled .sac-phone-ic{color:var(--red);}
+.sac-header.sac-scrolled .sac-logo-img img{filter:none;}
 </style>
 <!-- H1 city + year are client system values ({{city}}, {{year}}) -->
 <section class="sac-hero" aria-labelledby="sac-hero-title">
@@ -652,7 +674,14 @@ a{color:inherit;}
     <p class="reg-eyebrow" style="text-align:center">See Our Work</p>
     <h2 class="reg-h2" id="reg-work-h" style="color:var(--navy);text-align:center">Recent projects across the GTA</h2>
     <div class="reg-work__grid">
-<img src="images/testimonial-section-image-desktop.png" alt="Leadder completed HVAC project" loading="lazy"><img src="images/truck.png" alt="Leadder completed HVAC project" loading="lazy"><img src="images/join-our-team.svg" alt="Leadder completed HVAC project" loading="lazy"><img src="images/testimonial-section-image-desktop.png" alt="Leadder completed HVAC project" loading="lazy">
+      <div class="reg-work__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg><span>Project Photo</span></div>
+      <div class="reg-work__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg><span>Project Photo</span></div>
+      <div class="reg-work__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg><span>Project Photo</span></div>
+      <div class="reg-work__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg><span>Project Photo</span></div>
+      <div class="reg-work__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg><span>Project Photo</span></div>
+      <div class="reg-work__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg><span>Project Photo</span></div>
+      <div class="reg-work__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg><span>Project Photo</span></div>
+      <div class="reg-work__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg><span>Project Photo</span></div>
     </div>
     <div class="reg-work__cta"><a class="sac-btn sac-btn--xl" href="gallery.html">View Full Gallery</a></div>
   </div>
