@@ -2,5 +2,274 @@
   "framework": null,
   "buildCommand": null,
   "installCommand": null,
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "trailingSlash": true,
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/gallery.html",
+      "destination": "/gallery/",
+      "permanent": true
+    },
+    {
+      "source": "/blog.html",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog-post-1.html",
+      "destination": "/blog/signs-furnace-needs-repair/",
+      "permanent": true
+    },
+    {
+      "source": "/blog-post-2.html",
+      "destination": "/blog/lower-cooling-bills-toronto/",
+      "permanent": true
+    },
+    {
+      "source": "/blog-post-3.html",
+      "destination": "/blog/heat-pump-vs-furnace/",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/service-areas.html",
+      "destination": "/service-areas/",
+      "permanent": true
+    },
+    {
+      "source": "/ac-repair.html",
+      "destination": "/services/ac-repair/",
+      "permanent": true
+    },
+    {
+      "source": "/ac-installation.html",
+      "destination": "/services/ac-installation/",
+      "permanent": true
+    },
+    {
+      "source": "/ac-replacement.html",
+      "destination": "/services/ac-replacement/",
+      "permanent": true
+    },
+    {
+      "source": "/ductless-mini-splits.html",
+      "destination": "/services/ductless-mini-splits/",
+      "permanent": true
+    },
+    {
+      "source": "/hvac-maintenance.html",
+      "destination": "/services/hvac-maintenance/",
+      "permanent": true
+    },
+    {
+      "source": "/furnace-installation.html",
+      "destination": "/services/furnace-installation/",
+      "permanent": true
+    },
+    {
+      "source": "/furnace-replacement.html",
+      "destination": "/services/furnace-replacement/",
+      "permanent": true
+    },
+    {
+      "source": "/heat-pump-installation.html",
+      "destination": "/services/heat-pump-installation/",
+      "permanent": true
+    },
+    {
+      "source": "/heat-pump-repair.html",
+      "destination": "/services/heat-pump-repair/",
+      "permanent": true
+    },
+    {
+      "source": "/emergency-hvac-repair.html",
+      "destination": "/services/emergency-hvac-repair/",
+      "permanent": true
+    },
+    {
+      "source": "/insulation.html",
+      "destination": "/services/insulation/",
+      "permanent": true
+    },
+    {
+      "source": "/new-construction.html",
+      "destination": "/services/new-construction/",
+      "permanent": true
+    },
+    {
+      "source": "/heating-repair.html",
+      "destination": "/services/furnace-repair/",
+      "permanent": true
+    },
+    {
+      "source": "/duct-sealing-repair.html",
+      "destination": "/services/duct-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/toronto.html",
+      "destination": "/service-areas/toronto/",
+      "permanent": true
+    },
+    {
+      "source": "/mississauga.html",
+      "destination": "/service-areas/mississauga/",
+      "permanent": true
+    },
+    {
+      "source": "/brampton.html",
+      "destination": "/service-areas/brampton/",
+      "permanent": true
+    },
+    {
+      "source": "/vaughan.html",
+      "destination": "/service-areas/vaughan/",
+      "permanent": true
+    },
+    {
+      "source": "/markham.html",
+      "destination": "/service-areas/markham/",
+      "permanent": true
+    },
+    {
+      "source": "/scarborough.html",
+      "destination": "/service-areas/scarborough/",
+      "permanent": true
+    },
+    {
+      "source": "/north-york.html",
+      "destination": "/service-areas/north-york/",
+      "permanent": true
+    },
+    {
+      "source": "/etobicoke.html",
+      "destination": "/service-areas/etobicoke/",
+      "permanent": true
+    },
+    {
+      "source": "/richmond-hill.html",
+      "destination": "/service-areas/richmond-hill/",
+      "permanent": true
+    },
+    {
+      "source": "/oakville.html",
+      "destination": "/service-areas/oakville/",
+      "permanent": true
+    },
+    {
+      "source": "/burlington.html",
+      "destination": "/service-areas/burlington/",
+      "permanent": true
+    },
+    {
+      "source": "/pickering.html",
+      "destination": "/service-areas/pickering/",
+      "permanent": true
+    },
+    {
+      "source": "/ajax.html",
+      "destination": "/service-areas/ajax/",
+      "permanent": true
+    },
+    {
+      "source": "/whitby.html",
+      "destination": "/service-areas/whitby/",
+      "permanent": true
+    },
+    {
+      "source": "/milton.html",
+      "destination": "/service-areas/milton/",
+      "permanent": true
+    },
+    {
+      "source": "/newmarket.html",
+      "destination": "/service-areas/newmarket/",
+      "permanent": true
+    },
+    {
+      "source": "/ac-tune-up.html",
+      "destination": "/services/hvac-maintenance/",
+      "permanent": true
+    },
+    {
+      "source": "/hvac-repair.html",
+      "destination": "/services/ac-repair/",
+      "permanent": true
+    },
+    {
+      "source": "/hvac-replacement.html",
+      "destination": "/services/ac-replacement/",
+      "permanent": true
+    },
+    {
+      "source": "/heat-pumps.html",
+      "destination": "/services/heat-pump-installation/",
+      "permanent": true
+    },
+    {
+      "source": "/heat-pump-replacement.html",
+      "destination": "/services/heat-pump-installation/",
+      "permanent": true
+    },
+    {
+      "source": "/hvac-installation.html",
+      "destination": "/services/ac-installation/",
+      "permanent": true
+    },
+    {
+      "source": "/furnace-repair.html",
+      "destination": "/services/furnace-repair/",
+      "permanent": true
+    },
+    {
+      "source": "/air-conditioning.html",
+      "destination": "/cooling/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-screens.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/products.html",
+      "destination": "/other-services/",
+      "permanent": true
+    },
+    {
+      "source": "/energy-conservation.html",
+      "destination": "/services/hvac-maintenance/",
+      "permanent": true
+    },
+    {
+      "source": "/whole-house-approach.html",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/equipment-warranty.html",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/hvac-glossary.html",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/thermostats.html",
+      "destination": "/other-services/",
+      "permanent": true
+    },
+    {
+      "source": "/dehumidifiers.html",
+      "destination": "/other-services/",
+      "permanent": true
+    }
+  ]
 }
