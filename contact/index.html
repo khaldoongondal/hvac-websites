@@ -318,6 +318,7 @@ a{color:inherit;}
 .sac-foot-logo{display:inline-block;background:#fff;padding:12px 16px;border-radius:8px;margin-bottom:20px;}
 .sac-foot-logo img{height:40px;width:auto;display:block;}
 @media(max-width:420px){.sac-logo-mini-img img{height:32px;}}
+
 </style>
 <link rel="canonical" href="https://leadder.ca/contact/">
 </head>
@@ -347,7 +348,7 @@ a{color:inherit;}
   <div class="sac-mobile-bar">
     <a class="sac-logo-img sac-logo-mini-img" href="/" aria-label="Leadder - Home"><img src="/images/leadder-logo.png" alt="Leadder"></a>
     <div class="sac-mob-actions">
-      <a class="sac-btn sac-btn-sm js-quote" href="#quote">Get Quote</a>
+      <a class="sac-btn sac-btn-sm js-quote" href="#quote"><svg class="sac-qic" viewBox="0 0 16 18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 2.25h-.667V.75c0-.414-.298-.75-.666-.75H12c-.368 0-.667.336-.667.75v1.5H4.667V.75C4.667.336 4.368 0 4 0h-.667c-.368 0-.666.336-.666.75v1.5H2c-1.103 0-2 1.01-2 2.25v11.25C0 16.99.897 18 2 18h12c1.103 0 2-1.01 2-2.25V4.5c0-1.24-.897-2.25-2-2.25m.667 13.5c0 .413-.3.75-.667.75H2c-.367 0-.667-.337-.667-.75V7.53h13.334z"/></svg>Get Quote</a>
       <button class="sac-hamburger" id="sacHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="sacDrawer">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
       </button>
@@ -422,7 +423,7 @@ a{color:inherit;}
 
 <style>
 /* ===== CITY PAGE ===== */
-.cp-hero{background:linear-gradient(rgba(18,48,92,.9),rgba(18,48,92,.94)),url('/images/toronto-service-map.jpg') center/cover;color:#fff;padding:clamp(52px,7vw,94px) 0;}
+.cp-hero{background:var(--navy);color:#fff;padding:clamp(52px,7vw,94px) 0;}
 .cp-crumb{font-family:var(--bd);font-size:14px;color:#c9d9ea;margin:0 0 16px;letter-spacing:.3px;}
 .cp-crumb a{color:#fff;text-decoration:none;}
 .cp-crumb a:hover{color:var(--gold);}
@@ -459,6 +460,8 @@ a{color:inherit;}
 .cp-links svg{color:var(--red);flex:0 0 auto;}
 @media(max-width:880px){.cp-intro__grid,.cp-svc__grid,.cp-svc__grid.is-rev{flex-direction:column;}.cp-svc__text,.cp-svc__media,.cp-intro__text,.cp-card{width:100%;flex:1 1 100%;}}
 @media(max-width:520px){.cp-links{grid-template-columns:1fr;}}
+.cp-hero__tel{background:#fff!important;color:var(--navy)!important;}
+.cp-hero__tel:hover{color:var(--navy)!important;}
 </style>
 <style>
 /* ===== SERVICE PAGE ===== */
@@ -499,10 +502,9 @@ a{color:inherit;}
 </style>
 
 <section class="cp-hero" aria-labelledby="cp-title"><div class="sac-container">
-<p class="cp-crumb"><a href="/">Home</a><span>/</span>Contact</p>
 <h1 id="cp-title">Contact Leadder</h1>
 <p>Questions, quotes, or an HVAC emergency? Reach the Leadder team any time — we serve all of Toronto and the GTA.</p>
-<div class="cp-hero__btns"><a class="sac-btn js-quote" href="#quote">Instant Quote</a><a class="sac-btn--nav" href="tel:14372382460">Call (437) 238-2460</a></div>
+<div class="cp-hero__btns"><a class="sac-btn js-quote" href="#quote"><svg class="sac-qic" viewBox="0 0 16 18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 2.25h-.667V.75c0-.414-.298-.75-.666-.75H12c-.368 0-.667.336-.667.75v1.5H4.667V.75C4.667.336 4.368 0 4 0h-.667c-.368 0-.666.336-.666.75v1.5H2c-1.103 0-2 1.01-2 2.25v11.25C0 16.99.897 18 2 18h12c1.103 0 2-1.01 2-2.25V4.5c0-1.24-.897-2.25-2-2.25m.667 13.5c0 .413-.3.75-.667.75H2c-.367 0-.667-.337-.667-.75V7.53h13.334z"/></svg>Instant Quote</a><a class="sac-btn--nav cp-hero__tel" href="tel:14372382460">Call (437) 238-2460</a></div>
 </div></section>
 <style>
 .ct-sec{padding:clamp(48px,6vw,84px) 0;background:#fff;}
@@ -518,61 +520,60 @@ a{color:inherit;}
 .ct-formwrap .sac-form{background:var(--navy);border-radius:18px;padding:34px;}
 .ct-formwrap .sac-form__h2{text-align:left;margin-bottom:24px;}
 .ct-formwrap .sac-form__grid{grid-template-columns:1fr 1fr;}
+.ct-ghl{padding:0;}
+.ct-ghl .sac-container{padding:0;}
+.ct-ghl__frame{width:100%;min-height:640px;border:0;display:block;background:#fff;border-radius:12px;}
 @media(max-width:880px){.ct-grid{flex-direction:column;}.ct-info,.ct-formwrap{width:100%;flex:1 1 100%;}.ct-formwrap .sac-form__grid{grid-template-columns:1fr;}}
 </style>
 <section class="ct-sec"><div class="sac-container"><div class="ct-grid">
 <div class="ct-info"><p class="sac-sub">Get in Touch</p><h2 class="sac-h2">We're Here to Help</h2><div class="ct-item"><div class="ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.6 21 3 12.4 3 1.9 3 1.4 3.4 1 4 1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg></div><div class="ct-txt"><h3>Call Us</h3><p><a href="tel:14372382460">(437) 238-2460</a></p><p>24/7 emergency service available</p></div></div><div class="ct-item"><div class="ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="ct-txt"><h3>Visit Us</h3><p>120 Adelaide Street West</p><p>Toronto, ON M5H 1T1</p></div></div><div class="ct-item"><div class="ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div class="ct-txt"><h3>Hours</h3><p>Mon–Fri: 8:00am – 6:00pm</p><p>Sat: 9:00am – 4:00pm</p><p>Sun: Emergency only</p></div></div><div class="ct-item"><div class="ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><div class="ct-txt"><h3>Service Area</h3><p>Toronto & the Greater Toronto Area</p><p><a href="/service-areas/">See all areas we serve</a></p></div></div></div>
-<div class="ct-formwrap"><section class="sac-form" aria-labelledby="sac-form-h2">
+<div class="ct-formwrap"><section class="sac-form ct-ghl" aria-labelledby="sac-form-h2">
   <div class="sac-container">
     <h2 class="sac-form__h2" id="sac-form-h2">Fill Out the Form</h2>
-    <form class="sac-form__grid" onsubmit="return false">
-      <div class="sac-field"><label for="sac-fn">First Name*</label><input id="sac-fn" name="firstName" type="text" placeholder="First Name*" required></div>
-      <div class="sac-field"><label for="sac-ln">Last Name*</label><input id="sac-ln" name="lastName" type="text" placeholder="Last Name*" required></div>
-      <div class="sac-field"><label for="sac-email">Email*</label><input id="sac-email" name="email" type="email" placeholder="Email*" required></div>
-      <div class="sac-field"><label for="sac-phone">Phone Number*</label><input id="sac-phone" name="phone" type="tel" placeholder="Phone Number*" required></div>
-      <div class="sac-field"><label for="sac-addr1">Street Address 1*</label><input id="sac-addr1" name="address1" type="text" placeholder="Street Address 1*" required></div>
-      <div class="sac-field"><label for="sac-addr2">Street Address 2</label><input id="sac-addr2" name="address2" type="text" placeholder="Street Address 2"></div>
-      <div class="sac-field"><label for="sac-city">City*</label><input id="sac-city" name="city" type="text" placeholder="City*" required></div>
-      <div class="sac-field"><label for="sac-state">State*</label><input id="sac-state" name="state" type="text" placeholder="State*" required></div>
-      <div class="sac-field"><label for="sac-zip">Zip Code*</label><input id="sac-zip" name="zip" type="text" placeholder="Zip Code*" required></div>
-      <div class="sac-field"><label for="sac-date">Preferred Appointment Date*</label><input id="sac-date" name="appointmentDate" type="text" placeholder="Preferred Appointment Date*" onfocus="this.type='date'" onblur="if(!this.value)this.type='text'" required></div>
-      <div class="sac-field"><label for="sac-service">Service Needed*</label>
-        <select id="sac-service" name="service" required>
-          <option value="" selected disabled>Service Needed*</option>
-          <option>HVAC Repair</option><option>HVAC Maintenance</option><option>HVAC Installation</option><option>Heating / Furnace</option><option>Air Conditioning</option><option>Indoor Air Quality</option><option>Other</option>
-        </select>
-      </div>
-      <div class="sac-field sac-field--full"><label for="sac-help">How Can We Help?*</label><textarea id="sac-help" name="message" placeholder="How Can We Help?*" required></textarea></div>
-      <p class="sac-form-note">Please note, ability to honor requested service date is subject to availability. A Leadder customer service team member will contact you to discuss availability.</p>
-      <label class="sac-consent"><input type="checkbox" name="consent" required><span>By submitting this form and signing up for texts, you agree to receive informational messages (appointment reminders, account notifications, etc.) from Leadder Heating &amp; Air at the number provided. Msg &amp; data rates may apply. Msg frequency varies. Unsubscribe at any time by replying STOP. Reply HELP for help or view our <a href="#" style="color:#fff;font-weight:700;">Privacy Policy</a>.</span></label>
-      <button class="sac-btn sac-form__submit" type="submit">Request Service</button>
-    </form>
+    <!-- GHL: submissions post straight into the Leadder sub-account, which fires the
+         new-lead workflow (instant text-back + notification). Swap the src if the form ID changes. -->
+    <iframe class="ct-ghl__frame" title="Request service" loading="lazy"
+            src="https://app.leadder.io/widget/salman-automates"></iframe>
   </div>
 </section></div>
 </div></div></section>
 
-<!-- ===== JOIN TEAM ===== -->
-<section class="sac-hire">
+<section class="sac-reviews" aria-labelledby="sac-reviews-h2">
   <div class="sac-container">
-    <div class="sac-hire__row">
-      <img class="sac-hire__img" src="/images/join-our-team.svg" alt="Join our team" loading="lazy">
-      <div class="sac-hire__text"><p class="sac-sub">We're Hiring</p><h3 class="sac-h3">Join our Growing Team</h3></div>
-      <a href="#" class="sac-btn--nav">Apply Now</a>
+    <div class="sac-reviews__grid">
+      <img class="sac-reviews__photo" src="/images/testimonial-section-image-desktop.png" alt="Happy Leadder customer with a service technician" loading="lazy">
+      <div class="sac-reviews__content">
+        <p class="sac-sub">See What Your Neighbors Are Saying</p>
+        <h2 class="sac-reviews__h2" id="sac-reviews-h2">Our Reviews</h2>
+        <div class="sac-stars" aria-label="5 out of 5 stars">
+          <svg width="20" height="19" viewBox="0 0 17 16" fill="none"><path d="M9.875 1.00684L11.9062 5.16309L16.375 5.81934C16.75 5.88184 17.0625 6.13184 17.1875 6.50684C17.3125 6.85059 17.2188 7.25684 16.9375 7.50684L13.6875 10.7256L14.4688 15.2881C14.5312 15.6631 14.375 16.0381 14.0625 16.2568C13.75 16.5068 13.3438 16.5068 13 16.3506L9 14.1943L4.96875 16.3506C4.65625 16.5068 4.25 16.5068 3.9375 16.2568C3.625 16.0381 3.46875 15.6631 3.53125 15.2881L4.28125 10.7256L1.03125 7.50684C0.78125 7.25684 0.6875 6.85059 0.78125 6.50684C0.90625 6.13184 1.21875 5.88184 1.59375 5.81934L6.09375 5.16309L8.09375 1.00684C8.25 0.663086 8.59375 0.444336 9 0.444336C9.375 0.444336 9.71875 0.663086 9.875 1.00684Z" fill="#f2ab27"></path></svg>
+          <svg width="20" height="19" viewBox="0 0 17 16" fill="none"><path d="M9.875 1.00684L11.9062 5.16309L16.375 5.81934C16.75 5.88184 17.0625 6.13184 17.1875 6.50684C17.3125 6.85059 17.2188 7.25684 16.9375 7.50684L13.6875 10.7256L14.4688 15.2881C14.5312 15.6631 14.375 16.0381 14.0625 16.2568C13.75 16.5068 13.3438 16.5068 13 16.3506L9 14.1943L4.96875 16.3506C4.65625 16.5068 4.25 16.5068 3.9375 16.2568C3.625 16.0381 3.46875 15.6631 3.53125 15.2881L4.28125 10.7256L1.03125 7.50684C0.78125 7.25684 0.6875 6.85059 0.78125 6.50684C0.90625 6.13184 1.21875 5.88184 1.59375 5.81934L6.09375 5.16309L8.09375 1.00684C8.25 0.663086 8.59375 0.444336 9 0.444336C9.375 0.444336 9.71875 0.663086 9.875 1.00684Z" fill="#f2ab27"></path></svg>
+          <svg width="20" height="19" viewBox="0 0 17 16" fill="none"><path d="M9.875 1.00684L11.9062 5.16309L16.375 5.81934C16.75 5.88184 17.0625 6.13184 17.1875 6.50684C17.3125 6.85059 17.2188 7.25684 16.9375 7.50684L13.6875 10.7256L14.4688 15.2881C14.5312 15.6631 14.375 16.0381 14.0625 16.2568C13.75 16.5068 13.3438 16.5068 13 16.3506L9 14.1943L4.96875 16.3506C4.65625 16.5068 4.25 16.5068 3.9375 16.2568C3.625 16.0381 3.46875 15.6631 3.53125 15.2881L4.28125 10.7256L1.03125 7.50684C0.78125 7.25684 0.6875 6.85059 0.78125 6.50684C0.90625 6.13184 1.21875 5.88184 1.59375 5.81934L6.09375 5.16309L8.09375 1.00684C8.25 0.663086 8.59375 0.444336 9 0.444336C9.375 0.444336 9.71875 0.663086 9.875 1.00684Z" fill="#f2ab27"></path></svg>
+          <svg width="20" height="19" viewBox="0 0 17 16" fill="none"><path d="M9.875 1.00684L11.9062 5.16309L16.375 5.81934C16.75 5.88184 17.0625 6.13184 17.1875 6.50684C17.3125 6.85059 17.2188 7.25684 16.9375 7.50684L13.6875 10.7256L14.4688 15.2881C14.5312 15.6631 14.375 16.0381 14.0625 16.2568C13.75 16.5068 13.3438 16.5068 13 16.3506L9 14.1943L4.96875 16.3506C4.65625 16.5068 4.25 16.5068 3.9375 16.2568C3.625 16.0381 3.46875 15.6631 3.53125 15.2881L4.28125 10.7256L1.03125 7.50684C0.78125 7.25684 0.6875 6.85059 0.78125 6.50684C0.90625 6.13184 1.21875 5.88184 1.59375 5.81934L6.09375 5.16309L8.09375 1.00684C8.25 0.663086 8.59375 0.444336 9 0.444336C9.375 0.444336 9.71875 0.663086 9.875 1.00684Z" fill="#f2ab27"></path></svg>
+          <svg width="20" height="19" viewBox="0 0 17 16" fill="none"><path d="M9.875 1.00684L11.9062 5.16309L16.375 5.81934C16.75 5.88184 17.0625 6.13184 17.1875 6.50684C17.3125 6.85059 17.2188 7.25684 16.9375 7.50684L13.6875 10.7256L14.4688 15.2881C14.5312 15.6631 14.375 16.0381 14.0625 16.2568C13.75 16.5068 13.3438 16.5068 13 16.3506L9 14.1943L4.96875 16.3506C4.65625 16.5068 4.25 16.5068 3.9375 16.2568C3.625 16.0381 3.46875 15.6631 3.53125 15.2881L4.28125 10.7256L1.03125 7.50684C0.78125 7.25684 0.6875 6.85059 0.78125 6.50684C0.90625 6.13184 1.21875 5.88184 1.59375 5.81934L6.09375 5.16309L8.09375 1.00684C8.25 0.663086 8.59375 0.444336 9 0.444336C9.375 0.444336 9.71875 0.663086 9.875 1.00684Z" fill="#f2ab27"></path></svg>
+        </div>
+        <div class="sac-slider" id="sacSlider">
+          <div class="sac-slide is-active"><p class="sac-slide__quote">"We switched from another plumbing and HVAC service to Leadder and we couldn't be more happy. Their prices are more affordable, their people more knowledgeable, and they get to you fast — especially important when your AC blows out in the middle of summer!"</p><p class="sac-slide__name">B. Parker</p></div>
+          <div class="sac-slide"><p class="sac-slide__quote">"Leadder has serviced our furnace and air conditioner for the past 15 years. They are knowledgeable and professional. The techs are prompt, friendly and trustworthy. I highly recommend them."</p><p class="sac-slide__name">Barbara K.</p></div>
+          <div class="sac-slide"><p class="sac-slide__quote">"Julian showed up the same afternoon with the new water heater and explained everything he was doing. Very thorough, polite &amp; professional. Cleaned up the whole area afterward."</p><p class="sac-slide__name">Aimee B.</p></div>
+          <div class="sac-slide"><p class="sac-slide__quote">"Robert and Daniel did an amazing job replacing my evaporator coil. They took time to explain every detail and put plastic down to protect my wood floors."</p><p class="sac-slide__name">Larry D.</p></div>
+        </div>
+        <div class="sac-dots" id="sacDots" role="tablist" aria-label="Select testimonial">
+          <button class="sac-dot is-active" type="button" aria-label="Testimonial 1"></button>
+          <button class="sac-dot" type="button" aria-label="Testimonial 2"></button>
+          <button class="sac-dot" type="button" aria-label="Testimonial 3"></button>
+          <button class="sac-dot" type="button" aria-label="Testimonial 4"></button>
+        </div>
+        <a class="sac-btn--nav" href="#reviews">Read Our Reviews</a>
+      </div>
     </div>
   </div>
 </section>
-
-<!-- ===== ASSOCIATIONS ===== -->
-<section class="sac-assoc">
+<!-- ===== BOTTOM CTA ===== -->
+<section class="reg-cta" aria-labelledby="ct-cta-h">
   <div class="sac-container">
-    <div class="sac-assoc__row">
-      <img class="sac-assoc__logo" src="/images/bbb-assoc-logo.png" alt="BBB Accredited" loading="lazy">
-      <img class="sac-assoc__logo" src="/images/nextdoor-assoc-logo.png" alt="Nextdoor Neighborhood Favorite" loading="lazy">
-      <img class="sac-assoc__logo" src="/images/home-advisor-assoc-logo.png" alt="HomeAdvisor" loading="lazy">
-      <img class="sac-assoc__logo" src="/images/acca-assoc-logo.png" alt="ACCA member" loading="lazy">
-      <img class="sac-assoc__logo" src="/images/carrier-assoc-logo.png" alt="Carrier" loading="lazy">
-      <img class="sac-assoc__logo" src="/images/nate-assoc-logo.png" alt="NATE certified" loading="lazy">
-    </div>
+    <h2 id="ct-cta-h">Ready to take the next step?</h2>
+    <a class="sac-btn sac-btn--xl js-quote" href="#quote"><svg class="sac-qic" viewBox="0 0 16 18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 2.25h-.667V.75c0-.414-.298-.75-.666-.75H12c-.368 0-.667.336-.667.75v1.5H4.667V.75C4.667.336 4.368 0 4 0h-.667c-.368 0-.666.336-.666.75v1.5H2c-1.103 0-2 1.01-2 2.25v11.25C0 16.99.897 18 2 18h12c1.103 0 2-1.01 2-2.25V4.5c0-1.24-.897-2.25-2-2.25m.667 13.5c0 .413-.3.75-.667.75H2c-.367 0-.667-.337-.667-.75V7.53h13.334z"/></svg>Get an Instant Quote</a>
   </div>
 </section>
 
@@ -627,7 +628,7 @@ a{color:inherit;}
   </div>
 </footer>
 
-<div class="sac-copyright">&copy;2026 Leadder Heating &amp; Air | All Rights Reserved | <a href="#">Privacy Policy</a></div>
+<div class="sac-copyright">&copy;2026 Leadder Heating &amp; Air | All Rights Reserved | <a href="/privacy-policy/">Privacy Policy</a> | <a href="/terms-of-service/">Terms of Service</a></div>
 
 <script>
 (function () {
@@ -678,6 +679,93 @@ a{color:inherit;}
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
 })();
 </script>
+
+<style>
+/* ============ ADAM SITE-UPDATES OVERRIDES ============ */
+/* CTAs: no hover colour-swap anywhere (desktop or touch) */
+.sac-btn::before,.sac-btn--nav::before{content:none!important;display:none!important;}
+.sac-btn:hover,.sac-btn--nav:hover{color:#fff;}
+.sac-btn--xl:hover{transform:translateY(-3px);}
+.wc-btn:hover{background-color:var(--navy-blue);}
+.sac-readmore:hover{background:none;color:var(--navy);border-color:var(--red);}
+/* Instant-quote buttons always carry the calendar icon */
+.sac-btn,.sac-btn--nav{display:inline-flex;align-items:center;justify-content:center;gap:9px;}
+.sac-qic{width:1em;height:1.12em;flex:0 0 auto;display:block;}
+/* Eyebrow labels: red, larger, consistent across every page */
+.reg-eyebrow,.svc-hero__eyebrow{color:var(--red)!important;font-size:20px!important;letter-spacing:1.4px!important;margin:0 0 10px!important;}
+.reg-sec--blue .reg-eyebrow,.ss-hero .reg-eyebrow,.svc-hero__eyebrow{color:var(--red)!important;}
+/* Hero headlines wrap to ~3 lines on desktop instead of 14ch */
+.svc-hero h1{max-width:900px;}
+.svc-hero{padding:74px 0;}
+/* Footer: white surface, navy type, no red rule */
+.sac-footer{background-color:#fff;background-image:none;border-top:1px solid var(--line);color:var(--navy);}
+.sac-footer *{color:var(--navy)!important;}
+.sac-footer a.sac-foot-link,.sac-foot-phone a,.sac-service-list a,.sac-service-toggle span{color:var(--navy)!important;}
+.sac-foot-phone a{font-weight:700;}
+.sac-footer svg{fill:var(--navy);}
+.sac-foot-logo{background:transparent;padding:0;}
+.sac-foot-social a{color:var(--navy);}
+.sac-foot-social a:hover{color:var(--red);}
+.sac-foot-social svg{fill:currentColor;}
+.sac-foot-divider::after{background:var(--line);}
+.sac-service-area{border-bottom:1px solid var(--line);}
+.sac-service-toggle,.sac-service-toggle::after{color:var(--navy);}
+.sac-copyright{background:#fff;color:var(--navy);border-top:1px solid var(--line);}
+.sac-copyright a{color:var(--navy)!important;}
+
+/* ============ MOBILE PASS (Adam) ============ */
+@media(max-width:991px){
+  /* the fixed call/quote bar must never cover the end of the page */
+  body{padding-bottom:60px;}
+  .sac-fixed-bottom a{min-height:54px;}
+}
+@media(max-width:700px){
+  /* big CTAs must not wrap onto three lines */
+  .sac-btn--xl{font-size:15px;padding:16px 18px;letter-spacing:.2px;}
+  /* primary CTAs go full-width on phones so the label never wraps */
+  .reg-hero__card .sac-btn--xl,.svc-hero .sac-btn--xl,.ss-hero .sac-btn--xl,
+  .ss-cta .sac-btn--xl,.reg-cta .sac-btn--xl,.reg-work__cta .sac-btn--xl,
+  .cp-hero__btns a{width:100%!important;max-width:340px;}
+  .reg-hero__card{padding:32px 22px 36px!important;}
+  .cp-hero__btns{flex-direction:column;}
+  .sac-btn,.sac-btn--nav{font-size:14.5px;padding:13px 20px;min-height:48px;}
+  .reg-eyebrow,.svc-hero__eyebrow{font-size:16px!important;letter-spacing:1px!important;}
+  .svc-hero{padding:44px 0 48px;}
+  .svc-hero h1{font-size:clamp(28px,7.4vw,36px);}
+  .svc-hero__sub{font-size:16.5px;}
+  .ss-hero{padding:46px 0 44px;}
+  .ss-sec,.reg-sec,.lg,.loc-intro,.loc-links{padding-left:0;padding-right:0;}
+  .ss-sec{padding:44px 0;}
+  .reg-sec{padding:48px 0;}
+  .loc-intro{padding:44px 0 4px;}
+  .lg{padding:44px 0 52px;}
+  .ss-lead p,.loc-intro p,.lg p,.lg li{font-size:16.5px;line-height:1.75;}
+  /* chips + related links: full-width tap targets */
+  .ss-areas{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+  .ss-areas a,.ss-rel a,.loc-chips a{font-size:13.5px;padding:12px 10px;}
+  .ss-rel,.loc-chips{gap:8px;}
+  /* accordions: comfortable touch rows */
+  .ss-faq summary,.reg-faq__item summary{font-size:16.5px;padding-right:38px;}
+  .reg-faq__item summary{padding-top:16px;padding-bottom:16px;}
+  /* footer stacks cleanly */
+  .sac-footer{padding:32px 0;}
+  .sac-footer-row{gap:28px;}
+  .sac-service-toggle{font-size:24px;}
+  .sac-copyright{font-size:13px;line-height:1.7;}
+  /* quote modal fills the screen properly */
+  .sac-modal{padding:0;}
+  .sac-modal__dialog{max-width:100%;height:100%;max-height:100%;border-radius:0;}
+  .sac-modal__frame{height:calc(100vh - 82px);}
+  /* contact + form embeds */
+  .ct-ghl__frame{min-height:600px;}
+  .reg-work__grid,.ss-work__grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+}
+@media(max-width:420px){
+  .sac-btn--xl{font-size:15px;padding:14px 18px;}
+  .svc-hero h1,.ss-hero h1{font-size:27px;}
+  .reg-cta h2,.ss-cta h2{font-size:26px;}
+}
+</style>
 
 </body>
 </html>

@@ -318,6 +318,7 @@ a{color:inherit;}
 .sac-foot-logo{display:inline-block;background:#fff;padding:12px 16px;border-radius:8px;margin-bottom:20px;}
 .sac-foot-logo img{height:40px;width:auto;display:block;}
 @media(max-width:420px){.sac-logo-mini-img img{height:32px;}}
+
 </style>
 <link rel="canonical" href="https://leadder.ca/service-areas/north-york/">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do you offer HVAC service in North York?", "acceptedAnswer": {"@type": "Answer", "text": "North York runs from the dense Yonge\u2013Willowdale condo corridor to leafy postwar streets in Don Mills and Lawrence Park. Leadder handles the full range: ductless and compact systems for condos, complete central AC and furnaces for detached homes \u2014 installed clean and serviced fast."}}, {"@type": "Question", "name": "What areas around North York do you serve?", "acceptedAnswer": {"@type": "Answer", "text": "North York's inland location brings hot summers and cold winters. Our technicians keep you ahead of both with prompt repairs and efficient upgrades across Willowdale, Don Mills, and the Yonge corridor."}}, {"@type": "Question", "name": "Do you offer emergency service in North York?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Our technicians are available 24/7 for heating and cooling emergencies in North York and the surrounding area, so you&rsquo;re never left without heat or cooling."}}, {"@type": "Question", "name": "How much does HVAC service cost in North York?", "acceptedAnswer": {"@type": "Answer", "text": "We provide upfront, all-in pricing before any work begins, and you can get an instant quote online in minutes. You approve the cost first &mdash; no surprises."}}, {"@type": "Question", "name": "Which brands do you service in North York?", "acceptedAnswer": {"@type": "Answer", "text": "Our licensed technicians install and repair every major heating and cooling brand in North York, regardless of who installed the original system."}}]}</script>
@@ -348,7 +349,7 @@ a{color:inherit;}
   <div class="sac-mobile-bar">
     <a class="sac-logo-img sac-logo-mini-img" href="/" aria-label="Leadder - Home"><img src="/images/leadder-logo.png" alt="Leadder"></a>
     <div class="sac-mob-actions">
-      <a class="sac-btn sac-btn-sm js-quote" href="#quote">Get Quote</a>
+      <a class="sac-btn sac-btn-sm js-quote" href="#quote"><svg class="sac-qic" viewBox="0 0 16 18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 2.25h-.667V.75c0-.414-.298-.75-.666-.75H12c-.368 0-.667.336-.667.75v1.5H4.667V.75C4.667.336 4.368 0 4 0h-.667c-.368 0-.666.336-.666.75v1.5H2c-1.103 0-2 1.01-2 2.25v11.25C0 16.99.897 18 2 18h12c1.103 0 2-1.01 2-2.25V4.5c0-1.24-.897-2.25-2-2.25m.667 13.5c0 .413-.3.75-.667.75H2c-.367 0-.667-.337-.667-.75V7.53h13.334z"/></svg>Get Quote</a>
       <button class="sac-hamburger" id="sacHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="sacDrawer">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
       </button>
@@ -486,22 +487,10 @@ a{color:inherit;}
 .reg-cta{background:var(--navy);color:#fff;text-align:center;padding:64px 0;}
 .reg-cta h2{font-family:var(--hd);font-weight:800;font-size:clamp(28px,3.6vw,44px);margin:0 0 8px;}
 .reg-cta p{margin:0 0 26px;font-size:18px;opacity:.9;}
-/* ===== transparent overlay nav (homepage), solid on scroll ===== */
-.sac-header{position:fixed;top:0;left:0;right:0;background:transparent;box-shadow:none;}
-.sac-main,.sac-nav{background:transparent;transition:background .25s ease;}
-.sac-header .sac-menu>li>a{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.45);}
-.sac-header .sac-menu>li>a:hover{color:var(--gold);}
-.sac-header .sac-phone-num{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.45);}
-.sac-header .sac-phone-ic{color:#fff;}
-.sac-header .sac-logo-img img{filter:drop-shadow(0 2px 8px rgba(0,0,0,.55));transition:filter .25s ease;}
-.sac-header.sac-scrolled{background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.12);}
-.sac-header.sac-scrolled .sac-main{background:#fff;}
-.sac-header.sac-scrolled .sac-nav{background:var(--cream);}
-.sac-header.sac-scrolled .sac-menu>li>a{color:var(--navy);text-shadow:none;}
-.sac-header.sac-scrolled .sac-menu>li>a:hover{color:var(--red);}
-.sac-header.sac-scrolled .sac-phone-num{color:#000;text-shadow:none;}
-.sac-header.sac-scrolled .sac-phone-ic{color:var(--red);}
-.sac-header.sac-scrolled .sac-logo-img img{filter:none;}
+/* ===== header stays solid white/cream at all scroll positions ===== */
+.sac-header{position:sticky;top:0;background:#fff;}
+.sac-main{background:#fff;}
+.sac-nav{background:var(--cream);}
 </style>
 <style>
 /* ===== service page ===== */
@@ -522,9 +511,20 @@ a{color:inherit;}
     <p class="svc-hero__eyebrow">Service Area</p>
     <h1 id="svc-h1">Air Conditioning &amp; Heating Services in North York, ON</h1>
     <p class="svc-hero__sub">Willowdale towers to Don Mills bungalows — Leadder is North York's dependable comfort team.</p>
-    <a class="sac-btn sac-btn--xl js-quote" href="#quote">Get an Instant Quote</a>
+    <a class="sac-btn sac-btn--xl js-quote" href="#quote"><svg class="sac-qic" viewBox="0 0 16 18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 2.25h-.667V.75c0-.414-.298-.75-.666-.75H12c-.368 0-.667.336-.667.75v1.5H4.667V.75C4.667.336 4.368 0 4 0h-.667c-.368 0-.666.336-.666.75v1.5H2c-1.103 0-2 1.01-2 2.25v11.25C0 16.99.897 18 2 18h12c1.103 0 2-1.01 2-2.25V4.5c0-1.24-.897-2.25-2-2.25m.667 13.5c0 .413-.3.75-.667.75H2c-.367 0-.667-.337-.667-.75V7.53h13.334z"/></svg>Get an Instant Quote</a>
   </div>
 </section>
+<style>
+/* ---- Adam location-page updates ---- */
+.loc-intro{background:#fff;padding:64px 0 8px;}
+.loc-intro__inner{max-width:900px;margin:0 auto;}
+.loc-intro h2{font-family:var(--hd);font-weight:800;color:var(--navy);font-size:clamp(26px,3.2vw,36px);margin:0 0 20px;}
+.loc-intro p{font-size:17px;line-height:1.85;color:#3a4353;margin:0 0 20px;}
+.loc-links{background:#fff;}
+.loc-links .loc-chips a{background:var(--cream);border-color:#e6d9bd;}
+.loc-links .loc-chips a:hover{background:var(--navy);color:#fff;}
+</style>
+<section class="loc-intro" aria-labelledby="loc-intro-h"><div class="sac-container loc-intro__inner"><h2 id="loc-intro-h">HVAC Services in North York, ON</h2><p>North York covers a huge range &mdash; Willowdale high-rises, Bayview Village and Don Mills bungalows, Lawrence Manor semis, and newer infill builds along Yonge. Older homes here frequently have undersized returns and a finished basement that changed the load without the system ever being updated to match.</p><p>Our technicians handle furnace and AC repair, replacement, ductless mini-splits for additions and basement suites, and 24/7 emergency service across North York, with upfront written pricing on every job.</p></div></section>
 
 <section class="sac-reviews" aria-labelledby="sac-reviews-h2">
   <div class="sac-container">
@@ -561,7 +561,6 @@ a{color:inherit;}
 <!-- ===== FAQ ===== -->
 <section class="reg-sec reg-sec--cream reg-faq" aria-labelledby="svc-faq-h">
   <div class="sac-container">
-    <p class="reg-eyebrow" style="text-align:center">FAQ</p>
     <h2 class="reg-h2" id="svc-faq-h" style="color:var(--navy);text-align:center">Frequently asked questions</h2>
     <div class="reg-faq__list">
       <details class="reg-faq__item"><summary>Do you offer HVAC service in North York?</summary><p>North York runs from the dense Yonge–Willowdale condo corridor to leafy postwar streets in Don Mills and Lawrence Park. Leadder handles the full range: ductless and compact systems for condos, complete central AC and furnaces for detached homes — installed clean and serviced fast.</p></details>
@@ -573,12 +572,11 @@ a{color:inherit;}
   </div>
 </section>
 
-<style>.loc-links{background:var(--cream);padding:60px 0;}.loc-links h2{font-family:var(--hd);font-weight:800;color:var(--navy);font-size:clamp(24px,3vw,32px);margin:0 0 18px;text-align:center;}.loc-links h3{font-family:var(--hd);color:var(--navy);font-size:18px;margin:26px 0 10px;}.loc-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}.loc-chips a{background:#fff;border:1px solid #e6d9bd;border-radius:999px;padding:9px 18px;font-family:var(--hd);font-weight:700;font-size:14.5px;color:var(--navy);text-decoration:none;transition:.15s;}.loc-chips a:hover{background:var(--navy);color:#fff;}.loc-links .loc-inner{max-width:900px;margin:0 auto;text-align:center;}</style><section class="loc-links"><div class="sac-container loc-inner"><h2>HVAC services in North York</h2><h3>Popular services</h3><div class="loc-chips"><a href="/services/ac-repair/">AC Repair</a><a href="/services/furnace-repair/">Furnace Repair</a><a href="/services/ac-installation/">AC Installation</a><a href="/services/furnace-installation/">Furnace Installation</a><a href="/services/heat-pump-installation/">Heat Pump Installation</a><a href="/services/hvac-maintenance/">HVAC Maintenance</a></div><h3>Nearby service areas</h3><div class="loc-chips"><a href="/service-areas/toronto/">Toronto</a><a href="/service-areas/vaughan/">Vaughan</a><a href="/service-areas/scarborough/">Scarborough</a><a href="/service-areas/markham/">Markham</a><a href="/service-areas/">All service areas</a></div><h3>More</h3><div class="loc-chips"><a href="/financing/">Financing</a><a href="/specials/">Specials</a><a href="/contact/">Contact</a></div></div></section><!-- ===== BOTTOM CTA ===== -->
+<style>.loc-links{background:#fff;padding:60px 0;}.loc-links h2{font-family:var(--hd);font-weight:800;color:var(--navy);font-size:clamp(24px,3vw,32px);margin:0 0 18px;text-align:center;}.loc-links h3{font-family:var(--hd);color:var(--navy);font-size:18px;margin:26px 0 10px;}.loc-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}.loc-chips a{background:var(--cream);border:1px solid #e6d9bd;border-radius:999px;padding:9px 18px;font-family:var(--hd);font-weight:700;font-size:14.5px;color:var(--navy);text-decoration:none;transition:.15s;}.loc-chips a:hover{background:var(--navy);color:#fff;}.loc-links .loc-inner{max-width:900px;margin:0 auto;text-align:center;}</style><section class="loc-links"><div class="sac-container loc-inner"><h2>Services We Offer in North York</h2><div class="loc-chips"><a href="/services/ac-repair/">AC Repair</a><a href="/services/furnace-repair/">Furnace Repair</a><a href="/services/ac-installation/">AC Installation</a><a href="/services/furnace-installation/">Furnace Installation</a><a href="/services/heat-pump-installation/">Heat Pump Installation</a><a href="/services/hvac-maintenance/">HVAC Maintenance</a></div></div></section><!-- ===== BOTTOM CTA ===== -->
 <section class="reg-cta" aria-labelledby="svc-cta-h">
   <div class="sac-container">
     <h2 id="svc-cta-h">Ready to take the next step?</h2>
-    <p>Get a free quote today.</p>
-    <a class="sac-btn sac-btn--xl js-quote" href="#quote">Get an Instant Quote</a>
+    <a class="sac-btn sac-btn--xl js-quote" href="#quote"><svg class="sac-qic" viewBox="0 0 16 18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 2.25h-.667V.75c0-.414-.298-.75-.666-.75H12c-.368 0-.667.336-.667.75v1.5H4.667V.75C4.667.336 4.368 0 4 0h-.667c-.368 0-.666.336-.666.75v1.5H2c-1.103 0-2 1.01-2 2.25v11.25C0 16.99.897 18 2 18h12c1.103 0 2-1.01 2-2.25V4.5c0-1.24-.897-2.25-2-2.25m.667 13.5c0 .413-.3.75-.667.75H2c-.367 0-.667-.337-.667-.75V7.53h13.334z"/></svg>Get an Instant Quote</a>
   </div>
 </section>
 
@@ -632,7 +630,7 @@ a{color:inherit;}
   </div>
 </footer>
 
-<div class="sac-copyright">&copy;2026 Leadder Heating &amp; Air | All Rights Reserved | <a href="#">Privacy Policy</a></div>
+<div class="sac-copyright">&copy;2026 Leadder Heating &amp; Air | All Rights Reserved | <a href="/privacy-policy/">Privacy Policy</a> | <a href="/terms-of-service/">Terms of Service</a></div>
 
 <script>
 (function () {
@@ -683,6 +681,93 @@ a{color:inherit;}
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
 })();
 </script>
+
+<style>
+/* ============ ADAM SITE-UPDATES OVERRIDES ============ */
+/* CTAs: no hover colour-swap anywhere (desktop or touch) */
+.sac-btn::before,.sac-btn--nav::before{content:none!important;display:none!important;}
+.sac-btn:hover,.sac-btn--nav:hover{color:#fff;}
+.sac-btn--xl:hover{transform:translateY(-3px);}
+.wc-btn:hover{background-color:var(--navy-blue);}
+.sac-readmore:hover{background:none;color:var(--navy);border-color:var(--red);}
+/* Instant-quote buttons always carry the calendar icon */
+.sac-btn,.sac-btn--nav{display:inline-flex;align-items:center;justify-content:center;gap:9px;}
+.sac-qic{width:1em;height:1.12em;flex:0 0 auto;display:block;}
+/* Eyebrow labels: red, larger, consistent across every page */
+.reg-eyebrow,.svc-hero__eyebrow{color:var(--red)!important;font-size:20px!important;letter-spacing:1.4px!important;margin:0 0 10px!important;}
+.reg-sec--blue .reg-eyebrow,.ss-hero .reg-eyebrow,.svc-hero__eyebrow{color:var(--red)!important;}
+/* Hero headlines wrap to ~3 lines on desktop instead of 14ch */
+.svc-hero h1{max-width:900px;}
+.svc-hero{padding:74px 0;}
+/* Footer: white surface, navy type, no red rule */
+.sac-footer{background-color:#fff;background-image:none;border-top:1px solid var(--line);color:var(--navy);}
+.sac-footer *{color:var(--navy)!important;}
+.sac-footer a.sac-foot-link,.sac-foot-phone a,.sac-service-list a,.sac-service-toggle span{color:var(--navy)!important;}
+.sac-foot-phone a{font-weight:700;}
+.sac-footer svg{fill:var(--navy);}
+.sac-foot-logo{background:transparent;padding:0;}
+.sac-foot-social a{color:var(--navy);}
+.sac-foot-social a:hover{color:var(--red);}
+.sac-foot-social svg{fill:currentColor;}
+.sac-foot-divider::after{background:var(--line);}
+.sac-service-area{border-bottom:1px solid var(--line);}
+.sac-service-toggle,.sac-service-toggle::after{color:var(--navy);}
+.sac-copyright{background:#fff;color:var(--navy);border-top:1px solid var(--line);}
+.sac-copyright a{color:var(--navy)!important;}
+
+/* ============ MOBILE PASS (Adam) ============ */
+@media(max-width:991px){
+  /* the fixed call/quote bar must never cover the end of the page */
+  body{padding-bottom:60px;}
+  .sac-fixed-bottom a{min-height:54px;}
+}
+@media(max-width:700px){
+  /* big CTAs must not wrap onto three lines */
+  .sac-btn--xl{font-size:15px;padding:16px 18px;letter-spacing:.2px;}
+  /* primary CTAs go full-width on phones so the label never wraps */
+  .reg-hero__card .sac-btn--xl,.svc-hero .sac-btn--xl,.ss-hero .sac-btn--xl,
+  .ss-cta .sac-btn--xl,.reg-cta .sac-btn--xl,.reg-work__cta .sac-btn--xl,
+  .cp-hero__btns a{width:100%!important;max-width:340px;}
+  .reg-hero__card{padding:32px 22px 36px!important;}
+  .cp-hero__btns{flex-direction:column;}
+  .sac-btn,.sac-btn--nav{font-size:14.5px;padding:13px 20px;min-height:48px;}
+  .reg-eyebrow,.svc-hero__eyebrow{font-size:16px!important;letter-spacing:1px!important;}
+  .svc-hero{padding:44px 0 48px;}
+  .svc-hero h1{font-size:clamp(28px,7.4vw,36px);}
+  .svc-hero__sub{font-size:16.5px;}
+  .ss-hero{padding:46px 0 44px;}
+  .ss-sec,.reg-sec,.lg,.loc-intro,.loc-links{padding-left:0;padding-right:0;}
+  .ss-sec{padding:44px 0;}
+  .reg-sec{padding:48px 0;}
+  .loc-intro{padding:44px 0 4px;}
+  .lg{padding:44px 0 52px;}
+  .ss-lead p,.loc-intro p,.lg p,.lg li{font-size:16.5px;line-height:1.75;}
+  /* chips + related links: full-width tap targets */
+  .ss-areas{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+  .ss-areas a,.ss-rel a,.loc-chips a{font-size:13.5px;padding:12px 10px;}
+  .ss-rel,.loc-chips{gap:8px;}
+  /* accordions: comfortable touch rows */
+  .ss-faq summary,.reg-faq__item summary{font-size:16.5px;padding-right:38px;}
+  .reg-faq__item summary{padding-top:16px;padding-bottom:16px;}
+  /* footer stacks cleanly */
+  .sac-footer{padding:32px 0;}
+  .sac-footer-row{gap:28px;}
+  .sac-service-toggle{font-size:24px;}
+  .sac-copyright{font-size:13px;line-height:1.7;}
+  /* quote modal fills the screen properly */
+  .sac-modal{padding:0;}
+  .sac-modal__dialog{max-width:100%;height:100%;max-height:100%;border-radius:0;}
+  .sac-modal__frame{height:calc(100vh - 82px);}
+  /* contact + form embeds */
+  .ct-ghl__frame{min-height:600px;}
+  .reg-work__grid,.ss-work__grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+}
+@media(max-width:420px){
+  .sac-btn--xl{font-size:15px;padding:14px 18px;}
+  .svc-hero h1,.ss-hero h1{font-size:27px;}
+  .reg-cta h2,.ss-cta h2{font-size:26px;}
+}
+</style>
 
 </body>
 </html>

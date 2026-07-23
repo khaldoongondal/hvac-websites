@@ -318,6 +318,7 @@ a{color:inherit;}
 .sac-foot-logo{display:inline-block;background:#fff;padding:12px 16px;border-radius:8px;margin-bottom:20px;}
 .sac-foot-logo img{height:40px;width:auto;display:block;}
 @media(max-width:420px){.sac-logo-mini-img img{height:32px;}}
+
 </style>
 <link rel="canonical" href="https://leadder.ca/gallery/">
 </head>
@@ -347,7 +348,7 @@ a{color:inherit;}
   <div class="sac-mobile-bar">
     <a class="sac-logo-img sac-logo-mini-img" href="/" aria-label="Leadder - Home"><img src="/images/leadder-logo.png" alt="Leadder"></a>
     <div class="sac-mob-actions">
-      <a class="sac-btn sac-btn-sm js-quote" href="#quote">Get Quote</a>
+      <a class="sac-btn sac-btn-sm js-quote" href="#quote"><svg class="sac-qic" viewBox="0 0 16 18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 2.25h-.667V.75c0-.414-.298-.75-.666-.75H12c-.368 0-.667.336-.667.75v1.5H4.667V.75C4.667.336 4.368 0 4 0h-.667c-.368 0-.666.336-.666.75v1.5H2c-1.103 0-2 1.01-2 2.25v11.25C0 16.99.897 18 2 18h12c1.103 0 2-1.01 2-2.25V4.5c0-1.24-.897-2.25-2-2.25m.667 13.5c0 .413-.3.75-.667.75H2c-.367 0-.667-.337-.667-.75V7.53h13.334z"/></svg>Get Quote</a>
       <button class="sac-hamburger" id="sacHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="sacDrawer">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
       </button>
@@ -485,22 +486,10 @@ a{color:inherit;}
 .reg-cta{background:var(--navy);color:#fff;text-align:center;padding:64px 0;}
 .reg-cta h2{font-family:var(--hd);font-weight:800;font-size:clamp(28px,3.6vw,44px);margin:0 0 8px;}
 .reg-cta p{margin:0 0 26px;font-size:18px;opacity:.9;}
-/* ===== transparent overlay nav (homepage), solid on scroll ===== */
-.sac-header{position:fixed;top:0;left:0;right:0;background:transparent;box-shadow:none;}
-.sac-main,.sac-nav{background:transparent;transition:background .25s ease;}
-.sac-header .sac-menu>li>a{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.45);}
-.sac-header .sac-menu>li>a:hover{color:var(--gold);}
-.sac-header .sac-phone-num{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.45);}
-.sac-header .sac-phone-ic{color:#fff;}
-.sac-header .sac-logo-img img{filter:drop-shadow(0 2px 8px rgba(0,0,0,.55));transition:filter .25s ease;}
-.sac-header.sac-scrolled{background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.12);}
-.sac-header.sac-scrolled .sac-main{background:#fff;}
-.sac-header.sac-scrolled .sac-nav{background:var(--cream);}
-.sac-header.sac-scrolled .sac-menu>li>a{color:var(--navy);text-shadow:none;}
-.sac-header.sac-scrolled .sac-menu>li>a:hover{color:var(--red);}
-.sac-header.sac-scrolled .sac-phone-num{color:#000;text-shadow:none;}
-.sac-header.sac-scrolled .sac-phone-ic{color:var(--red);}
-.sac-header.sac-scrolled .sac-logo-img img{filter:none;}
+/* ===== header stays solid white/cream at all scroll positions ===== */
+.sac-header{position:sticky;top:0;background:#fff;}
+.sac-main{background:#fff;}
+.sac-nav{background:var(--cream);}
 </style>
 <style>
 /* ===== service page ===== */
@@ -518,10 +507,9 @@ a{color:inherit;}
 <!-- ===== SERVICE HERO ===== -->
 <section class="svc-hero" aria-labelledby="svc-h1">
   <div class="sac-container">
-    <p class="svc-hero__eyebrow">Gallery</p>
     <h1 id="svc-h1">See Our Work</h1>
     <p class="svc-hero__sub">A look at recent heating and cooling projects across Toronto and the GTA. Real homes, real comfort.</p>
-    <a class="sac-btn sac-btn--xl js-quote" href="#quote">Get an Instant Quote</a>
+    <a class="sac-btn sac-btn--xl js-quote" href="#quote"><svg class="sac-qic" viewBox="0 0 16 18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 2.25h-.667V.75c0-.414-.298-.75-.666-.75H12c-.368 0-.667.336-.667.75v1.5H4.667V.75C4.667.336 4.368 0 4 0h-.667c-.368 0-.666.336-.666.75v1.5H2c-1.103 0-2 1.01-2 2.25v11.25C0 16.99.897 18 2 18h12c1.103 0 2-1.01 2-2.25V4.5c0-1.24-.897-2.25-2-2.25m.667 13.5c0 .413-.3.75-.667.75H2c-.367 0-.667-.337-.667-.75V7.53h13.334z"/></svg>Get an Instant Quote</a>
   </div>
 </section>
 
@@ -534,12 +522,42 @@ a{color:inherit;}
   </div>
 </section>
 
+<section class="sac-reviews" aria-labelledby="sac-reviews-h2">
+  <div class="sac-container">
+    <div class="sac-reviews__grid">
+      <img class="sac-reviews__photo" src="/images/testimonial-section-image-desktop.png" alt="Happy Leadder customer with a service technician" loading="lazy">
+      <div class="sac-reviews__content">
+        <p class="sac-sub">See What Your Neighbors Are Saying</p>
+        <h2 class="sac-reviews__h2" id="sac-reviews-h2">Our Reviews</h2>
+        <div class="sac-stars" aria-label="5 out of 5 stars">
+          <svg width="20" height="19" viewBox="0 0 17 16" fill="none"><path d="M9.875 1.00684L11.9062 5.16309L16.375 5.81934C16.75 5.88184 17.0625 6.13184 17.1875 6.50684C17.3125 6.85059 17.2188 7.25684 16.9375 7.50684L13.6875 10.7256L14.4688 15.2881C14.5312 15.6631 14.375 16.0381 14.0625 16.2568C13.75 16.5068 13.3438 16.5068 13 16.3506L9 14.1943L4.96875 16.3506C4.65625 16.5068 4.25 16.5068 3.9375 16.2568C3.625 16.0381 3.46875 15.6631 3.53125 15.2881L4.28125 10.7256L1.03125 7.50684C0.78125 7.25684 0.6875 6.85059 0.78125 6.50684C0.90625 6.13184 1.21875 5.88184 1.59375 5.81934L6.09375 5.16309L8.09375 1.00684C8.25 0.663086 8.59375 0.444336 9 0.444336C9.375 0.444336 9.71875 0.663086 9.875 1.00684Z" fill="#f2ab27"></path></svg>
+          <svg width="20" height="19" viewBox="0 0 17 16" fill="none"><path d="M9.875 1.00684L11.9062 5.16309L16.375 5.81934C16.75 5.88184 17.0625 6.13184 17.1875 6.50684C17.3125 6.85059 17.2188 7.25684 16.9375 7.50684L13.6875 10.7256L14.4688 15.2881C14.5312 15.6631 14.375 16.0381 14.0625 16.2568C13.75 16.5068 13.3438 16.5068 13 16.3506L9 14.1943L4.96875 16.3506C4.65625 16.5068 4.25 16.5068 3.9375 16.2568C3.625 16.0381 3.46875 15.6631 3.53125 15.2881L4.28125 10.7256L1.03125 7.50684C0.78125 7.25684 0.6875 6.85059 0.78125 6.50684C0.90625 6.13184 1.21875 5.88184 1.59375 5.81934L6.09375 5.16309L8.09375 1.00684C8.25 0.663086 8.59375 0.444336 9 0.444336C9.375 0.444336 9.71875 0.663086 9.875 1.00684Z" fill="#f2ab27"></path></svg>
+          <svg width="20" height="19" viewBox="0 0 17 16" fill="none"><path d="M9.875 1.00684L11.9062 5.16309L16.375 5.81934C16.75 5.88184 17.0625 6.13184 17.1875 6.50684C17.3125 6.85059 17.2188 7.25684 16.9375 7.50684L13.6875 10.7256L14.4688 15.2881C14.5312 15.6631 14.375 16.0381 14.0625 16.2568C13.75 16.5068 13.3438 16.5068 13 16.3506L9 14.1943L4.96875 16.3506C4.65625 16.5068 4.25 16.5068 3.9375 16.2568C3.625 16.0381 3.46875 15.6631 3.53125 15.2881L4.28125 10.7256L1.03125 7.50684C0.78125 7.25684 0.6875 6.85059 0.78125 6.50684C0.90625 6.13184 1.21875 5.88184 1.59375 5.81934L6.09375 5.16309L8.09375 1.00684C8.25 0.663086 8.59375 0.444336 9 0.444336C9.375 0.444336 9.71875 0.663086 9.875 1.00684Z" fill="#f2ab27"></path></svg>
+          <svg width="20" height="19" viewBox="0 0 17 16" fill="none"><path d="M9.875 1.00684L11.9062 5.16309L16.375 5.81934C16.75 5.88184 17.0625 6.13184 17.1875 6.50684C17.3125 6.85059 17.2188 7.25684 16.9375 7.50684L13.6875 10.7256L14.4688 15.2881C14.5312 15.6631 14.375 16.0381 14.0625 16.2568C13.75 16.5068 13.3438 16.5068 13 16.3506L9 14.1943L4.96875 16.3506C4.65625 16.5068 4.25 16.5068 3.9375 16.2568C3.625 16.0381 3.46875 15.6631 3.53125 15.2881L4.28125 10.7256L1.03125 7.50684C0.78125 7.25684 0.6875 6.85059 0.78125 6.50684C0.90625 6.13184 1.21875 5.88184 1.59375 5.81934L6.09375 5.16309L8.09375 1.00684C8.25 0.663086 8.59375 0.444336 9 0.444336C9.375 0.444336 9.71875 0.663086 9.875 1.00684Z" fill="#f2ab27"></path></svg>
+          <svg width="20" height="19" viewBox="0 0 17 16" fill="none"><path d="M9.875 1.00684L11.9062 5.16309L16.375 5.81934C16.75 5.88184 17.0625 6.13184 17.1875 6.50684C17.3125 6.85059 17.2188 7.25684 16.9375 7.50684L13.6875 10.7256L14.4688 15.2881C14.5312 15.6631 14.375 16.0381 14.0625 16.2568C13.75 16.5068 13.3438 16.5068 13 16.3506L9 14.1943L4.96875 16.3506C4.65625 16.5068 4.25 16.5068 3.9375 16.2568C3.625 16.0381 3.46875 15.6631 3.53125 15.2881L4.28125 10.7256L1.03125 7.50684C0.78125 7.25684 0.6875 6.85059 0.78125 6.50684C0.90625 6.13184 1.21875 5.88184 1.59375 5.81934L6.09375 5.16309L8.09375 1.00684C8.25 0.663086 8.59375 0.444336 9 0.444336C9.375 0.444336 9.71875 0.663086 9.875 1.00684Z" fill="#f2ab27"></path></svg>
+        </div>
+        <div class="sac-slider" id="sacSlider">
+          <div class="sac-slide is-active"><p class="sac-slide__quote">"We switched from another plumbing and HVAC service to Leadder and we couldn't be more happy. Their prices are more affordable, their people more knowledgeable, and they get to you fast — especially important when your AC blows out in the middle of summer!"</p><p class="sac-slide__name">B. Parker</p></div>
+          <div class="sac-slide"><p class="sac-slide__quote">"Leadder has serviced our furnace and air conditioner for the past 15 years. They are knowledgeable and professional. The techs are prompt, friendly and trustworthy. I highly recommend them."</p><p class="sac-slide__name">Barbara K.</p></div>
+          <div class="sac-slide"><p class="sac-slide__quote">"Julian showed up the same afternoon with the new water heater and explained everything he was doing. Very thorough, polite &amp; professional. Cleaned up the whole area afterward."</p><p class="sac-slide__name">Aimee B.</p></div>
+          <div class="sac-slide"><p class="sac-slide__quote">"Robert and Daniel did an amazing job replacing my evaporator coil. They took time to explain every detail and put plastic down to protect my wood floors."</p><p class="sac-slide__name">Larry D.</p></div>
+        </div>
+        <div class="sac-dots" id="sacDots" role="tablist" aria-label="Select testimonial">
+          <button class="sac-dot is-active" type="button" aria-label="Testimonial 1"></button>
+          <button class="sac-dot" type="button" aria-label="Testimonial 2"></button>
+          <button class="sac-dot" type="button" aria-label="Testimonial 3"></button>
+          <button class="sac-dot" type="button" aria-label="Testimonial 4"></button>
+        </div>
+        <a class="sac-btn--nav" href="#reviews">Read Our Reviews</a>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- ===== BOTTOM CTA ===== -->
 <section class="reg-cta" aria-labelledby="svc-cta-h">
   <div class="sac-container">
     <h2 id="svc-cta-h">Ready to take the next step?</h2>
-    <p>Get a free quote today.</p>
-    <a class="sac-btn sac-btn--xl js-quote" href="#quote">Get an Instant Quote</a>
+    <a class="sac-btn sac-btn--xl js-quote" href="#quote"><svg class="sac-qic" viewBox="0 0 16 18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 2.25h-.667V.75c0-.414-.298-.75-.666-.75H12c-.368 0-.667.336-.667.75v1.5H4.667V.75C4.667.336 4.368 0 4 0h-.667c-.368 0-.666.336-.666.75v1.5H2c-1.103 0-2 1.01-2 2.25v11.25C0 16.99.897 18 2 18h12c1.103 0 2-1.01 2-2.25V4.5c0-1.24-.897-2.25-2-2.25m.667 13.5c0 .413-.3.75-.667.75H2c-.367 0-.667-.337-.667-.75V7.53h13.334z"/></svg>Get an Instant Quote</a>
   </div>
 </section>
 
@@ -593,7 +611,7 @@ a{color:inherit;}
   </div>
 </footer>
 
-<div class="sac-copyright">&copy;2026 Leadder Heating &amp; Air | All Rights Reserved | <a href="#">Privacy Policy</a></div>
+<div class="sac-copyright">&copy;2026 Leadder Heating &amp; Air | All Rights Reserved | <a href="/privacy-policy/">Privacy Policy</a> | <a href="/terms-of-service/">Terms of Service</a></div>
 
 <script>
 (function () {
@@ -644,6 +662,93 @@ a{color:inherit;}
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
 })();
 </script>
+
+<style>
+/* ============ ADAM SITE-UPDATES OVERRIDES ============ */
+/* CTAs: no hover colour-swap anywhere (desktop or touch) */
+.sac-btn::before,.sac-btn--nav::before{content:none!important;display:none!important;}
+.sac-btn:hover,.sac-btn--nav:hover{color:#fff;}
+.sac-btn--xl:hover{transform:translateY(-3px);}
+.wc-btn:hover{background-color:var(--navy-blue);}
+.sac-readmore:hover{background:none;color:var(--navy);border-color:var(--red);}
+/* Instant-quote buttons always carry the calendar icon */
+.sac-btn,.sac-btn--nav{display:inline-flex;align-items:center;justify-content:center;gap:9px;}
+.sac-qic{width:1em;height:1.12em;flex:0 0 auto;display:block;}
+/* Eyebrow labels: red, larger, consistent across every page */
+.reg-eyebrow,.svc-hero__eyebrow{color:var(--red)!important;font-size:20px!important;letter-spacing:1.4px!important;margin:0 0 10px!important;}
+.reg-sec--blue .reg-eyebrow,.ss-hero .reg-eyebrow,.svc-hero__eyebrow{color:var(--red)!important;}
+/* Hero headlines wrap to ~3 lines on desktop instead of 14ch */
+.svc-hero h1{max-width:900px;}
+.svc-hero{padding:74px 0;}
+/* Footer: white surface, navy type, no red rule */
+.sac-footer{background-color:#fff;background-image:none;border-top:1px solid var(--line);color:var(--navy);}
+.sac-footer *{color:var(--navy)!important;}
+.sac-footer a.sac-foot-link,.sac-foot-phone a,.sac-service-list a,.sac-service-toggle span{color:var(--navy)!important;}
+.sac-foot-phone a{font-weight:700;}
+.sac-footer svg{fill:var(--navy);}
+.sac-foot-logo{background:transparent;padding:0;}
+.sac-foot-social a{color:var(--navy);}
+.sac-foot-social a:hover{color:var(--red);}
+.sac-foot-social svg{fill:currentColor;}
+.sac-foot-divider::after{background:var(--line);}
+.sac-service-area{border-bottom:1px solid var(--line);}
+.sac-service-toggle,.sac-service-toggle::after{color:var(--navy);}
+.sac-copyright{background:#fff;color:var(--navy);border-top:1px solid var(--line);}
+.sac-copyright a{color:var(--navy)!important;}
+
+/* ============ MOBILE PASS (Adam) ============ */
+@media(max-width:991px){
+  /* the fixed call/quote bar must never cover the end of the page */
+  body{padding-bottom:60px;}
+  .sac-fixed-bottom a{min-height:54px;}
+}
+@media(max-width:700px){
+  /* big CTAs must not wrap onto three lines */
+  .sac-btn--xl{font-size:15px;padding:16px 18px;letter-spacing:.2px;}
+  /* primary CTAs go full-width on phones so the label never wraps */
+  .reg-hero__card .sac-btn--xl,.svc-hero .sac-btn--xl,.ss-hero .sac-btn--xl,
+  .ss-cta .sac-btn--xl,.reg-cta .sac-btn--xl,.reg-work__cta .sac-btn--xl,
+  .cp-hero__btns a{width:100%!important;max-width:340px;}
+  .reg-hero__card{padding:32px 22px 36px!important;}
+  .cp-hero__btns{flex-direction:column;}
+  .sac-btn,.sac-btn--nav{font-size:14.5px;padding:13px 20px;min-height:48px;}
+  .reg-eyebrow,.svc-hero__eyebrow{font-size:16px!important;letter-spacing:1px!important;}
+  .svc-hero{padding:44px 0 48px;}
+  .svc-hero h1{font-size:clamp(28px,7.4vw,36px);}
+  .svc-hero__sub{font-size:16.5px;}
+  .ss-hero{padding:46px 0 44px;}
+  .ss-sec,.reg-sec,.lg,.loc-intro,.loc-links{padding-left:0;padding-right:0;}
+  .ss-sec{padding:44px 0;}
+  .reg-sec{padding:48px 0;}
+  .loc-intro{padding:44px 0 4px;}
+  .lg{padding:44px 0 52px;}
+  .ss-lead p,.loc-intro p,.lg p,.lg li{font-size:16.5px;line-height:1.75;}
+  /* chips + related links: full-width tap targets */
+  .ss-areas{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+  .ss-areas a,.ss-rel a,.loc-chips a{font-size:13.5px;padding:12px 10px;}
+  .ss-rel,.loc-chips{gap:8px;}
+  /* accordions: comfortable touch rows */
+  .ss-faq summary,.reg-faq__item summary{font-size:16.5px;padding-right:38px;}
+  .reg-faq__item summary{padding-top:16px;padding-bottom:16px;}
+  /* footer stacks cleanly */
+  .sac-footer{padding:32px 0;}
+  .sac-footer-row{gap:28px;}
+  .sac-service-toggle{font-size:24px;}
+  .sac-copyright{font-size:13px;line-height:1.7;}
+  /* quote modal fills the screen properly */
+  .sac-modal{padding:0;}
+  .sac-modal__dialog{max-width:100%;height:100%;max-height:100%;border-radius:0;}
+  .sac-modal__frame{height:calc(100vh - 82px);}
+  /* contact + form embeds */
+  .ct-ghl__frame{min-height:600px;}
+  .reg-work__grid,.ss-work__grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+}
+@media(max-width:420px){
+  .sac-btn--xl{font-size:15px;padding:14px 18px;}
+  .svc-hero h1,.ss-hero h1{font-size:27px;}
+  .reg-cta h2,.ss-cta h2{font-size:26px;}
+}
+</style>
 
 </body>
 </html>
