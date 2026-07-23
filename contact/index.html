@@ -692,7 +692,12 @@ a{color:inherit;}
 .sac-btn,.sac-btn--nav{display:inline-flex;align-items:center;justify-content:center;gap:9px;}
 .sac-qic{width:1em;height:1.12em;flex:0 0 auto;display:block;}
 /* Eyebrow labels: red, larger, consistent across every page */
-.reg-eyebrow,.svc-hero__eyebrow{color:var(--red)!important;font-size:20px!important;letter-spacing:1.4px!important;margin:0 0 10px!important;}
+.reg-eyebrow,.svc-hero__eyebrow{color:var(--red)!important;font-size:20px!important;letter-spacing:1.4px!important;margin:0 0 10px;}
+/* service pages never got the base .reg-eyebrow rule — restore it so the category
+   label is condensed, bold and uppercase like every other eyebrow on the site */
+.reg-eyebrow{font-family:var(--hd)!important;font-weight:800!important;text-transform:uppercase!important;}
+/* hero eyebrows sit centred above the H1 */
+.ss-hero .reg-eyebrow,.pg-hero .reg-eyebrow,.svc-hero__eyebrow{text-align:center!important;font-size:22px!important;letter-spacing:2.2px!important;font-weight:800!important;margin:0 auto 14px!important;max-width:none!important;width:100%;}
 .reg-sec--blue .reg-eyebrow,.ss-hero .reg-eyebrow,.svc-hero__eyebrow{color:var(--red)!important;}
 /* Hero headlines wrap to ~3 lines on desktop instead of 14ch */
 .svc-hero h1{max-width:900px;}
